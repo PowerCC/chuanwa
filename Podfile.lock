@@ -1,0 +1,98 @@
+PODS:
+  - AFDownloadRequestOperation (2.0.1):
+    - AFNetworking (~> 2.0)
+  - AFNetworking (2.6.3):
+    - AFNetworking/NSURLConnection (= 2.6.3)
+    - AFNetworking/NSURLSession (= 2.6.3)
+    - AFNetworking/Reachability (= 2.6.3)
+    - AFNetworking/Security (= 2.6.3)
+    - AFNetworking/Serialization (= 2.6.3)
+    - AFNetworking/UIKit (= 2.6.3)
+  - AFNetworking/NSURLConnection (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/NSURLSession (2.6.3):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (2.6.3)
+  - AFNetworking/Security (2.6.3)
+  - AFNetworking/Serialization (2.6.3)
+  - AFNetworking/UIKit (2.6.3):
+    - AFNetworking/NSURLConnection
+    - AFNetworking/NSURLSession
+  - AMap2DMap (4.0.0):
+    - AMapFoundation (= 1.0.0)
+  - AMapFoundation (1.0.0)
+  - AMapLocation (2.0.0):
+    - AMapFoundation (~> 1.0)
+  - CocoaLumberjack (2.3.0):
+    - CocoaLumberjack/Default (= 2.3.0)
+    - CocoaLumberjack/Extensions (= 2.3.0)
+  - CocoaLumberjack/Core (2.3.0)
+  - CocoaLumberjack/Default (2.3.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.3.0):
+    - CocoaLumberjack/Default
+  - JSPatch (1.0):
+    - JSPatch/Core (= 1.0)
+  - JSPatch/Core (1.0)
+  - Masonry (1.0.1)
+  - MBProgressHUD (0.9.2)
+  - MJExtension (3.0.10)
+  - MJRefresh (3.1.0)
+  - pop (1.0.9)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - UMengSocialCOM (5.2.1)
+  - XAspect (1.0.5):
+    - XAspect/Core (= 1.0.5)
+    - XAspect/Macros (= 1.0.5)
+  - XAspect/Core (1.0.5):
+    - XAspect/Macros
+  - XAspect/Macros (1.0.5)
+  - YTKNetwork (1.1.0):
+    - AFDownloadRequestOperation (~> 2.0)
+    - AFNetworking (~> 2.0)
+  - YYCache (1.0.3)
+
+DEPENDENCIES:
+  - AMap2DMap
+  - AMapLocation
+  - CocoaLumberjack
+  - JSPatch
+  - Masonry
+  - MBProgressHUD (~> 0.9.2)
+  - MJExtension
+  - MJRefresh
+  - pop (~> 1.0)
+  - SDWebImage
+  - UMengSocialCOM (~> 5.2.1)
+  - XAspect
+  - YTKNetwork
+  - YYCache
+
+SPEC CHECKSUMS:
+  AFDownloadRequestOperation: 748a1643423e1ddb23f2178f778087d4f0ae8ac7
+  AFNetworking: cb8d14a848e831097108418f5d49217339d4eb60
+  AMap2DMap: 72868a24c1a7c70f86729a4dfb4e4c2dc301f727
+  AMapFoundation: af861f5d299a4f17a1a8b50fd91242933bb352f3
+  AMapLocation: 40141a31e7c584e59d590079eb8e565a90ecdf4d
+  CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
+  JSPatch: c689ea4dde17441f2f4a95d40dfedb8900c20099
+  Masonry: a1a931a0d08870ed8ae415a2ea5ea68ebcac77df
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MJExtension: d86aacb740c87519d20e3cca55b6fa4be6cc7548
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  UMengSocialCOM: 074c135ce349aa4c8848d3fb8458757bcb6ffb67
+  XAspect: db50bf487f92dbb8557a7a5365556966c8493af8
+  YTKNetwork: a41c1df80d4f3b9d05c19c514a2c604e7a6ac341
+  YYCache: 282f35b5b0990833d0b7a06d864a87141a021da2
+
+PODFILE CHECKSUM: ebab79c2a5899744d1aaae30e10961959146519f
+
+COCOAPODS: 1.0.1
