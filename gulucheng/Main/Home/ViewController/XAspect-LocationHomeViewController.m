@@ -59,7 +59,7 @@ AspectPatch(-, void, viewDidLoad) {
                 
                 weakSelf.latitude = location.coordinate.latitude;
                 weakSelf.longitude = location.coordinate.longitude;
-                
+
                 // 判断直辖市或者省级市
                 NSString *city = [NSString stringWithFormat:@"%@-%@", regeocode.province, regeocode.city];
                 if (!regeocode.city || [regeocode.city length] == 0 || [regeocode.province isEqualToString:regeocode.city]) {
@@ -73,6 +73,9 @@ AspectPatch(-, void, viewDidLoad) {
                 weakSelf.latitude = location.coordinate.latitude;
                 weakSelf.longitude = location.coordinate.longitude;
             }
+            
+            GlobalData.userModel.latitude = location.coordinate.latitude;
+            GlobalData.userModel.longitude = location.coordinate.longitude;
         }
     };
 }

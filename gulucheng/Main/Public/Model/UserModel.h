@@ -32,4 +32,7 @@
 
 @property (nonatomic, copy) NSString *loginToken;
 
+@property (nonatomic, assign) double latitude;
+@property (nonatomic, assign) double longitude;
+
 @end

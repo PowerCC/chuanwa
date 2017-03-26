@@ -7,6 +7,7 @@
 //
 
 #import "NSString+DateTime.h"
+#import "NSDate+Extend.h"
 
 @implementation NSString (DateTime)
 
@@ -22,7 +23,7 @@
     
     [formatter setTimeZone:timeZone];
     
-    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:timestamp];
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:timestamp / 1000];
     
     NSLog(@"1296035591  = %@", confromTimesp);
 
@@ -31,5 +32,10 @@
     //NSLog(@"&&&&&&&confromTimespStr = : %@",confromTimespStr);
 
     return confromTimespStr;
+}
+
++ (NSString *)timeAgo:(NSInteger)timestamp {
+    NSDate *confromDate = [NSDate dateWithTimeIntervalSince1970:timestamp / 1000];
+    return [confromDate timeAgo];
 }
 @end

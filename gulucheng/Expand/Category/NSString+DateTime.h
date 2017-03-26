@@ -12,4 +12,6 @@
 
 + (NSString *)timestampSwitchTime:(NSInteger)timestamp andFormatter:(NSString *)format;
 
++ (NSString *)timeAgo:(NSInteger)timestamp;
+
 @end

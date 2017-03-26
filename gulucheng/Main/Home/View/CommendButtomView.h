@@ -12,6 +12,8 @@
 @interface CommendButtomView : UIView
 
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+
+@property (weak, nonatomic) IBOutlet UILabel *distanceAndTimeAgoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *talkCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *peopleCountLabel;
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
