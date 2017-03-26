@@ -45,6 +45,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *messageButton;
 @property (weak, nonatomic) IBOutlet UIButton *notificationButton;
 
+@property (weak, nonatomic) IBOutlet UIView *publishImageContentView;
+@property (weak, nonatomic) IBOutlet UIImageView *publishImageView;
+
 - (IBAction)showMenuButtonAction:(id)sender;
 - (void)textPublishAction;
 - (void)votePublishAction;

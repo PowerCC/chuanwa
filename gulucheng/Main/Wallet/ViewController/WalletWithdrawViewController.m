@@ -33,6 +33,12 @@
     [self initUI];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [_withdrawButton circularWithSize:CGSizeMake(3, 3)];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -55,7 +61,6 @@
     _withdrawCountLabel.text = @"";
     _withdrawButton.enabled = NO;
     _withdrawButton.backgroundColor = kCOLOR(255, 191, 184, 1);
-    [_withdrawButton circularWithSize:CGSizeMake(3, 3)];
     
     [_alipayUserNameTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventAllEditingEvents];
     [_alipayRealNameTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventAllEditingEvents];

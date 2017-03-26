@@ -333,7 +333,7 @@
                                     <constraint firstAttribute="height" constant="75" id="5Pe-wb-Gqc"/>
                                     <constraint firstItem="RSy-nF-cjp" firstAttribute="top" secondItem="YGa-Rv-pkB" secondAttribute="top" constant="12" id="8AR-QI-ukf"/>
                                     <constraint firstItem="RSy-nF-cjp" firstAttribute="leading" secondItem="YGa-Rv-pkB" secondAttribute="leading" constant="12" id="JRp-1J-Ssu"/>
-                                    <constraint firstAttribute="trailing" secondItem="RSy-nF-cjp" secondAttribute="trailing" constant="12" id="fU8-cY-LjL"/>
+                                    <constraint firstAttribute="trailing" secondItem="RSy-nF-cjp" secondAttribute="trailing" constant="12" id="UcO-ZR-JAY"/>
                                     <constraint firstAttribute="bottom" secondItem="RSy-nF-cjp" secondAttribute="bottom" constant="12" id="hSm-Vw-xPi"/>
                                 </constraints>
                             </view>
@@ -343,11 +343,11 @@
                             <constraint firstAttribute="trailing" secondItem="LjD-be-q9z" secondAttribute="trailing" id="1M0-Ea-B6j"/>
                             <constraint firstItem="YGa-Rv-pkB" firstAttribute="leading" secondItem="n2d-24-beE" secondAttribute="leading" id="59h-r7-HrM"/>
                             <constraint firstItem="WdB-EQ-9fC" firstAttribute="top" secondItem="LjD-be-q9z" secondAttribute="bottom" id="974-Hn-Tay"/>
+                            <constraint firstAttribute="trailing" secondItem="YGa-Rv-pkB" secondAttribute="trailing" id="BFR-kO-bBv"/>
                             <constraint firstItem="2e9-I1-GDw" firstAttribute="leading" secondItem="n2d-24-beE" secondAttribute="leading" id="Bfe-YL-Ycv"/>
                             <constraint firstAttribute="trailing" secondItem="WdB-EQ-9fC" secondAttribute="trailing" id="DQp-j0-Icw"/>
                             <constraint firstItem="LjD-be-q9z" firstAttribute="leading" secondItem="n2d-24-beE" secondAttribute="leading" id="Oab-lv-SVu"/>
                             <constraint firstItem="LjD-be-q9z" firstAttribute="top" secondItem="reN-EE-zA8" secondAttribute="bottom" id="PNL-f1-nof"/>
-                            <constraint firstAttribute="trailing" secondItem="YGa-Rv-pkB" secondAttribute="trailing" id="X7N-Ci-tOu"/>
                             <constraint firstItem="WdB-EQ-9fC" firstAttribute="leading" secondItem="n2d-24-beE" secondAttribute="leading" id="bfU-7b-ZgF"/>
                             <constraint firstItem="YGa-Rv-pkB" firstAttribute="top" secondItem="2e9-I1-GDw" secondAttribute="bottom" id="ddd-xd-8Hs"/>
                             <constraint firstAttribute="trailing" secondItem="2e9-I1-GDw" secondAttribute="trailing" id="fQ9-ti-saQ"/>

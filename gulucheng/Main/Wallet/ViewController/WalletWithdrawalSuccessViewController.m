@@ -25,6 +25,12 @@
     [self initUI];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [_okButton circularWithSize:CGSizeMake(3, 3)];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -32,8 +38,6 @@
 
 - (void)initUI {
     self.navigationItem.title = @"提现成功";
-    
-    [_okButton circularWithSize:CGSizeMake(3, 3)];
     
     _alipayUserNameLabel.text = _alipayUserName;
     _amountLabel.text = _amount;

@@ -74,6 +74,12 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"public-horizonLine"]];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    [_withdrawButton circularWithSize:CGSizeMake(3, 3)];
+}
+
 - (void)initUI {
     self.rewardDataArray = [NSMutableArray arrayWithCapacity:4];
     
@@ -92,7 +98,6 @@
     
     _withdrawButton.enabled = NO;
     _withdrawButton.backgroundColor = kCOLOR(255, 191, 184, 1);
-    [_withdrawButton circularWithSize:CGSizeMake(3, 3)];
 }
 
 #pragma mark - currentDate

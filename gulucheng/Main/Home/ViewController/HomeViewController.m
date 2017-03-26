@@ -155,6 +155,7 @@
     
     [self.view addSubview:_firstScrollView];
     [self.view bringSubviewToFront:_publishButton];
+    [self.view bringSubviewToFront:_publishImageContentView];
     
     [self showGuideView];
 }
@@ -172,6 +173,7 @@
     
     [self.view sendSubviewToBack:_secondScrollView];
     [self.view bringSubviewToFront:_publishButton];
+    [self.view bringSubviewToFront:_publishImageContentView];
 }
 
 - (void)addPublishViewWithContentView:(UIView *)publishView recommendModel:(RecommendModel *)recommendModel {
@@ -397,6 +399,7 @@
             _actionLabel.font = [UIFont systemFontOfSize:17];
             
             self.navigationController.navigationBar.alpha = 1.0;
+            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
             
             NSLog(@"------\n--------%f    %@", scrollView.contentOffset.y, recommendModel.eid);
         }
@@ -426,6 +429,7 @@
             _actionLabel.font = [UIFont systemFontOfSize:17];
             
             self.navigationController.navigationBar.alpha = 1.0;
+            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
             
             NSLog(@"+++++++++\n+++++++++%f    %@", scrollView.contentOffset.y, recommendModel.eid);
         }
@@ -468,18 +472,14 @@
             _actionLabel.alpha = 0.0;
 //            _actionRoundLabel.alpha = 0.0;
             
-            [UIView animateWithDuration:0.15
-                             animations:^{
-                                 _publishButton.transform = CGAffineTransformMakeRotation(M_PI * 2);
-                             }];
-            
+            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
         } else if (scrollView.contentOffset.y - SCREEN_HEIGHT <= 170) {
             if (!_isEndDraging) {
                 _actionLabel.alpha = (scrollView.contentOffset.y - SCREEN_HEIGHT - 30) / (170 - 30);
                 _actionImageView.alpha = (scrollView.contentOffset.y - SCREEN_HEIGHT - 30) / (170 - 30);
 //                _actionRoundLabel.alpha = (scrollView.contentOffset.y - SCREEN_HEIGHT - 30) / (50 - 30);
                 
-                 _publishButton.transform = CGAffineTransformMakeRotation(M_PI * 0.75);
+                _publishImageView.image = [UIImage imageNamed:@"home-publish-spread"];
             }
         } else {
             if (!_isEndDraging) {
@@ -513,15 +513,15 @@
             [UIView animateWithDuration:0.15
                              animations:^{
                                  self.navigationController.navigationBar.alpha = 1.0;
-                                 _publishButton.transform = CGAffineTransformMakeRotation(M_PI * 2);
                              }];
             
+            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
         } else if (SCREEN_HEIGHT - scrollView.contentOffset.y <= 170) {
             if (!_isEndDraging) {
                 _actionLabel.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
                 _actionImageView.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
                 
-                _publishButton.transform = CGAffineTransformMakeRotation(M_PI * 0.75);
+                _publishImageView.image = [UIImage imageNamed:@"home-publish-skip"];
             }
         } else {
             if (!_isEndDraging) {
