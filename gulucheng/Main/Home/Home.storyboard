@@ -55,7 +55,7 @@
                                     <action selector="showMenuButtonAction:" destination="dbP-kh-UCD" eventType="touchUpInside" id="gUU-Vb-51c"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-lm-g92">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-lm-g92">
                                 <rect key="frame" x="304" y="596" width="60" height="60"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-publish-normal" translatesAutoresizingMaskIntoConstraints="NO" id="XKk-OD-gsF">

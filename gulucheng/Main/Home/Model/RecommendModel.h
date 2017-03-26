@@ -33,7 +33,11 @@
 @property (nonatomic, copy) NSString *lastCommentTimes;
 @property (nonatomic, copy) NSString *spreadTimes;
 @property (nonatomic, copy) NSString *skipTimes;
+@property (nonatomic, copy) NSString *updateTime;
 @property (nonatomic, copy) NSString *eventCity;
+
+@property (nonatomic, copy) NSString *lat;
+@property (nonatomic, copy) NSString *lon;
 
 @property (nonatomic, strong) TextModel *textModel;
 @property (nonatomic, strong) VoteModel *voteModel;
