@@ -346,15 +346,16 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     
-    if (scrollView.contentOffset.y - SCREEN_HEIGHT > 8) {
+    CGFloat value = SCREEN_HEIGHT * 0.3;
+    if (scrollView.contentOffset.y - SCREEN_HEIGHT > value) {
         [scrollView setContentOffset:CGPointMake(0, SCREEN_HEIGHT * 2) animated:YES];
     }
     
-    if (scrollView.contentOffset.y - SCREEN_HEIGHT < -8) {
+    if (scrollView.contentOffset.y - SCREEN_HEIGHT < -value) {
         [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     }
     
-    if (fabs(scrollView.contentOffset.y - SCREEN_HEIGHT) > 8) {
+    if (fabs(scrollView.contentOffset.y - SCREEN_HEIGHT) > value) {
         
         _isViewUnLoad = YES;
         
@@ -397,6 +398,7 @@
             _actionLabel.alpha = 0.0;
 //            _actionLabel.font = [UIFont systemFontOfSize:14];
             _actionLabel.font = [UIFont systemFontOfSize:17];
+            _actionImageView.alpha = 0.0;
             
             self.navigationController.navigationBar.alpha = 1.0;
             _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
@@ -427,6 +429,7 @@
             _actionLabel.alpha = 0.0;
 //            _actionLabel.font = [UIFont systemFontOfSize:14];
             _actionLabel.font = [UIFont systemFontOfSize:17];
+            _actionImageView.alpha = 0.0;
             
             self.navigationController.navigationBar.alpha = 1.0;
             _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
@@ -521,7 +524,8 @@
                 _actionLabel.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
                 _actionImageView.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
                 
-                _publishImageView.image = [UIImage imageNamed:@"home-publish-skip"];
+                _publishImageView.transform = CGAffineTransformMakeRotation(M_PI * (SCREEN_HEIGHT - scrollView.contentOffset.y));
+//                _publishImageView.image = [UIImage imageNamed:@"home-publish-skip"];
             }
         } else {
             if (!_isEndDraging) {

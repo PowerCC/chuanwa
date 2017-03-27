@@ -1117,12 +1117,20 @@
                                                                                                 </userDefinedRuntimeAttribute>
                                                                                             </userDefinedRuntimeAttributes>
                                                                                         </imageView>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gN-AF-4He">
+                                                                                            <rect key="frame" x="330" y="28" width="29" height="14"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                                            <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
                                                                                     </subviews>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                     <constraints>
                                                                                         <constraint firstItem="Scx-q7-Tbw" firstAttribute="leading" secondItem="Vo9-xG-553" secondAttribute="trailing" constant="4" id="2QJ-TG-zRa"/>
                                                                                         <constraint firstItem="Scx-q7-Tbw" firstAttribute="centerY" secondItem="Vo9-xG-553" secondAttribute="centerY" id="3a6-64-g9E"/>
+                                                                                        <constraint firstItem="6gN-AF-4He" firstAttribute="centerY" secondItem="q4b-1Q-znT" secondAttribute="centerY" id="a3j-Ad-h2b"/>
                                                                                         <constraint firstItem="Vo9-xG-553" firstAttribute="top" secondItem="q4b-1Q-znT" secondAttribute="top" constant="26" id="cDe-xb-CRl"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="6gN-AF-4He" secondAttribute="trailing" constant="16" id="eOw-cu-bUO"/>
                                                                                         <constraint firstItem="DsB-LZ-adG" firstAttribute="top" secondItem="q4b-1Q-znT" secondAttribute="top" constant="17" id="fCz-L6-y6y"/>
                                                                                         <constraint firstItem="Vo9-xG-553" firstAttribute="leading" secondItem="DsB-LZ-adG" secondAttribute="trailing" constant="12" id="v4R-T8-EQG"/>
                                                                                         <constraint firstItem="DsB-LZ-adG" firstAttribute="leading" secondItem="q4b-1Q-znT" secondAttribute="leading" constant="16" id="xWY-Vf-1Jz"/>
@@ -1133,6 +1141,7 @@
                                                                                     <outlet property="genderImageView" destination="Scx-q7-Tbw" id="r6n-Y2-sD7"/>
                                                                                     <outlet property="headImageView" destination="DsB-LZ-adG" id="QuW-p2-ie1"/>
                                                                                     <outlet property="nickNameLabel" destination="Vo9-xG-553" id="OxC-y8-UqC"/>
+                                                                                    <outlet property="timeLabel" destination="6gN-AF-4He" id="8Hf-e3-RbX"/>
                                                                                 </connections>
                                                                             </tableViewCell>
                                                                         </prototypes>
@@ -1189,14 +1198,22 @@
                                                                                                 </userDefinedRuntimeAttribute>
                                                                                             </userDefinedRuntimeAttributes>
                                                                                         </imageView>
+                                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icf-t8-3N1">
+                                                                                            <rect key="frame" x="330" y="28" width="29" height="14"/>
+                                                                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                                                            <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                            <nil key="highlightedColor"/>
+                                                                                        </label>
                                                                                     </subviews>
                                                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                                     <constraints>
                                                                                         <constraint firstItem="ABo-wP-gUN" firstAttribute="centerY" secondItem="2Hq-cR-27o" secondAttribute="centerY" id="JZV-Em-ZJ6"/>
                                                                                         <constraint firstItem="2Hq-cR-27o" firstAttribute="leading" secondItem="mkM-Fb-AJb" secondAttribute="trailing" constant="12" id="JzJ-DZ-rqQ"/>
+                                                                                        <constraint firstAttribute="trailing" secondItem="icf-t8-3N1" secondAttribute="trailing" constant="16" id="LvB-9g-821"/>
                                                                                         <constraint firstItem="mkM-Fb-AJb" firstAttribute="leading" secondItem="4Vv-yh-kUF" secondAttribute="leading" constant="16" id="TEq-VZ-aLr"/>
                                                                                         <constraint firstItem="ABo-wP-gUN" firstAttribute="leading" secondItem="2Hq-cR-27o" secondAttribute="trailing" constant="4" id="bts-gm-onH"/>
                                                                                         <constraint firstItem="mkM-Fb-AJb" firstAttribute="top" secondItem="4Vv-yh-kUF" secondAttribute="top" constant="17" id="kiV-zS-lga"/>
+                                                                                        <constraint firstItem="icf-t8-3N1" firstAttribute="centerY" secondItem="4Vv-yh-kUF" secondAttribute="centerY" id="pDH-in-OY5"/>
                                                                                         <constraint firstItem="2Hq-cR-27o" firstAttribute="top" secondItem="4Vv-yh-kUF" secondAttribute="top" constant="26" id="z0f-Gy-mxl"/>
                                                                                     </constraints>
                                                                                 </tableViewCellContentView>
@@ -1205,6 +1222,7 @@
                                                                                     <outlet property="genderImageView" destination="ABo-wP-gUN" id="HX3-v3-VxQ"/>
                                                                                     <outlet property="headImageView" destination="mkM-Fb-AJb" id="7gF-WG-2Nk"/>
                                                                                     <outlet property="nickNameLabel" destination="2Hq-cR-27o" id="5fk-Ev-AX3"/>
+                                                                                    <outlet property="timeLabel" destination="icf-t8-3N1" id="1L4-lu-9ee"/>
                                                                                 </connections>
                                                                             </tableViewCell>
                                                                         </prototypes>
@@ -2431,10 +2449,7 @@
                                 <rect key="frame" x="0.0" y="622" width="375" height="45"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rcj-vE-bo9">
-                                        <rect key="frame" x="138" y="0.0" width="100" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="100" id="d4I-hO-F9w"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="8" maxY="0.0"/>
                                         <state key="normal" title="聊天" image="im-toChat"/>
@@ -2447,8 +2462,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="3VX-Oe-BuC"/>
                                     <constraint firstAttribute="bottom" secondItem="rcj-vE-bo9" secondAttribute="bottom" id="BfE-7P-Ef1"/>
-                                    <constraint firstItem="rcj-vE-bo9" firstAttribute="centerX" secondItem="pog-Cd-TK1" secondAttribute="centerX" id="gdL-mx-L85"/>
+                                    <constraint firstAttribute="trailing" secondItem="rcj-vE-bo9" secondAttribute="trailing" id="PTK-OO-9OF"/>
                                     <constraint firstItem="rcj-vE-bo9" firstAttribute="top" secondItem="pog-Cd-TK1" secondAttribute="top" id="ryg-hP-ZII"/>
+                                    <constraint firstItem="rcj-vE-bo9" firstAttribute="leading" secondItem="pog-Cd-TK1" secondAttribute="leading" id="yMW-RT-nGD"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2755,7 +2771,7 @@
         <image name="public-verticalLine" width="1" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="RMA-J9-KjU"/>
         <segue reference="fiV-G4-sro"/>
-        <segue reference="a2R-Cb-Acj"/>
     </inferredMetricsTieBreakers>
 </document>
