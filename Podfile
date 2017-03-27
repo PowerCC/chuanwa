@@ -25,6 +25,7 @@ target 'gulucheng' do
     pod 'Masonry'
     pod 'UMengSocialCOM', '~> 5.2.1'  #友盟社会化分享
     pod 'ESPictureBrowser'
+    pod 'VBFPopFlatButton'
     #pod 'DFTimelineView'
     
     target 'guluchengTests' do

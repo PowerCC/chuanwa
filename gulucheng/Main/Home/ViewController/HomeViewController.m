@@ -23,6 +23,7 @@
 #import "ListByImNamesApi.h"
 
 #import "MagicMoveTransition.h"
+#import "VBFPopFlatButton.h"
 
 @interface HomeViewController () <UINavigationControllerDelegate, UIScrollViewDelegate>
 
@@ -33,6 +34,8 @@
 @property (strong, nonatomic) UILabel *actionRoundLabel;
 
 @property (strong, nonatomic) UIImageView *actionImageView;
+
+@property (strong, nonatomic) VBFPopFlatButton *flatRoundedButton;
 
 @property (strong, nonatomic) NSArray *commendArray;
 
@@ -120,6 +123,20 @@
     _actionImageView = [[UIImageView alloc] init];
     [self.view addSubview:_actionImageView];
     
+    _flatRoundedButton = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 71, SCREEN_HEIGHT - 71, 60, 60)
+                                                         buttonType:buttonAddType
+                                                        buttonStyle:buttonPlainStyle
+                                              animateToInitialState:YES];
+    _flatRoundedButton.roundBackgroundColor = kCOLOR(238, 130, 102, 1);
+    _flatRoundedButton.lineThickness = 3;
+    _flatRoundedButton.tintColor = [UIColor whiteColor];
+    [_flatRoundedButton addTarget:self
+                           action:@selector(showMenuButtonAction:)
+                 forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_flatRoundedButton];
+    
+    _publishButton.hidden = YES;
+    
     [self recommendDataSourceRequest];
     
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
@@ -154,7 +171,7 @@
     _firstScrollView.delegate = self;
     
     [self.view addSubview:_firstScrollView];
-    [self.view bringSubviewToFront:_publishButton];
+    [self.view bringSubviewToFront:_flatRoundedButton];
     [self.view bringSubviewToFront:_publishImageContentView];
     
     [self showGuideView];
@@ -172,7 +189,7 @@
     [self.view addSubview:_secondScrollView];
     
     [self.view sendSubviewToBack:_secondScrollView];
-    [self.view bringSubviewToFront:_publishButton];
+    [self.view bringSubviewToFront:_flatRoundedButton];
     [self.view bringSubviewToFront:_publishImageContentView];
 }
 
