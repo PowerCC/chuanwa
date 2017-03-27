@@ -123,19 +123,17 @@
     _actionImageView = [[UIImageView alloc] init];
     [self.view addSubview:_actionImageView];
     
-    _flatRoundedButton = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 71, SCREEN_HEIGHT - 71, 60, 60)
+    _flatRoundedButton = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(21, 20, 20, 20)
                                                          buttonType:buttonAddType
                                                         buttonStyle:buttonPlainStyle
-                                              animateToInitialState:YES];
-    _flatRoundedButton.roundBackgroundColor = kCOLOR(238, 130, 102, 1);
+                                              animateToInitialState:NO];
+//    _flatRoundedButton.roundBackgroundColor = kCOLOR(238, 130, 102, 1);
     _flatRoundedButton.lineThickness = 3;
     _flatRoundedButton.tintColor = [UIColor whiteColor];
-    [_flatRoundedButton addTarget:self
-                           action:@selector(showMenuButtonAction:)
-                 forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:_flatRoundedButton];
-    
-    _publishButton.hidden = YES;
+//    [_flatRoundedButton addTarget:self
+//                           action:@selector(showMenuButtonAction:)
+//                 forControlEvents:UIControlEventTouchUpInside];
+    [_publishImageContentView insertSubview:_flatRoundedButton atIndex:1];
     
     [self recommendDataSourceRequest];
     
@@ -171,7 +169,6 @@
     _firstScrollView.delegate = self;
     
     [self.view addSubview:_firstScrollView];
-    [self.view bringSubviewToFront:_flatRoundedButton];
     [self.view bringSubviewToFront:_publishImageContentView];
     
     [self showGuideView];
@@ -189,7 +186,6 @@
     [self.view addSubview:_secondScrollView];
     
     [self.view sendSubviewToBack:_secondScrollView];
-    [self.view bringSubviewToFront:_flatRoundedButton];
     [self.view bringSubviewToFront:_publishImageContentView];
 }
 
@@ -418,7 +414,9 @@
             _actionImageView.alpha = 0.0;
             
             self.navigationController.navigationBar.alpha = 1.0;
-            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
+//            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
+            
+            [_flatRoundedButton animateToType:buttonAddType];
             
             NSLog(@"------\n--------%f    %@", scrollView.contentOffset.y, recommendModel.eid);
         }
@@ -449,7 +447,8 @@
             _actionImageView.alpha = 0.0;
             
             self.navigationController.navigationBar.alpha = 1.0;
-            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
+//            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
+            [_flatRoundedButton animateToType:buttonAddType];
             
             NSLog(@"+++++++++\n+++++++++%f    %@", scrollView.contentOffset.y, recommendModel.eid);
         }
@@ -492,14 +491,16 @@
             _actionLabel.alpha = 0.0;
 //            _actionRoundLabel.alpha = 0.0;
             
-            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
+//            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
+            [_flatRoundedButton animateToType:buttonAddType];
         } else if (scrollView.contentOffset.y - SCREEN_HEIGHT <= 170) {
             if (!_isEndDraging) {
                 _actionLabel.alpha = (scrollView.contentOffset.y - SCREEN_HEIGHT - 30) / (170 - 30);
                 _actionImageView.alpha = (scrollView.contentOffset.y - SCREEN_HEIGHT - 30) / (170 - 30);
 //                _actionRoundLabel.alpha = (scrollView.contentOffset.y - SCREEN_HEIGHT - 30) / (50 - 30);
                 
-                _publishImageView.image = [UIImage imageNamed:@"home-publish-spread"];
+//                _publishImageView.image = [UIImage imageNamed:@"home-publish-spread"];
+                [_flatRoundedButton animateToType:buttonUpBasicType];
             }
         } else {
             if (!_isEndDraging) {
@@ -534,15 +535,15 @@
                              animations:^{
                                  self.navigationController.navigationBar.alpha = 1.0;
                              }];
-            
-            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
+
+            [_flatRoundedButton animateToType:buttonAddType];
         } else if (SCREEN_HEIGHT - scrollView.contentOffset.y <= 170) {
             if (!_isEndDraging) {
                 _actionLabel.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
                 _actionImageView.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
                 
-                _publishImageView.transform = CGAffineTransformMakeRotation(M_PI * (SCREEN_HEIGHT - scrollView.contentOffset.y));
 //                _publishImageView.image = [UIImage imageNamed:@"home-publish-skip"];
+                [_flatRoundedButton animateToType:buttonCloseType];
             }
         } else {
             if (!_isEndDraging) {

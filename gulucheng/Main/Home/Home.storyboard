@@ -44,30 +44,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aMf-rP-oQd">
-                                <rect key="frame" x="304" y="596" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="4Fh-a5-MJ1"/>
-                                    <constraint firstAttribute="height" constant="60" id="Bbw-Id-oST"/>
-                                </constraints>
-                                <state key="normal" image="home-publish-bg"/>
-                                <connections>
-                                    <action selector="showMenuButtonAction:" destination="dbP-kh-UCD" eventType="touchUpInside" id="gUU-Vb-51c"/>
-                                </connections>
-                            </button>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-lm-g92">
-                                <rect key="frame" x="304" y="596" width="60" height="60"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ghg-lm-g92">
+                                <rect key="frame" x="302" y="594" width="62" height="62"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-publish-normal" translatesAutoresizingMaskIntoConstraints="NO" id="XKk-OD-gsF">
-                                        <rect key="frame" x="20" y="18.5" width="19" height="19"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home-publish-bg" translatesAutoresizingMaskIntoConstraints="NO" id="XKk-OD-gsF">
+                                        <rect key="frame" x="-0.5" y="0.0" width="62" height="62"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oll-sK-Udc">
+                                        <rect key="frame" x="0.0" y="0.0" width="62" height="62"/>
+                                        <connections>
+                                            <action selector="showMenuButtonAction:" destination="dbP-kh-UCD" eventType="touchUpInside" id="jjZ-kO-FYW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="KW2-8l-cqN"/>
-                                    <constraint firstItem="XKk-OD-gsF" firstAttribute="centerY" secondItem="ghg-lm-g92" secondAttribute="centerY" constant="-2" id="Klk-Os-SSX"/>
-                                    <constraint firstItem="XKk-OD-gsF" firstAttribute="centerX" secondItem="ghg-lm-g92" secondAttribute="centerX" id="f0K-cM-N7U"/>
-                                    <constraint firstAttribute="height" constant="60" id="ge5-Pk-Ow4"/>
+                                    <constraint firstItem="oll-sK-Udc" firstAttribute="top" secondItem="ghg-lm-g92" secondAttribute="top" id="3As-PY-0fD"/>
+                                    <constraint firstItem="XKk-OD-gsF" firstAttribute="leading" secondItem="ghg-lm-g92" secondAttribute="leading" id="CRG-nO-ekM"/>
+                                    <constraint firstAttribute="width" constant="62" id="KW2-8l-cqN"/>
+                                    <constraint firstAttribute="bottom" secondItem="XKk-OD-gsF" secondAttribute="bottom" id="Ut8-fT-uQ7"/>
+                                    <constraint firstAttribute="bottom" secondItem="oll-sK-Udc" secondAttribute="bottom" id="dJ8-Gd-uJX"/>
+                                    <constraint firstAttribute="height" constant="62" id="ge5-Pk-Ow4"/>
+                                    <constraint firstAttribute="trailing" secondItem="XKk-OD-gsF" secondAttribute="trailing" id="kJF-Lq-Eo4"/>
+                                    <constraint firstItem="XKk-OD-gsF" firstAttribute="top" secondItem="ghg-lm-g92" secondAttribute="top" id="mRU-gG-VfO"/>
+                                    <constraint firstAttribute="trailing" secondItem="oll-sK-Udc" secondAttribute="trailing" id="mr6-Io-zRq"/>
+                                    <constraint firstItem="oll-sK-Udc" firstAttribute="leading" secondItem="ghg-lm-g92" secondAttribute="leading" id="oZ6-Mv-Tvd"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -75,8 +76,6 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="ghg-lm-g92" secondAttribute="trailing" constant="11" id="7tQ-66-wWv"/>
                             <constraint firstItem="8aL-4o-Fbm" firstAttribute="top" secondItem="ghg-lm-g92" secondAttribute="bottom" constant="11" id="C8h-iF-ru2"/>
-                            <constraint firstAttribute="trailing" secondItem="aMf-rP-oQd" secondAttribute="trailing" constant="11" id="V2B-Rk-FRe"/>
-                            <constraint firstItem="8aL-4o-Fbm" firstAttribute="top" secondItem="aMf-rP-oQd" secondAttribute="bottom" constant="11" id="tAh-M1-Wh8"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="iVv-13-Iw8">
@@ -129,9 +128,7 @@
                     <connections>
                         <outlet property="messageButton" destination="4pH-su-wK5" id="Glr-Oc-rCb"/>
                         <outlet property="notificationButton" destination="JsE-eT-K5Q" id="ldZ-SA-XEP"/>
-                        <outlet property="publishButton" destination="aMf-rP-oQd" id="SbZ-7S-Vke"/>
                         <outlet property="publishImageContentView" destination="ghg-lm-g92" id="sDh-tq-7qt"/>
-                        <outlet property="publishImageView" destination="XKk-OD-gsF" id="COu-gP-qUi"/>
                         <segue destination="vjD-ov-wvu" kind="show" identifier="cardDetailSegue" id="fiV-G4-sro"/>
                         <segue destination="5dC-V3-3nb" kind="presentation" identifier="otherCenterSegue" id="a2R-Cb-Acj"/>
                     </connections>
@@ -1089,7 +1086,7 @@
                                                                                 <rect key="frame" x="0.0" y="28" width="375" height="72"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FGd-l0-if6" id="q4b-1Q-znT">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
                                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                                     <subviews>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vo9-xG-553">
@@ -1170,7 +1167,7 @@
                                                                                 <rect key="frame" x="0.0" y="28" width="375" height="72"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v7f-sC-hnR" id="4Vv-yh-kUF">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
                                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                                     <subviews>
                                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Hq-cR-27o">
@@ -2755,7 +2752,6 @@
         <image name="home-personDefault" width="22" height="29"/>
         <image name="home-profile" width="20" height="20"/>
         <image name="home-publish-bg" width="62" height="62"/>
-        <image name="home-publish-normal" width="19" height="19"/>
         <image name="home-selectedRight" width="17" height="12"/>
         <image name="home-share" width="20" height="20"/>
         <image name="home-tableViewUp" width="41" height="41"/>
@@ -2771,7 +2767,7 @@
         <image name="public-verticalLine" width="1" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RMA-J9-KjU"/>
         <segue reference="fiV-G4-sro"/>
+        <segue reference="a2R-Cb-Acj"/>
     </inferredMetricsTieBreakers>
 </document>
