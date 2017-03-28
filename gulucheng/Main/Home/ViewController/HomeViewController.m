@@ -51,6 +51,9 @@
 
 @property (assign, nonatomic) NSInteger page;
 
+@property (assign, nonatomic) CGFloat beginOffset;
+@property (assign, nonatomic) CGFloat endOffset;
+
 @end
 
 @implementation HomeViewController
@@ -382,8 +385,42 @@
 
 }
 
+- (void)setContentOffset:(UIScrollView *)scrollView {
+    CGFloat value = SCREEN_HEIGHT * 0.2;
+    if (_endOffset - _beginOffset > value) {
+        NSLog(@"\n scrollViewDidEndDragging _isViewUnLoad = YES \n");
+        [scrollView setContentOffset:CGPointMake(0, SCREEN_HEIGHT * 2) animated:YES];
+        
+        _isViewUnLoad = YES;
+        
+        [UIView animateWithDuration:0.30
+                         animations:^{
+                             scrollView.alpha = 0.0;
+                         }];
+        
+        [UIView animateWithDuration:0.15
+                         animations:^{
+                             _actionLabel.alpha = 0.0;
+                             _actionImageView.alpha = 0.0;
+                         }];
+        
+        self.currentRecommendModel = _tempRecommendModel;
+        _isNext = YES;
+    }
+    else if (_endOffset - _beginOffset < -value) {
+        _isViewUnLoad = YES;
+        [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+        self.currentRecommendModel = _tempRecommendModel;
+        _isNext = YES;
+    }
+    
+    _isEndDraging = YES;
+}
+
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     [self viewUnloadFunc];
+    
+    _beginOffset = scrollView.contentOffset.y;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
@@ -424,32 +461,18 @@
  *  滚动完毕就会调用（如果不是人为拖拽scrollView导致滚动完毕，才会调用这个方法）
  */
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+    
+    _endOffset = scrollView.contentOffset.y;
+    
+    if (!_isNext) {
+        [self setContentOffset:scrollView];
+    }
+    
     if (scrollView.contentOffset.y == 0 || scrollView.contentOffset.y >= SCREEN_HEIGHT * 2) {
         
         if (_isNext) {
             [self ccc:scrollView];
         }
-        
-//        if (_page < _commendArray.count) {
-//            RecommendModel *recommendModel = [_commendArray objectAtIndex:_page];
-//            [self recommendOperateRequestWithCommendModel:recommendModel
-//                                                   isSkip:scrollView.contentOffset.y == 0];
-//            
-//            [scrollView removeFromSuperview];
-//            scrollView = nil;
-//            
-//            _page++;
-//            _isViewUnLoad = YES;
-//            
-//            _actionLabel.alpha = 0.0;
-//            _actionLabel.font = [UIFont systemFontOfSize:17];
-//            _actionImageView.alpha = 0.0;
-//            
-//            self.navigationController.navigationBar.alpha = 1.0;
-//            [_flatRoundedButton animateToType:buttonAddType];
-//            
-//            NSLog(@"------\n--------%f    %@", scrollView.contentOffset.y, recommendModel.eid);
-//        }
     }
 }
 
@@ -457,32 +480,18 @@
  *  滚动完毕就会调用（如果是人为拖拽scrollView导致滚动完毕，才会调用这个方法）
  */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    
+    _endOffset = scrollView.contentOffset.y;
+    
+    if (!_isNext) {
+        [self setContentOffset:scrollView];
+    }
+    
     if (scrollView.contentOffset.y == 0 || scrollView.contentOffset.y >= SCREEN_HEIGHT * 2) {
         
         if (_isNext) {
             [self ccc:scrollView];
         }
-        
-//        if (_page < _commendArray.count) {
-//            RecommendModel *recommendModel = [_commendArray objectAtIndex:_page];
-//            [self recommendOperateRequestWithCommendModel:recommendModel
-//                                                   isSkip:scrollView.contentOffset.y == 0];
-//
-//            [scrollView removeFromSuperview];
-//            scrollView = nil;
-//
-//            _page++;
-//            _isViewUnLoad = YES;
-//            
-//            _actionLabel.alpha = 0.0;
-//            _actionLabel.font = [UIFont systemFontOfSize:17];
-//            _actionImageView.alpha = 0.0;
-//            
-//            self.navigationController.navigationBar.alpha = 1.0;
-//            [_flatRoundedButton animateToType:buttonAddType];
-//            
-//            NSLog(@"+++++++++\n+++++++++%f    %@", scrollView.contentOffset.y, recommendModel.eid);
-//        }
     }
 }
 
