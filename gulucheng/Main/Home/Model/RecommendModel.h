@@ -38,6 +38,8 @@
 
 @property (nonatomic, copy) NSString *lat;
 @property (nonatomic, copy) NSString *lon;
+@property (nonatomic, copy) NSString *distKm;
+@property (nonatomic, copy) NSString *distMeter;
 
 @property (nonatomic, strong) TextModel *textModel;
 @property (nonatomic, strong) VoteModel *voteModel;

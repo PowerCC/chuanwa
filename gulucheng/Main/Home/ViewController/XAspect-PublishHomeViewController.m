@@ -241,17 +241,18 @@ AspectPatch(-, void, takePhotoAction) {
     photoVC.longitude = self.longitude;
     photoVC.eventCity = self.eventCity;
     
+    WEAKSELF
     photoVC.publishBlock = ^(NSString *eid, NSString *eventType, NSString *shareText, UIImage *shareImage, BOOL isChat, BOOL isSina, BOOL isQQZone) {
-        self.eid = eid;
-        self.eventType = eventType;
-        self.shareText = shareText;
-        self.shareImage = shareImage;
+        weakSelf.eid = eid;
+        weakSelf.eventType = eventType;
+        weakSelf.shareText = shareText;
+        weakSelf.shareImage = shareImage;
         
-        [self showAlertWithChat:isChat isSina:isSina isQQZone:isQQZone];
+        [weakSelf showAlertWithChat:isChat isSina:isSina isQQZone:isQQZone];
     };
     
     GCD_AFTER(0.0, ^{
-        [self presentViewController:navViewController animated:YES completion:nil];
+        [weakSelf presentViewController:navViewController animated:YES completion:nil];
     });
 }
 

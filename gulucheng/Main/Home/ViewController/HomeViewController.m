@@ -47,6 +47,7 @@
 @property (assign, nonatomic) BOOL isViewUnLoad;
 @property (assign, nonatomic) BOOL isRequestData;
 @property (assign, nonatomic) BOOL isEndDraging;
+@property (assign, nonatomic) BOOL isNext;
 
 @property (assign, nonatomic) NSInteger page;
 
@@ -71,6 +72,8 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
+    [self checkLocation];
     self.navigationController.delegate = self;
 }
 
@@ -333,9 +336,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-    
+- (void)viewUnloadFunc {
     if (_isViewUnLoad) {
+        
+        NSLog(@"\n scrollViewWillBeginDragging \n");
         
         if ((_page + 1) < _commendArray.count) {
             [self addSecondScrollView];
@@ -346,9 +350,6 @@
             _tempRecommendModel = recommendModel;
         } else {
             _isRequestData = YES;
-//            RecommendModel *recommendModel = [_commendArray objectAtIndex:(_page)];
-//            [self recommendOperateRequestWithCommendModel:recommendModel
-//                                                   isSkip:scrollView.contentOffset.y == 0];
         }
         
         _isViewUnLoad = NO;
@@ -357,18 +358,41 @@
     _isEndDraging = NO;
 }
 
+- (void)ccc:(UIScrollView *)scrollView {
+    if (_page < _commendArray.count) {
+        RecommendModel *recommendModel = [_commendArray objectAtIndex:_page];
+        [self recommendOperateRequestWithCommendModel:recommendModel
+                                               isSkip:scrollView.contentOffset.y == 0];
+        
+        [scrollView removeFromSuperview];
+        scrollView = nil;
+        
+        _page++;
+        _isViewUnLoad = YES;
+        
+        _actionLabel.alpha = 0.0;
+        _actionLabel.font = [UIFont systemFontOfSize:17];
+        _actionImageView.alpha = 0.0;
+        
+        self.navigationController.navigationBar.alpha = 1.0;
+        [_flatRoundedButton animateToType:buttonAddType];
+        
+        NSLog(@"------\n--------%f    %@", scrollView.contentOffset.y, recommendModel.eid);
+    }
+
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self viewUnloadFunc];
+}
+
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    _isNext = NO;
     
     CGFloat value = SCREEN_HEIGHT * 0.3;
     if (scrollView.contentOffset.y - SCREEN_HEIGHT > value) {
+        NSLog(@"\n scrollViewDidEndDragging _isViewUnLoad = YES \n");
         [scrollView setContentOffset:CGPointMake(0, SCREEN_HEIGHT * 2) animated:YES];
-    }
-    
-    if (scrollView.contentOffset.y - SCREEN_HEIGHT < -value) {
-        [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
-    }
-    
-    if (fabs(scrollView.contentOffset.y - SCREEN_HEIGHT) > value) {
         
         _isViewUnLoad = YES;
         
@@ -380,11 +404,17 @@
         [UIView animateWithDuration:0.15
                          animations:^{
                              _actionLabel.alpha = 0.0;
-//                             _actionRoundLabel.alpha = 0.0;
                              _actionImageView.alpha = 0.0;
                          }];
         
         self.currentRecommendModel = _tempRecommendModel;
+        _isNext = YES;
+    }
+    else if (scrollView.contentOffset.y - SCREEN_HEIGHT < -value) {
+        _isViewUnLoad = YES;
+        [scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+        self.currentRecommendModel = _tempRecommendModel;
+        _isNext = YES;
     }
     
     _isEndDraging = YES;
@@ -394,32 +424,32 @@
  *  滚动完毕就会调用（如果不是人为拖拽scrollView导致滚动完毕，才会调用这个方法）
  */
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
-    
-    if (scrollView.contentOffset.y == 0 || scrollView.contentOffset.y == SCREEN_HEIGHT * 2) {
+    if (scrollView.contentOffset.y == 0 || scrollView.contentOffset.y >= SCREEN_HEIGHT * 2) {
         
-        if (_page < _commendArray.count) {
-            RecommendModel *recommendModel = [_commendArray objectAtIndex:_page];
-            [self recommendOperateRequestWithCommendModel:recommendModel
-                                                   isSkip:scrollView.contentOffset.y == 0];
-            
-            [scrollView removeFromSuperview];
-            scrollView = nil;
-            
-            _page++;
-            _isViewUnLoad = YES;
-            
-            _actionLabel.alpha = 0.0;
-//            _actionLabel.font = [UIFont systemFontOfSize:14];
-            _actionLabel.font = [UIFont systemFontOfSize:17];
-            _actionImageView.alpha = 0.0;
-            
-            self.navigationController.navigationBar.alpha = 1.0;
-//            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
-            
-            [_flatRoundedButton animateToType:buttonAddType];
-            
-            NSLog(@"------\n--------%f    %@", scrollView.contentOffset.y, recommendModel.eid);
+        if (_isNext) {
+            [self ccc:scrollView];
         }
+        
+//        if (_page < _commendArray.count) {
+//            RecommendModel *recommendModel = [_commendArray objectAtIndex:_page];
+//            [self recommendOperateRequestWithCommendModel:recommendModel
+//                                                   isSkip:scrollView.contentOffset.y == 0];
+//            
+//            [scrollView removeFromSuperview];
+//            scrollView = nil;
+//            
+//            _page++;
+//            _isViewUnLoad = YES;
+//            
+//            _actionLabel.alpha = 0.0;
+//            _actionLabel.font = [UIFont systemFontOfSize:17];
+//            _actionImageView.alpha = 0.0;
+//            
+//            self.navigationController.navigationBar.alpha = 1.0;
+//            [_flatRoundedButton animateToType:buttonAddType];
+//            
+//            NSLog(@"------\n--------%f    %@", scrollView.contentOffset.y, recommendModel.eid);
+//        }
     }
 }
 
@@ -427,31 +457,32 @@
  *  滚动完毕就会调用（如果是人为拖拽scrollView导致滚动完毕，才会调用这个方法）
  */
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-    
-    if (scrollView.contentOffset.y == 0 || scrollView.contentOffset.y == SCREEN_HEIGHT * 2) {
+    if (scrollView.contentOffset.y == 0 || scrollView.contentOffset.y >= SCREEN_HEIGHT * 2) {
         
-        if (_page < _commendArray.count) {
-            RecommendModel *recommendModel = [_commendArray objectAtIndex:_page];
-            [self recommendOperateRequestWithCommendModel:recommendModel
-                                                   isSkip:scrollView.contentOffset.y == 0];
-            
-            [scrollView removeFromSuperview];
-            scrollView = nil;
-            
-            _page++;
-            _isViewUnLoad = YES;
-            
-            _actionLabel.alpha = 0.0;
-//            _actionLabel.font = [UIFont systemFontOfSize:14];
-            _actionLabel.font = [UIFont systemFontOfSize:17];
-            _actionImageView.alpha = 0.0;
-            
-            self.navigationController.navigationBar.alpha = 1.0;
-//            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
-            [_flatRoundedButton animateToType:buttonAddType];
-            
-            NSLog(@"+++++++++\n+++++++++%f    %@", scrollView.contentOffset.y, recommendModel.eid);
+        if (_isNext) {
+            [self ccc:scrollView];
         }
+        
+//        if (_page < _commendArray.count) {
+//            RecommendModel *recommendModel = [_commendArray objectAtIndex:_page];
+//            [self recommendOperateRequestWithCommendModel:recommendModel
+//                                                   isSkip:scrollView.contentOffset.y == 0];
+//
+//            [scrollView removeFromSuperview];
+//            scrollView = nil;
+//
+//            _page++;
+//            _isViewUnLoad = YES;
+//            
+//            _actionLabel.alpha = 0.0;
+//            _actionLabel.font = [UIFont systemFontOfSize:17];
+//            _actionImageView.alpha = 0.0;
+//            
+//            self.navigationController.navigationBar.alpha = 1.0;
+//            [_flatRoundedButton animateToType:buttonAddType];
+//            
+//            NSLog(@"+++++++++\n+++++++++%f    %@", scrollView.contentOffset.y, recommendModel.eid);
+//        }
     }
 }
 
@@ -578,6 +609,17 @@
     
     if (index == 3) {
         [self votePublishAction];
+    }
+}
+
+#pragma mark - checkLocation 检查本地是否存储了位置信息
+- (void)checkLocation {
+    double tempLatitude = [[NSUserDefaults standardUserDefaults] doubleForKey:@"latitude"];
+    double tempLongitude =  [[NSUserDefaults standardUserDefaults] doubleForKey:@"longitude"];
+    
+    if (tempLatitude > 0 && tempLongitude > 0) {
+        self.latitude = tempLatitude;
+        self.longitude = tempLongitude;
     }
 }
 

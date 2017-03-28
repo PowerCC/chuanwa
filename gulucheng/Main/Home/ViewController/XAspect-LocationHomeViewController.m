@@ -76,6 +76,10 @@ AspectPatch(-, void, viewDidLoad) {
             
             GlobalData.userModel.latitude = location.coordinate.latitude;
             GlobalData.userModel.longitude = location.coordinate.longitude;
+            
+            [[NSUserDefaults standardUserDefaults] setDouble:location.coordinate.latitude forKey:@"latitude"];
+            [[NSUserDefaults standardUserDefaults] setDouble:location.coordinate.longitude forKey:@"longitude"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }
     };
 }
