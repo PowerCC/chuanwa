@@ -32,12 +32,12 @@
     }
     
 
-    if (commendModel.distMeter != nil && commendModel.distMeter.floatValue <= 100) {
-        self.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", commendModel.distMeter.floatValue, [NSString timeAgo:commendModel.createTime.integerValue]];
-    }
-    else {
-        self.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", commendModel.distKm.floatValue, [NSString timeAgo:commendModel.createTime.integerValue]];
-    }
+//    if (commendModel.distMeter != nil && commendModel.distMeter.floatValue <= 100) {
+//        self.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", commendModel.distMeter.floatValue, [NSString timeAgo:commendModel.createTime.integerValue]];
+//    }
+//    else {
+//        self.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", commendModel.distKm.floatValue, [NSString timeAgo:commendModel.createTime.integerValue]];
+//    }
     
     self.locationLabel.text = commendModel.eventCity && commendModel.eventCity.length && ![commendModel.eventCity isEqualToString:@"null-null"] ? commendModel.eventCity : @"神秘地址";
     

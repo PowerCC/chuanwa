@@ -89,6 +89,18 @@ static NSString * const photoCell = @"PhotoCell";
     PhotoModel *photoModel = [_photoCommendModel.eventPicVos objectAtIndex:indexPath.row];
     
     cell.nameLabel.text = _photoCommendModel.nickName;
+    
+    if (_photoCommendModel.distMeter != nil && _photoCommendModel.distMeter.floatValue <= 100) {
+        cell.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", _photoCommendModel.distMeter.floatValue, [NSString timeAgo:_photoCommendModel.createTime.integerValue]];
+    }
+    else {
+        cell.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", _photoCommendModel.distKm.floatValue, [NSString timeAgo:_photoCommendModel.createTime.integerValue]];
+    }
+    
+    cell.distanceAndTimeAgoLabel.text = [cell.distanceAndTimeAgoLabel.text stringByReplacingOccurrencesOfString:@".00" withString:@""];
+    
+    cell.businessViewDistanceAndTimeAgoLabel.text = cell.distanceAndTimeAgoLabel.text;
+    
     [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:_photoCommendModel.avatar.length > 0 ? _photoCommendModel.avatar : _photoCommendModel.avaterUrl]];
     [cell.nickNameButton setTitle:_photoCommendModel.nickName forState:UIControlStateNormal];
     [cell.phoneButton setTitle:_photoCommendModel.mobile forState:UIControlStateNormal];

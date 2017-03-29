@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -39,6 +39,12 @@
                                 </mask>
                             </variation>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0米" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FtZ-GO-mhq">
+                            <rect key="frame" x="16" y="56" width="21.5" height="16"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t8q-SH-E3l">
                             <rect key="frame" x="51" y="33" width="8" height="11"/>
                             <constraints>
@@ -47,7 +53,7 @@
                             </constraints>
                         </imageView>
                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwa-r9-diP">
-                            <rect key="frame" x="0.0" y="23" width="375" height="87.5"/>
+                            <rect key="frame" x="0.0" y="23" width="375" height="112.5"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YJ9-rf-QsL" customClass="IBImageView">
                                     <rect key="frame" x="16" y="16" width="36" height="36"/>
@@ -92,19 +98,27 @@
                                     <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0米" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6F-s9-dvG">
+                                    <rect key="frame" x="16" y="96.5" width="21.5" height="16"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <color key="textColor" red="0.74509803919999995" green="0.74509803919999995" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="39i-Fw-rem" firstAttribute="leading" secondItem="YJ9-rf-QsL" secondAttribute="trailing" constant="12" id="4pk-c8-ty9"/>
+                                <constraint firstAttribute="bottom" secondItem="F6F-s9-dvG" secondAttribute="bottom" id="5Us-K0-eZ5"/>
                                 <constraint firstAttribute="trailing" secondItem="bX9-ox-lbw" secondAttribute="trailing" constant="16" id="ATc-cY-fRO"/>
                                 <constraint firstItem="bX9-ox-lbw" firstAttribute="top" secondItem="YJ9-rf-QsL" secondAttribute="bottom" constant="14" id="BHd-ol-hCN"/>
-                                <constraint firstAttribute="bottom" secondItem="bX9-ox-lbw" secondAttribute="bottom" id="BZh-Sf-kEz"/>
                                 <constraint firstItem="YJ9-rf-QsL" firstAttribute="top" secondItem="wwa-r9-diP" secondAttribute="top" constant="16" id="LeW-yd-Flz"/>
+                                <constraint firstItem="F6F-s9-dvG" firstAttribute="leading" secondItem="wwa-r9-diP" secondAttribute="leading" constant="16" id="MDr-ra-6Hm"/>
                                 <constraint firstItem="REA-Eb-Qce" firstAttribute="top" secondItem="wwa-r9-diP" secondAttribute="top" constant="27" id="Vga-td-mEp"/>
                                 <constraint firstItem="bX9-ox-lbw" firstAttribute="leading" secondItem="wwa-r9-diP" secondAttribute="leading" constant="16" id="ZoS-Wf-lnV"/>
                                 <constraint firstItem="YJ9-rf-QsL" firstAttribute="leading" secondItem="wwa-r9-diP" secondAttribute="leading" constant="16" id="ZsK-kh-QrT"/>
                                 <constraint firstItem="UVt-wi-dzf" firstAttribute="top" secondItem="wwa-r9-diP" secondAttribute="top" constant="19" id="a7J-5A-Qgc"/>
                                 <constraint firstItem="UVt-wi-dzf" firstAttribute="leading" secondItem="REA-Eb-Qce" secondAttribute="trailing" constant="9" id="pvY-Sx-7Bi"/>
+                                <constraint firstItem="F6F-s9-dvG" firstAttribute="top" secondItem="bX9-ox-lbw" secondAttribute="bottom" constant="9" id="wY4-h3-c8l"/>
                                 <constraint firstAttribute="trailing" secondItem="UVt-wi-dzf" secondAttribute="trailing" constant="16" id="xPK-DK-cNH"/>
                                 <constraint firstItem="39i-Fw-rem" firstAttribute="top" secondItem="wwa-r9-diP" secondAttribute="top" constant="19" id="yiv-ad-JKT"/>
                             </constraints>
@@ -122,7 +136,9 @@
                         <constraint firstItem="t8q-SH-E3l" firstAttribute="leading" secondItem="rJY-4Z-J2p" secondAttribute="trailing" constant="8" id="oP2-hA-Dbw"/>
                         <constraint firstItem="wwa-r9-diP" firstAttribute="leading" secondItem="v0b-vP-VR5" secondAttribute="leading" id="p30-PA-NZu"/>
                         <constraint firstItem="N7S-Xs-bmG" firstAttribute="top" secondItem="v0b-vP-VR5" secondAttribute="top" constant="10" id="pSH-iI-H7c"/>
+                        <constraint firstItem="FtZ-GO-mhq" firstAttribute="leading" secondItem="v0b-vP-VR5" secondAttribute="leading" constant="16" id="uoO-Go-X6c"/>
                         <constraint firstItem="N7S-Xs-bmG" firstAttribute="leading" secondItem="v0b-vP-VR5" secondAttribute="leading" constant="16" id="y6I-xM-BqC"/>
+                        <constraint firstItem="FtZ-GO-mhq" firstAttribute="top" secondItem="rJY-4Z-J2p" secondAttribute="bottom" constant="9" id="zPb-vg-rns"/>
                     </constraints>
                 </view>
             </subviews>
@@ -135,6 +151,8 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="businessView" destination="wwa-r9-diP" id="ftN-wh-bN6"/>
+                <outlet property="businessViewDistanceAndTimeAgoLabel" destination="F6F-s9-dvG" id="w8A-jX-47X"/>
+                <outlet property="distanceAndTimeAgoLabel" destination="FtZ-GO-mhq" id="uuD-At-CC1"/>
                 <outlet property="genderImageView" destination="t8q-SH-E3l" id="fSh-v5-e9u"/>
                 <outlet property="headImageView" destination="YJ9-rf-QsL" id="avz-yp-CKz"/>
                 <outlet property="nameLabel" destination="rJY-4Z-J2p" id="2kp-FQ-TXn"/>

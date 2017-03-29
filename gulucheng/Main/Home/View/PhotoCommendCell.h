@@ -18,6 +18,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *describeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *slogenLabel;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *distanceAndTimeAgoLabel;
+@property (weak, nonatomic) IBOutlet UILabel *businessViewDistanceAndTimeAgoLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *nickNameButton;
 @property (weak, nonatomic) IBOutlet UIButton *phoneButton;
 

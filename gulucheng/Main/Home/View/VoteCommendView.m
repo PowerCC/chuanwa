@@ -130,6 +130,17 @@ static NSString * const voteCell = @"voteCommendCell";
     [_voteTableView reloadData];
     
     _nickNameLabel.text = voteCommendModel.nickName;
+    
+    if (voteCommendModel.distMeter != nil && voteCommendModel.distMeter.floatValue <= 100) {
+        _distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", voteCommendModel.distMeter.floatValue, [NSString timeAgo:voteCommendModel.createTime.integerValue]];
+    }
+    else {
+        _distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", voteCommendModel.distKm.floatValue, [NSString timeAgo:voteCommendModel.createTime.integerValue]];
+    }
+    
+    _distanceAndTimeAgoLabel.text = [_distanceAndTimeAgoLabel.text stringByReplacingOccurrencesOfString:@".00" withString:@""];
+
+    
     _genderImageView.image = [UIImage imageNamed:voteCommendModel.gender.integerValue == 1 ? @"home-boy" : @"home-girl"];
     
     if (_isHomeIn) {
@@ -139,7 +150,7 @@ static NSString * const voteCell = @"voteCommendCell";
     }
     
     if (self.voteViewHeightBlock) {
-        self.voteViewHeightBlock(310 - 44 * (5 - _voteOptionArray.count) + 32);
+        self.voteViewHeightBlock(310 - 44 * (5 - _voteOptionArray.count) + 32 + 25);
     }
 }
 

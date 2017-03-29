@@ -16,6 +16,8 @@
 
 @property (weak, nonatomic) IBOutlet UIView *voteView;
 @property (weak, nonatomic) IBOutlet UILabel *nickNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *distanceAndTimeAgoLabel;
+
 @property (weak, nonatomic) IBOutlet UIImageView *genderImageView;
 @property (weak, nonatomic) IBOutlet UILabel *voteCountLabel;
 

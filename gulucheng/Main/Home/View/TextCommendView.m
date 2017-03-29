@@ -9,6 +9,7 @@
 #import "TextCommendView.h"
 #import "CommendButtomView.h"
 #import "Tool.h"
+#import "NSString+DateTime.h"
 
 @implementation TextCommendView
 
@@ -36,10 +37,22 @@
 //    [Tool changelineSpacingWithLabel:_textLabel text:textCommendModel.textModel.content lingSpace:5 center:NO];
     
     WEAKSELF
-    GCD_AFTER(0.2, ^{
+    GCD_AFTER(0.2, (^{
         weakSelf.textLabel.preferredMaxLayoutWidth = SCREEN_WIDTH - 32.0;
         weakSelf.textLabel.text = textCommendModel.textModel.content;
         weakSelf.nameLabel.text = textCommendModel.nickName;
+        
+        if (textCommendModel.distMeter != nil && textCommendModel.distMeter.floatValue <= 100) {
+            weakSelf.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", textCommendModel.distMeter.floatValue, [NSString timeAgo:textCommendModel.createTime.integerValue]];
+        }
+        else {
+            weakSelf.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", textCommendModel.distKm.floatValue, [NSString timeAgo:textCommendModel.createTime.integerValue]];
+        }
+        
+        weakSelf.distanceAndTimeAgoLabel.text = [weakSelf.distanceAndTimeAgoLabel.text stringByReplacingOccurrencesOfString:@".00" withString:@""];
+        
+        weakSelf.businessViewDistanceAndTimeAgoLabel.text = weakSelf.distanceAndTimeAgoLabel.text;
+        
         weakSelf.genderImageView.image = [UIImage imageNamed:textCommendModel.gender.integerValue == 1 ? @"home-boy" : @"home-girl"];
         
         CGRect rect = weakSelf.frame;
@@ -69,17 +82,17 @@
             }
             weakSelf.businessView.hidden = NO;
         }
-
+        
         
         if (weakSelf.textLabelHeightBlock) {
             if (weakSelf.businessView.hidden) {
-                weakSelf.textLabelHeightBlock(selfHeight + 60);
+                weakSelf.textLabelHeightBlock(selfHeight + 60 + 25);
             }
             else {
-                weakSelf.textLabelHeightBlock(selfHeight + businessRect.size.height + 60);
+                weakSelf.textLabelHeightBlock(selfHeight + businessRect.size.height + 60 + 25);
             }
         }
-    });
+    }));
     
     
 //    // 获取文字高度

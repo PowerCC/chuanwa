@@ -25,6 +25,10 @@
 #import "MagicMoveTransition.h"
 #import "VBFPopFlatButton.h"
 
+#import "GroupLoadingView.h"
+#import "SingleLoadingView.h"
+
+
 @interface HomeViewController () <UINavigationControllerDelegate, UIScrollViewDelegate>
 
 @property (strong, nonatomic) UIScrollView *firstScrollView;
@@ -34,6 +38,9 @@
 @property (strong, nonatomic) UILabel *actionRoundLabel;
 
 @property (strong, nonatomic) UIImageView *actionImageView;
+
+@property (strong, nonatomic) GroupLoadingView *groupLoadingView;
+@property (strong, nonatomic) SingleLoadingView *singleLoadingView;
 
 @property (strong, nonatomic) VBFPopFlatButton *flatRoundedButton;
 
@@ -133,13 +140,17 @@
                                                          buttonType:buttonAddType
                                                         buttonStyle:buttonPlainStyle
                                               animateToInitialState:NO];
-//    _flatRoundedButton.roundBackgroundColor = kCOLOR(238, 130, 102, 1);
     _flatRoundedButton.lineThickness = 3;
     _flatRoundedButton.tintColor = [UIColor whiteColor];
-//    [_flatRoundedButton addTarget:self
-//                           action:@selector(showMenuButtonAction:)
-//                 forControlEvents:UIControlEventTouchUpInside];
+
     [_publishImageContentView insertSubview:_flatRoundedButton atIndex:1];
+    
+    
+    self.groupLoadingView = [[GroupLoadingView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 375) / 2, (SCREEN_HEIGHT - 360) / 2, 375, 360) superView:self.view];
+    _groupLoadingView.alpha = 0.0;
+    
+    self.singleLoadingView = [[SingleLoadingView alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 20) / 2, (SCREEN_HEIGHT - 20) / 2, 20, 20) superView:self.view];
+    _singleLoadingView.alpha = 0.0;
     
     [self recommendDataSourceRequest];
     
@@ -373,6 +384,9 @@
         _page++;
         _isViewUnLoad = YES;
         
+        _singleLoadingView.alpha = 0.0;
+        [_singleLoadingView stopAnimating];
+        
         _actionLabel.alpha = 0.0;
         _actionLabel.font = [UIFont systemFontOfSize:17];
         _actionImageView.alpha = 0.0;
@@ -393,15 +407,12 @@
         
         _isViewUnLoad = YES;
         
+        _actionImageView.alpha = 0.0;
+        _actionLabel.alpha = 0.0;
+        
         [UIView animateWithDuration:0.30
                          animations:^{
                              scrollView.alpha = 0.0;
-                         }];
-        
-        [UIView animateWithDuration:0.15
-                         animations:^{
-                             _actionLabel.alpha = 0.0;
-                             _actionImageView.alpha = 0.0;
                          }];
         
         self.currentRecommendModel = _tempRecommendModel;
@@ -415,6 +426,12 @@
     }
     
     _isEndDraging = YES;
+    
+    [UIView animateWithDuration:0.15
+                     animations:^{
+                         _singleLoadingView.alpha = 0.0;
+                     }];
+    [_singleLoadingView stopAnimating];
 }
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
@@ -433,15 +450,12 @@
         
         _isViewUnLoad = YES;
         
+        _actionImageView.alpha = 0.0;
+        _actionLabel.alpha = 0.0;
+        
         [UIView animateWithDuration:0.30
                          animations:^{
                              scrollView.alpha = 0.0;
-                         }];
-        
-        [UIView animateWithDuration:0.15
-                         animations:^{
-                             _actionLabel.alpha = 0.0;
-                             _actionImageView.alpha = 0.0;
                          }];
         
         self.currentRecommendModel = _tempRecommendModel;
@@ -455,6 +469,12 @@
     }
     
     _isEndDraging = YES;
+    
+    [UIView animateWithDuration:0.15
+                     animations:^{
+                         _singleLoadingView.alpha = 0.0;
+                     }];
+    [_singleLoadingView stopAnimating];
 }
 
 /**
@@ -493,6 +513,13 @@
             [self ccc:scrollView];
         }
     }
+    else {
+        [UIView animateWithDuration:0.15
+                         animations:^{
+                             _singleLoadingView.alpha = 0.0;
+                         }];
+        [_singleLoadingView stopAnimating];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -518,38 +545,38 @@
         _actionLabel.text = @"传 递 给 周 围 的 人";
         _actionLabel.textColor = kCOLOR(255, 129, 105, 1.0);
         
-        
-//        _actionRoundLabel.frame = CGRectMake(SCREEN_WIDTH/2 - 50,
-//                                             SCREEN_HEIGHT - ((scrollView.contentOffset.y - SCREEN_HEIGHT)/2 - 20 * (scrollView.contentOffset.y / SCREEN_HEIGHT)),
-//                                             100,
-//                                             15);
-//        _actionRoundLabel.text = @"传递给周围的人";
-//        _actionRoundLabel.textColor = kCOLOR(204, 204, 204, 1.0);
-        
         if (scrollView.contentOffset.y - SCREEN_HEIGHT <= 50) {
-            _actionImageView.alpha = 0.0;
-            _actionLabel.alpha = 0.0;
-//            _actionRoundLabel.alpha = 0.0;
-            
-//            _publishImageView.image = [UIImage imageNamed:@"home-publish-normal"];
+            [UIView animateWithDuration:0.15
+                             animations:^{
+                                 _actionLabel.alpha = 0.0;
+                                 _actionImageView.alpha = 0.0;
+                                 _singleLoadingView.alpha = 0.0;
+                             } completion:^(BOOL finished) {
+                                 [_singleLoadingView stopAnimating];
+                             }];
+
             [_flatRoundedButton animateToType:buttonAddType];
         } else if (scrollView.contentOffset.y - SCREEN_HEIGHT <= 170) {
             if (!_isEndDraging) {
                 _actionLabel.alpha = (scrollView.contentOffset.y - SCREEN_HEIGHT - 30) / (170 - 30);
                 _actionImageView.alpha = (scrollView.contentOffset.y - SCREEN_HEIGHT - 30) / (170 - 30);
-//                _actionRoundLabel.alpha = (scrollView.contentOffset.y - SCREEN_HEIGHT - 30) / (50 - 30);
                 
-//                _publishImageView.image = [UIImage imageNamed:@"home-publish-spread"];
                 [_flatRoundedButton animateToType:buttonUpBasicType];
             }
-        } else {
-            if (!_isEndDraging) {
-                _actionLabel.alpha = 1.0;
-                _actionImageView.alpha = 1.0;
-//                _actionRoundLabel.alpha = 1.0;
-            }
-//            _actionLabel.font = [UIFont systemFontOfSize:14 + (scrollView.contentOffset.y - SCREEN_HEIGHT) / (SCREEN_HEIGHT/40)];
+        } else if (!_isEndDraging && scrollView.contentOffset.y - SCREEN_HEIGHT > SCREEN_HEIGHT * 0.5) {
+            [UIView animateWithDuration:0.15
+                             animations:^{
+                                 _actionLabel.alpha = 0.0;
+                                 _actionImageView.alpha = 0.0;
+                             }];
             
+            [self.view bringSubviewToFront:_singleLoadingView];
+            
+            [UIView animateWithDuration:0.15
+                             animations:^{
+                                 _singleLoadingView.alpha = 1.0;
+                             }];
+            [_singleLoadingView startAnimating];
         }
     }
     // 显示放弃操作
@@ -568,12 +595,14 @@
         _actionLabel.textColor = kCOLOR(136, 136, 136, 1.0);
         
         if (SCREEN_HEIGHT - scrollView.contentOffset.y <= 50) {
-            _actionLabel.alpha = 0.0;
-            _actionImageView.alpha = 0.0;
-            
             [UIView animateWithDuration:0.15
                              animations:^{
+                                 _actionLabel.alpha = 0.0;
+                                 _actionImageView.alpha = 0.0;
+                                 _singleLoadingView.alpha = 0.0;
                                  self.navigationController.navigationBar.alpha = 1.0;
+                             } completion:^(BOOL finished) {
+                                 [_singleLoadingView stopAnimating];
                              }];
 
             [_flatRoundedButton animateToType:buttonAddType];
@@ -581,22 +610,43 @@
             if (!_isEndDraging) {
                 _actionLabel.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
                 _actionImageView.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
-                
-//                _publishImageView.image = [UIImage imageNamed:@"home-publish-skip"];
+
                 [_flatRoundedButton animateToType:buttonCloseType];
             }
-        } else {
-            if (!_isEndDraging) {
-                _actionLabel.alpha = 1.0;
-                _actionImageView.alpha = 1.0;
+        } else if (!_isEndDraging && scrollView.contentOffset.y - SCREEN_HEIGHT < -SCREEN_HEIGHT * 0.5) {
+            
+            [UIView animateWithDuration:0.15
+                             animations:^{
+                                 _actionLabel.alpha = 0.0;
+                                 _actionImageView.alpha = 0.0;
+                             }];
+            
+            [self.view bringSubviewToFront:_singleLoadingView];
+            
+            [UIView animateWithDuration:0.15
+                             animations:^{
+                                 _singleLoadingView.alpha = 1.0;
+                             }];
+            [_singleLoadingView startAnimating];
                 
-                [UIView animateWithDuration:0.15
-                                 animations:^{
-                                     self.navigationController.navigationBar.alpha = 0.0;
-                                 }];
-            }
-//            _actionLabel.font = [UIFont systemFontOfSize:14 + (SCREEN_HEIGHT - scrollView.contentOffset.y) / (SCREEN_HEIGHT/40)];
+            [UIView animateWithDuration:0.15
+                             animations:^{
+                                 self.navigationController.navigationBar.alpha = 0.0;
+                             }];
         }
+    }
+    
+    if (abs(scrollView.contentOffset.y > SCREEN_HEIGHT * 0.45)) {
+        [UIView animateWithDuration:0.15
+                         animations:^{
+                             _actionLabel.alpha = 0.0;
+                             _actionImageView.alpha = 0.0;
+                         }];
+        [UIView animateWithDuration:0.15
+                         animations:^{
+                             _singleLoadingView.alpha = 1.0;
+                         }];
+        [_singleLoadingView startAnimating];
     }
 }
 
@@ -672,7 +722,9 @@
     RecommendApi *recommentApi = [[RecommendApi alloc] initWithLatitude:self.latitude
                                                               longitude:self.longitude];
     
-    [MBProgressHUD showMessage:Loading toView:self.view];
+//    [MBProgressHUD showMessage:Loading toView:self.view];
+    _groupLoadingView.alpha = 1.0;
+    [_groupLoadingView startAnimating];
     WEAKSELF
     [recommentApi startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         
@@ -696,9 +748,13 @@
             }
         }
         
-        [MBProgressHUD hideHUDForView:weakSelf.view];
+//        [MBProgressHUD hideHUDForView:weakSelf.view];
+        _groupLoadingView.alpha = 0.0;
+        [_groupLoadingView stopAnimating];
     } failure:^(YTKBaseRequest *request) {
-        [MBProgressHUD hideHUDForView:weakSelf.view];
+//        [MBProgressHUD hideHUDForView:weakSelf.view];
+        weakSelf.groupLoadingView.alpha = 0.0;
+        [weakSelf.groupLoadingView stopAnimating];
         GCD_AFTER(0.2, ^{
             [weakSelf loadNoDataViewWithNoWifi:YES];
         });

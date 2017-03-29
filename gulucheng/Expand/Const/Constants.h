@@ -16,7 +16,7 @@ static NSString * const TextEvent = @"text";
 static NSString * const VoteEvent = @"vote";
 
 static NSInteger const BackViewSeconds = 1.5;
-static NSInteger const commendButtomViewHeight = 75;
+static NSInteger const commendButtomViewHeight = 50;
 static NSInteger const commendButtomViewPageHeight = 80;
 
 // 极光推送

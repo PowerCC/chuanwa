@@ -119,6 +119,8 @@
 		82DF91FA1E77D9CD00994EE5 /* MyWalletFuncModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DF91F91E77D9CD00994EE5 /* MyWalletFuncModel.m */; };
 		82DF91FD1E77ED6500994EE5 /* WalletRuleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DF91FC1E77ED6500994EE5 /* WalletRuleViewController.m */; };
 		82DF92001E77EE4D00994EE5 /* WalletBalanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DF91FF1E77EE4D00994EE5 /* WalletBalanceViewController.m */; };
+		82E62CEB1E8BED370011B28B /* SingleLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E62CEA1E8BED370011B28B /* SingleLoadingView.m */; };
+		82E62CEE1E8BED520011B28B /* GroupLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E62CED1E8BED520011B28B /* GroupLoadingView.m */; };
 		82E64F691E5808DD00F73A10 /* ResetPwdVerityCodeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E64F681E5808DD00F73A10 /* ResetPwdVerityCodeApi.m */; };
 		82EF247D1E7D65CC00C3F01A /* MyWalletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF247C1E7D65CC00C3F01A /* MyWalletModel.m */; };
 		82EF24801E7D703A00C3F01A /* RewardListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82EF247F1E7D703A00C3F01A /* RewardListModel.m */; };
@@ -633,6 +635,10 @@
 		82DF91FC1E77ED6500994EE5 /* WalletRuleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletRuleViewController.m; sourceTree = "<group>"; };
 		82DF91FE1E77EE4D00994EE5 /* WalletBalanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WalletBalanceViewController.h; sourceTree = "<group>"; };
 		82DF91FF1E77EE4D00994EE5 /* WalletBalanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WalletBalanceViewController.m; sourceTree = "<group>"; };
+		82E62CE91E8BED370011B28B /* SingleLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleLoadingView.h; sourceTree = "<group>"; };
+		82E62CEA1E8BED370011B28B /* SingleLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleLoadingView.m; sourceTree = "<group>"; };
+		82E62CEC1E8BED520011B28B /* GroupLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupLoadingView.h; sourceTree = "<group>"; };
+		82E62CED1E8BED520011B28B /* GroupLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GroupLoadingView.m; sourceTree = "<group>"; };
 		82E64F671E5808DD00F73A10 /* ResetPwdVerityCodeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdVerityCodeApi.h; sourceTree = "<group>"; };
 		82E64F681E5808DD00F73A10 /* ResetPwdVerityCodeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdVerityCodeApi.m; sourceTree = "<group>"; };
 		82EF247B1E7D65CC00C3F01A /* MyWalletModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWalletModel.h; sourceTree = "<group>"; };
@@ -2243,6 +2249,8 @@
 				D425CEDE1D83B94B000FE39E /* DetailPhotoCommendCell.xib */,
 				D425CED61D83B28D000FE39E /* DetailPhotoCommendView.h */,
 				D425CED71D83B28D000FE39E /* DetailPhotoCommendView.m */,
+				82E62CEC1E8BED520011B28B /* GroupLoadingView.h */,
+				82E62CED1E8BED520011B28B /* GroupLoadingView.m */,
 				D42DC7251D6B3AD100481932 /* NotificationCollectionViewCell.h */,
 				D42DC7261D6B3AD100481932 /* NotificationCollectionViewCell.m */,
 				D4050AAD1D5B8F5800612510 /* PhotoCommendCell.h */,
@@ -2260,6 +2268,8 @@
 				D41D565B1D7DD16F008A3A7B /* ReplyInputView.h */,
 				D41D565C1D7DD16F008A3A7B /* ReplyInputView.m */,
 				D41D56591D7DCAAF008A3A7B /* ReplyInputView.xib */,
+				82E62CE91E8BED370011B28B /* SingleLoadingView.h */,
+				82E62CEA1E8BED370011B28B /* SingleLoadingView.m */,
 				D463FFD81D5D787800799DB9 /* TextCommendView.h */,
 				D463FFD91D5D787800799DB9 /* TextCommendView.m */,
 				D463FFDB1D5D788A00799DB9 /* TextCommendView.xib */,
@@ -2966,7 +2976,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D4F4EFC31D3E7A3D00072F8B /* Build configuration list for PBXProject "gulucheng" */;
+			buildConfigurationList = D4F4EFC31D3E7A3D00072F8B /* Build configuration list for PBXProject "GuluCheng" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -3425,6 +3435,7 @@
 				82F2186B1E444BDB0089F43D /* EaseLocationViewController.m in Sources */,
 				D474341C1D7B00660059AB7C /* UIColor+ImageGetColor.m in Sources */,
 				D454E2251D6410D30018C169 /* UserInfoApi.m in Sources */,
+				82E62CEB1E8BED370011B28B /* SingleLoadingView.m in Sources */,
 				825C445B1E7BD8F2004919D4 /* MyWalletApi.m in Sources */,
 				3161677C1DC9B2D900760C3A /* DeleteCommentApi.m in Sources */,
 				D46BAFB71D4E0DEC009647E6 /* FaceBackViewController.m in Sources */,
@@ -3499,6 +3510,7 @@
 				82F2187C1E444BDB0089F43D /* EaseBubbleView.m in Sources */,
 				82F218571E444BDB0089F43D /* PSTGridLayoutSection.m in Sources */,
 				D4FEFD0E1D4214AD003CABE8 /* SDCycleScrollView.m in Sources */,
+				82E62CEE1E8BED520011B28B /* GroupLoadingView.m in Sources */,
 				82EF24801E7D703A00C3F01A /* RewardListModel.m in Sources */,
 				D4A0B9FD1D786B00001B2C10 /* CommentEventListApi.m in Sources */,
 				82F218831E444BDB0089F43D /* EaseChatBarMoreView.m in Sources */,
@@ -3790,7 +3802,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D4F4EFC31D3E7A3D00072F8B /* Build configuration list for PBXProject "gulucheng" */ = {
+		D4F4EFC31D3E7A3D00072F8B /* Build configuration list for PBXProject "GuluCheng" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4F4EFF31D3E7A3D00072F8B /* Debug */,
