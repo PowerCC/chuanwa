@@ -52,26 +52,25 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-    self.navView.hidden = YES;
-
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:17.0]}];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:kCOLOR(255, 129, 105, 1)] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-//    self.navigationController.navigationBar.barTintColor = kCOLOR(249, 135, 108, 1);
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+//    self.navView.hidden = YES;
+//
+//    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor whiteColor], NSFontAttributeName: [UIFont systemFontOfSize:17.0]}];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:kCOLOR(255, 129, 105, 1)] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-    self.navView.hidden = NO;
-    
-    self.navigationController.navigationBar.tintColor = NaviTintColor;
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: kCOLOR(68, 68, 68, 1.0), NSFontAttributeName: [UIFont systemFontOfSize:17.0]}];
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"public-horizonLine"]];
+//    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
+//    self.navView.hidden = NO;
+//    
+//    self.navigationController.navigationBar.tintColor = NaviTintColor;
+//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName: kCOLOR(68, 68, 68, 1.0), NSFontAttributeName: [UIFont systemFontOfSize:17.0]}];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setShadowImage:[UIImage imageNamed:@"public-horizonLine"]];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -132,7 +131,7 @@
 - (void)fillWalletData {
     if (_myWalletModel) {
         _balanceTotalLabel.text = (!_myWalletModel.balanceTotal || [_myWalletModel.balanceTotal isEqualToString:@"0"]) ? @"0.00" : _myWalletModel.balanceTotal;
-        _updateTimeLabel.text = !_myWalletModel.updateTime ? [self currentDate] : [NSString timestampSwitchTime:_myWalletModel.updateTime.integerValue andFormatter:@"更新时间：YYYY-MM-dd"];
+        _updateTimeLabel.text = !_myWalletModel.updateTime ? [self currentDate] : [NSString timestampSwitchTime:_myWalletModel.updateTime.integerValue andFormatter:@"更新时间：YYYYMMdd"];
         _statusLabel.text = [_myWalletModel.status isEqualToString:@"-1"] ? @"余额状态：冻结" : @"余额状态：正常";
     }
 }

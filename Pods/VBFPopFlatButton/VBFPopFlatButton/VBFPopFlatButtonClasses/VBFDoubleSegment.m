@@ -165,6 +165,8 @@
         case doubleSegmentUpArrow:
             toValueTop = -M_PI_4 * 3;
             toValueBottom = -M_PI_4;
+            self.topLine.position = CGPointMake(10, 10);
+            self.bottomLine.position = CGPointMake(10, 10);
             break;
         case doubleSegmentSlashState45:
             toValueTop = -M_PI_4;

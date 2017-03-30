@@ -136,11 +136,11 @@
     _actionImageView = [[UIImageView alloc] init];
     [self.view addSubview:_actionImageView];
     
-    _flatRoundedButton = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(21, 20, 20, 20)
+    _flatRoundedButton = [[VBFPopFlatButton alloc] initWithFrame:CGRectMake(21, 19, 20, 20)
                                                          buttonType:buttonAddType
                                                         buttonStyle:buttonPlainStyle
                                               animateToInitialState:NO];
-    _flatRoundedButton.lineThickness = 3;
+    _flatRoundedButton.lineThickness = 2.5;
     _flatRoundedButton.tintColor = [UIColor whiteColor];
 
     [_publishImageContentView insertSubview:_flatRoundedButton atIndex:1];
