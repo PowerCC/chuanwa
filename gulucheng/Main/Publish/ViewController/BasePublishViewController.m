@@ -66,10 +66,10 @@
     }
 }
 
-- (void)publishButtonActionWithEid:(NSString *)eid eventType:(NSString *)eventType shareText:(NSString *)shareText shareImage:(UIImage *)shareImage {
+- (void)publishButtonActionWithEid:(PublishModel *)publishModel eid:(NSString *)eid eventType:(NSString *)eventType shareText:(NSString *)shareText shareImage:(UIImage *)shareImage {
     
     if (_publishBlock) {
-        _publishBlock (eid, eventType, shareText, shareImage, _chatShareButton.selected, _sinaShareButton.selected, _qqShareButton.selected);
+        _publishBlock (publishModel, eid, eventType, shareText, shareImage, _chatShareButton.selected, _sinaShareButton.selected, _qqShareButton.selected);
     }
 }
 

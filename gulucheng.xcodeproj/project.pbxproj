@@ -113,6 +113,7 @@
 		829D12821E14113B001D000A /* FavoriteCheckApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D12811E14113B001D000A /* FavoriteCheckApi.m */; };
 		829D12851E14114D001D000A /* FavoriteUsersApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D12841E14114D001D000A /* FavoriteUsersApi.m */; };
 		829D12881E141A8D001D000A /* FavoriteUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 829D12871E141A8D001D000A /* FavoriteUserModel.m */; };
+		82C34E561E8CE02700BE131B /* PublishModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C34E551E8CE02700BE131B /* PublishModel.m */; };
 		82DF91EB1E779CEE00994EE5 /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DF91EA1E779CEE00994EE5 /* Wallet.storyboard */; };
 		82DF91F41E779D8300994EE5 /* MyWalletViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DF91F31E779D8300994EE5 /* MyWalletViewController.m */; };
 		82DF91F71E77D81700994EE5 /* MyWalletFuncCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82DF91F61E77D81700994EE5 /* MyWalletFuncCell.m */; };
@@ -623,6 +624,8 @@
 		829D12841E14114D001D000A /* FavoriteUsersApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteUsersApi.m; sourceTree = "<group>"; };
 		829D12861E141A8D001D000A /* FavoriteUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteUserModel.h; sourceTree = "<group>"; };
 		829D12871E141A8D001D000A /* FavoriteUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteUserModel.m; sourceTree = "<group>"; };
+		82C34E541E8CE02700BE131B /* PublishModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishModel.h; sourceTree = "<group>"; };
+		82C34E551E8CE02700BE131B /* PublishModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishModel.m; sourceTree = "<group>"; };
 		82C5D7B01E2920C6004E461C /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
 		82DF91EA1E779CEE00994EE5 /* Wallet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		82DF91F21E779D8300994EE5 /* MyWalletViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyWalletViewController.h; sourceTree = "<group>"; };
@@ -1478,6 +1481,15 @@
 			path = EMSearchController;
 			sourceTree = "<group>";
 		};
+		82C34E531E8CE00300BE131B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				82C34E541E8CE02700BE131B /* PublishModel.h */,
+				82C34E551E8CE02700BE131B /* PublishModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		82DF91E91E779CC500994EE5 /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -2191,6 +2203,7 @@
 		D45076031D51D99200568AA8 /* Publish */ = {
 			isa = PBXGroup;
 			children = (
+				82C34E531E8CE00300BE131B /* Model */,
 				D45076081D51DA4500568AA8 /* PhotoPublish.storyboard */,
 				D4DD0E591D52465E006847EC /* Service */,
 				D45076151D51DC0900568AA8 /* TextPublish.storyboard */,
@@ -3369,6 +3382,7 @@
 				31DDA7EC1DB77F9500493BC1 /* CWGuideView.m in Sources */,
 				D42E58171D44B7F6005CD973 /* LoggerFormatter.m in Sources */,
 				82F218191E444BDA0089F43D /* wav.mm in Sources */,
+				82C34E561E8CE02700BE131B /* PublishModel.m in Sources */,
 				82F218701E444BDB0089F43D /* EaseUserCell.m in Sources */,
 				D42E58241D44F99B005CD973 /* XAspect-LogAppDelegate.m in Sources */,
 				824C1AC71E49A68C0060FB67 /* UIView+Tools.m in Sources */,

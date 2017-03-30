@@ -44,12 +44,21 @@
 @property (weak, nonatomic) IBOutlet UIButton *notificationButton;
 
 @property (weak, nonatomic) IBOutlet UIView *publishImageContentView;
+@property (weak, nonatomic) IBOutlet UIView *publishHintView;
+@property (weak, nonatomic) IBOutlet UIView *otherHintView;
+
+@property (weak, nonatomic) IBOutlet UILabel *publishHintLabel;
+@property (weak, nonatomic) IBOutlet UILabel *otherHintLabel;
 
 - (IBAction)showMenuButtonAction:(id)sender;
+
 - (void)textPublishAction;
 - (void)votePublishAction;
 - (void)photoPublishAction;
 - (void)takePhotoAction;
+
+- (void)showPublishHintView:(NSString *)value;
+- (void)showOtherHintView:(NSString *)value;
 
 - (void)reGeocodeAction;
 

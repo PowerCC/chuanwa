@@ -29,6 +29,19 @@
 #define AtAspectOfClass HomeViewController
 @classPatchField(HomeViewController)
 
+- (void)hintView:(PublishModel *)publishModel {
+    if (publishModel.oneDayMaxRewards != nil && publishModel.oneDayMaxRewards.integerValue > 0) {
+        if (publishModel.rewardFail != nil) {
+            if ([publishModel.rewardFail isEqualToString:@"1"]) {
+                [self showOtherHintView:publishModel.oneDayMaxRewards];
+            }
+            else {
+                [self showPublishHintView:publishModel.rewardFail];
+            }
+        }
+    }
+}
+
 AspectPatch(-, void, viewDidLoad) {
     
     _selectedPhotos = [NSMutableArray array];
@@ -46,11 +59,13 @@ AspectPatch(-, void, textPublishAction) {
     textViewController.longitude = self.longitude;
     textViewController.eventCity = self.eventCity;
     
-    textViewController.publishBlock = ^(NSString *eid, NSString *eventType, NSString *shareText, UIImage *shareImage, BOOL isChat, BOOL isSina, BOOL isQQZone) {
+    textViewController.publishBlock = ^(PublishModel *publishModel, NSString *eid, NSString *eventType, NSString *shareText, UIImage *shareImage, BOOL isChat, BOOL isSina, BOOL isQQZone) {
         self.eid = eid;
         self.eventType = eventType;
         self.shareText = shareText;
         self.shareImage = shareImage;
+        
+        [self hintView:publishModel];
         
         [self showAlertWithChat:isChat isSina:isSina isQQZone:isQQZone];
     };
@@ -69,11 +84,13 @@ AspectPatch(-, void, votePublishAction) {
     voteViewController.longitude = self.longitude;
     voteViewController.eventCity = self.eventCity;
     
-    voteViewController.publishBlock = ^(NSString *eid, NSString *eventType, NSString *shareText, UIImage *shareImage, BOOL isChat, BOOL isSina, BOOL isQQZone) {
+    voteViewController.publishBlock = ^(PublishModel *publishModel, NSString *eid, NSString *eventType, NSString *shareText, UIImage *shareImage, BOOL isChat, BOOL isSina, BOOL isQQZone) {
         self.eid = eid;
         self.eventType = eventType;
         self.shareText = shareText;
         self.shareImage = shareImage;
+        
+        [self hintView:publishModel];
         
         [self showAlertWithChat:isChat isSina:isSina isQQZone:isQQZone];
     };
@@ -242,11 +259,13 @@ AspectPatch(-, void, takePhotoAction) {
     photoVC.eventCity = self.eventCity;
     
     WEAKSELF
-    photoVC.publishBlock = ^(NSString *eid, NSString *eventType, NSString *shareText, UIImage *shareImage, BOOL isChat, BOOL isSina, BOOL isQQZone) {
+    photoVC.publishBlock = ^(PublishModel *publishModel, NSString *eid, NSString *eventType, NSString *shareText, UIImage *shareImage, BOOL isChat, BOOL isSina, BOOL isQQZone) {
         weakSelf.eid = eid;
         weakSelf.eventType = eventType;
         weakSelf.shareText = shareText;
         weakSelf.shareImage = shareImage;
+        
+        [self hintView:publishModel];
         
         [weakSelf showAlertWithChat:isChat isSina:isSina isQQZone:isQQZone];
     };

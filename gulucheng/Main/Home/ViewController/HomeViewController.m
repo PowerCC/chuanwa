@@ -801,6 +801,72 @@
     };
 }
 
+#pragma mark - showPublishHintView 显示发布成功奖励提示
+- (void)showPublishHintView:(NSString *)value {
+    
+    UIColor *moneyColor = kCOLOR(255, 97, 97, 1.0);
+    NSMutableAttributedString *tempAttStr = [[NSMutableAttributedString alloc] initWithString:value];
+    [tempAttStr addAttribute:NSForegroundColorAttributeName value:moneyColor range:NSMakeRange(0, tempAttStr.length)];
+    
+    UIColor *color = kCOLOR(34, 34, 34, 1.0);
+    NSMutableAttributedString *attStr1 = [[NSMutableAttributedString alloc] initWithString:@"恭喜您获得"];
+    [attStr1 addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, attStr1.length)];
+    
+    NSMutableAttributedString *attStr2 = [[NSMutableAttributedString alloc] initWithString:@"元现金奖励"];
+    [attStr2 addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, attStr2.length)];
+    
+    NSMutableAttributedString *contentAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:attStr1];
+    [contentAttStr appendAttributedString:tempAttStr];
+    [contentAttStr appendAttributedString:attStr2];
+    [contentAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16.0] range:NSMakeRange(0, contentAttStr.length)];
+    _publishHintLabel.attributedText = contentAttStr;
+    
+    [self.view bringSubviewToFront:_publishHintView];
+    _publishHintView.hidden = NO;
+    
+    WEAKSELF
+    [UIView animateWithDuration:0.3 animations:^{
+        _publishHintView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        GCD_AFTER(5.0, ^{
+            [weakSelf hideHintView:nil];
+        });
+    }];
+}
+
+#pragma mark - showOtherHintView 显示发布其他提示
+- (void)showOtherHintView:(NSString *)value {
+    
+    UIColor *moneyColor = kCOLOR(255, 97, 97, 1.0);
+    NSMutableAttributedString *tempAttStr = [[NSMutableAttributedString alloc] initWithString:value];
+    [tempAttStr addAttribute:NSForegroundColorAttributeName value:moneyColor range:NSMakeRange(0, tempAttStr.length)];
+    
+    UIColor *color = kCOLOR(34, 34, 34, 1.0);
+    NSMutableAttributedString *attStr1 = [[NSMutableAttributedString alloc] initWithString:@"每日前"];
+    [attStr1 addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, attStr1.length)];
+    
+    NSMutableAttributedString *attStr2 = [[NSMutableAttributedString alloc] initWithString:@"张可获得返现"];
+    [attStr2 addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, attStr2.length)];
+    
+    NSMutableAttributedString *contentAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:attStr1];
+    [contentAttStr appendAttributedString:tempAttStr];
+    [contentAttStr appendAttributedString:attStr2];
+    [contentAttStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:16.0] range:NSMakeRange(0, contentAttStr.length)];
+    _otherHintLabel.attributedText = contentAttStr;
+    
+    [self.view bringSubviewToFront:_otherHintView];
+    _otherHintView.hidden = NO;
+    
+    WEAKSELF
+    [UIView animateWithDuration:0.3 animations:^{
+        _otherHintView.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        GCD_AFTER(5.0, ^{
+            [weakSelf hideHintView:nil];
+        });
+    }];
+}
+
 #pragma mark - Actions
 - (IBAction)showMenuButtonAction:(id)sender {
     
@@ -850,6 +916,24 @@
     };
     
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (IBAction)hideHintView:(id)sender {
+    if (!_publishHintView.hidden) {
+        [UIView animateWithDuration:0.3 animations:^{
+            _publishHintView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            _publishHintView.hidden = YES;
+        }];
+    }
+    
+    if (!_otherHintView.hidden) {
+        [UIView animateWithDuration:0.3 animations:^{
+            _otherHintView.alpha = 0.0;
+        } completion:^(BOOL finished) {
+            _otherHintView.hidden = YES;
+        }];
+    }
 }
 
 #pragma mark - NSNotification Methods

@@ -7,6 +7,7 @@
 //
 
 #import "BaseViewController.h"
+#import "PublishModel.h"
 
 @interface BasePublishViewController : BaseViewController
 
@@ -14,9 +15,9 @@
 @property (nonatomic, assign) double longitude;
 @property (nonatomic, copy) NSString *eventCity;
 
-@property (nonatomic, copy) void (^publishBlock)(NSString *eid, NSString *eventType, NSString *shareText, UIImage *shareImage, BOOL isChat, BOOL isSina, BOOL isQQZone);
+@property (nonatomic, copy) void (^publishBlock)(PublishModel *publishModel, NSString *eid, NSString *eventType, NSString *shareText, UIImage *shareImage, BOOL isChat, BOOL isSina, BOOL isQQZone);
 
 - (void)viewDismissAction;
-- (void)publishButtonActionWithEid:(NSString *)eid eventType:(NSString *)eventType shareText:(NSString *)shareText shareImage:(UIImage *)shareImage;
+- (void)publishButtonActionWithEid:(PublishModel *)publishModel eid:(NSString *)eid eventType:(NSString *)eventType shareText:(NSString *)shareText shareImage:(UIImage *)shareImage;
 
 @end

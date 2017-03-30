@@ -145,18 +145,19 @@
             [MBProgressHUD hideHUDForView:weakSelf.view];
             
             if ([weakSelf isSuccessWithRequest:request.responseJSONObject]) {
-                
-                [MBProgressHUD showSuccess:@"发布成功" toView:weakSelf.view];
-                
-                GCD_AFTER(1.0, ^{
-                    
-                    [weakSelf publishButtonActionWithEid:request.responseJSONObject[@"data"]
-                                           eventType:@"vote"
-                                           shareText:weakSelf.voteQuestionTextField.text
-                                          shareImage:nil];
-                    
-                    [weakSelf dismissViewControllerAnimated:YES completion:nil];
-                });
+                PublishModel *publishModel = [PublishModel JCParse:request.responseJSONObject[@"data"]];
+                if (publishModel) {
+                    [MBProgressHUD showSuccess:@"发布成功" toView:weakSelf.view];
+                    GCD_AFTER(1.0, ^{
+                        [weakSelf publishButtonActionWithEid:publishModel
+                                                         eid:publishModel.eventId
+                                                   eventType:@"vote"
+                                                   shareText:weakSelf.voteQuestionTextField.text
+                                                  shareImage:nil];
+                        
+                        [weakSelf dismissViewControllerAnimated:YES completion:nil];
+                    });
+                }
             }
         } failure:^(YTKBaseRequest *request) {
             [MBProgressHUD hideHUDForView:weakSelf.view];
