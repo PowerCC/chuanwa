@@ -35,33 +35,14 @@
                                      NSFontAttributeName: [UIFont systemFontOfSize:17.0]}];
 }
 
-/*
- func presentToAnyViewControllerWithCustomAnimation(vc: BaseViewController, customAnimation: CustomAnimationController, hiddenNav: Bool) {
- let topVc = self.topViewController as? BaseViewController
- if topVc != nil {
- topVc!.customAnimationController = customAnimation
- let navVC = BaseNavigationController(rootViewController: vc)
- navVC.modalPresentationStyle = .OverFullScreen
- navVC.transitioningDelegate = topVc
- navVC.navigationBar.hidden = true
- self.presentViewController(navVC, animated: true, completion: nil)
- }
-	}
- */
-
 - (void)presentToAnyViewControllerWithCustomAnimation:(UIViewController *)vc
                                       customAnimation:(CustomAnimationController *)customAnimation
                                             hiddenNav:(BOOL)hiddenNav {
     BaseViewController *topVc = (BaseViewController *)self.topViewController;
     if (topVc != nil) {
-//        BaseNavigationController *navVC = [[BaseNavigationController alloc] initWithRootViewController:vc];
-//        navVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-//        navVC.transitioningDelegate = topVc;
-//        navVC.navigationBar.hidden = YES;
-//        [self presentViewController:navVC animated:YES completion:nil];
         topVc.customAnimationController = customAnimation;
         vc.modalPresentationStyle = UIModalPresentationOverFullScreen;
-        vc.transitioningDelegate = topVc;
+//        vc.transitioningDelegate = topVc;
         [self presentViewController:vc animated:YES completion:nil];
     }
 }

@@ -72,8 +72,6 @@ AspectPatch(-, void, textPublishAction) {
     };
     
     [self.baseNav presentToAnyViewControllerWithCustomAnimation:navViewController customAnimation:[[CustomPublishAnimationController alloc] init] hiddenNav:YES];
-//    [self presentViewController:navViewController animated:YES completion:nil];
-    
     
     return XAMessageForward(textPublishAction);
 }
@@ -269,7 +267,7 @@ AspectPatch(-, void, takePhotoAction) {
         weakSelf.shareText = shareText;
         weakSelf.shareImage = shareImage;
         
-        [self hintView:publishModel];
+        [weakSelf hintView:publishModel];
         
         [weakSelf showAlertWithChat:isChat isSina:isSina isQQZone:isQQZone];
     };
