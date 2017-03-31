@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CustomAnimationController.h"
 
 @interface BaseNavigationController : UINavigationController
+
+- (void)presentToAnyViewControllerWithCustomAnimation:(UIViewController *)vc
+                                      customAnimation:(CustomAnimationController *)customAnimation
+                                            hiddenNav:(BOOL)hiddenNav;
 
 @end

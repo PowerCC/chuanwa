@@ -9,9 +9,16 @@
 #import "BaseViewController.h"
 #import "ResponseBase.h"
 
+@interface BaseViewController () <UIViewControllerTransitioningDelegate>
+
+@end
+
 @implementation BaseViewController
 
 - (void)viewDidLoad {
+    
+    _baseNav = (BaseNavigationController *)self.navigationController;
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -76,6 +83,17 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UIViewControllerTransitioningDelegate Methods
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    _customAnimationController.presenting = YES;
+    return (id <UIViewControllerAnimatedTransitioning>)_customAnimationController;
+}
+
+- (nullable id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    _customAnimationController.presenting = NO;
+    return (id <UIViewControllerAnimatedTransitioning>)_customAnimationController;
 }
 
 @end

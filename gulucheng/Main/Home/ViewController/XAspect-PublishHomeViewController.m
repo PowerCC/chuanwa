@@ -14,6 +14,7 @@
 
 
 #import "HomeViewController.h"
+#import "CustomAnimationController.h"
 #import "TextPublishViewController.h"
 #import "VotePublishViewController.h"
 #import "PhotoPublishViewController.h"
@@ -70,7 +71,9 @@ AspectPatch(-, void, textPublishAction) {
         [self showAlertWithChat:isChat isSina:isSina isQQZone:isQQZone];
     };
     
-    [self presentViewController:navViewController animated:YES completion:nil];
+    [self.baseNav presentToAnyViewControllerWithCustomAnimation:navViewController customAnimation:[[CustomPublishAnimationController alloc] init] hiddenNav:YES];
+//    [self presentViewController:navViewController animated:YES completion:nil];
+    
     
     return XAMessageForward(textPublishAction);
 }
@@ -95,7 +98,8 @@ AspectPatch(-, void, votePublishAction) {
         [self showAlertWithChat:isChat isSina:isSina isQQZone:isQQZone];
     };
     
-    [self presentViewController:navViewController animated:YES completion:nil];
+    [self.baseNav presentToAnyViewControllerWithCustomAnimation:navViewController customAnimation:[[CustomPublishAnimationController alloc] init] hiddenNav:YES];
+//    [self presentViewController:navViewController animated:YES completion:nil];
     
     return XAMessageForward(votePublishAction);
 }
@@ -271,7 +275,8 @@ AspectPatch(-, void, takePhotoAction) {
     };
     
     GCD_AFTER(0.0, ^{
-        [weakSelf presentViewController:navViewController animated:YES completion:nil];
+        [weakSelf.baseNav presentToAnyViewControllerWithCustomAnimation:navViewController customAnimation:[[CustomPublishAnimationController alloc] init] hiddenNav:YES];
+//        [weakSelf presentViewController:navViewController animated:YES completion:nil];
     });
 }
 

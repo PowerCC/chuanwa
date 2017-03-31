@@ -64,6 +64,7 @@
 		8224D33E1E2FCF0600DF9636 /* UIView+WHC_AutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8224D3381E2FCF0600DF9636 /* UIView+WHC_AutoLayout.m */; };
 		8224D33F1E2FCF0600DF9636 /* UIView+WHC_Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8224D33A1E2FCF0600DF9636 /* UIView+WHC_Frame.m */; };
 		8224D3401E2FCF0600DF9636 /* WHC_StackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8224D33C1E2FCF0600DF9636 /* WHC_StackView.m */; };
+		822EC1591E8E465300D92498 /* CustomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822EC1581E8E465300D92498 /* CustomAnimationController.m */; };
 		822FAF5E1E488B2F00FA6337 /* IMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FAF5D1E488B2F00FA6337 /* IMTestViewController.m */; };
 		823295841E23CF5400C92044 /* PopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 823295831E23CF5400C92044 /* PopAnimationTransition.m */; };
 		823295861E23DCD500C92044 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 823295851E23DCD500C92044 /* Podfile */; };
@@ -537,6 +538,8 @@
 		8224D33A1E2FCF0600DF9636 /* UIView+WHC_Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WHC_Frame.m"; sourceTree = "<group>"; };
 		8224D33B1E2FCF0600DF9636 /* WHC_StackView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WHC_StackView.h; sourceTree = "<group>"; };
 		8224D33C1E2FCF0600DF9636 /* WHC_StackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_StackView.m; sourceTree = "<group>"; };
+		822EC1571E8E465300D92498 /* CustomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnimationController.h; sourceTree = "<group>"; };
+		822EC1581E8E465300D92498 /* CustomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnimationController.m; sourceTree = "<group>"; };
 		822FAF5C1E488B2F00FA6337 /* IMTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMTestViewController.h; sourceTree = "<group>"; };
 		822FAF5D1E488B2F00FA6337 /* IMTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMTestViewController.m; sourceTree = "<group>"; };
 		823295821E23CF5400C92044 /* PopAnimationTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopAnimationTransition.h; sourceTree = "<group>"; };
@@ -1382,6 +1385,15 @@
 				8224D33C1E2FCF0600DF9636 /* WHC_StackView.m */,
 			);
 			path = "WHC_AutoLayoutKit(OC)";
+			sourceTree = "<group>";
+		};
+		822EC1561E8E462600D92498 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				822EC1571E8E465300D92498 /* CustomAnimationController.h */,
+				822EC1581E8E465300D92498 /* CustomAnimationController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		825BAB541E6850ED006821E4 /* HyphenateLiteSDK */ = {
@@ -2670,6 +2682,7 @@
 				82F39BBD1E52DA8E00BBAE03 /* Public.storyboard */,
 				D4FEFD721D4609EF003CABE8 /* Service */,
 				D4FEFD331D42157B003CABE8 /* View */,
+				822EC1561E8E462600D92498 /* ViewController */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -3365,6 +3378,7 @@
 				D48796F71D5C53C2008A291B /* CommendButtomView.m in Sources */,
 				82F2185F1E444BDB0089F43D /* NSString+Valid.m in Sources */,
 				D4CAB9941D7B245800E9820F /* UIView+Layout.m in Sources */,
+				822EC1591E8E465300D92498 /* CustomAnimationController.m in Sources */,
 				D4B0BB891D71EE0C00F4E29B /* StatisticsModel.m in Sources */,
 				8224D3401E2FCF0600DF9636 /* WHC_StackView.m in Sources */,
 				82F2183C1E444BDB0089F43D /* EMSDWebImageCompat.m in Sources */,
