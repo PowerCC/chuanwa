@@ -26,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVg-vx-aCu">
-                        <rect key="frame" x="0.0" y="248" width="375" height="52"/>
+                        <rect key="frame" x="0.0" y="248" width="375" height="93"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7TU-D5-YzG">
                                 <rect key="frame" x="16" y="16" width="343" height="0.0"/>
@@ -58,15 +58,14 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.94874778368794321" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7TU-D5-YzG" secondAttribute="trailing" constant="16" id="Dfq-0A-uur"/>
                             <constraint firstItem="7TU-D5-YzG" firstAttribute="top" secondItem="SVg-vx-aCu" secondAttribute="top" constant="16" id="Ibj-vx-fHI"/>
                             <constraint firstItem="g40-rs-cuo" firstAttribute="leading" secondItem="SVg-vx-aCu" secondAttribute="leading" constant="16" id="JcU-rz-lBc"/>
+                            <constraint firstAttribute="bottom" secondItem="Rv2-PG-yNS" secondAttribute="bottom" constant="16" id="Oy1-nw-7GL"/>
                             <constraint firstItem="g40-rs-cuo" firstAttribute="top" secondItem="7TU-D5-YzG" secondAttribute="bottom" constant="20" id="aQl-rH-W7a"/>
                             <constraint firstItem="Rv2-PG-yNS" firstAttribute="leading" secondItem="SVg-vx-aCu" secondAttribute="leading" constant="16" id="b29-9x-25H"/>
                             <constraint firstItem="7TU-D5-YzG" firstAttribute="leading" secondItem="SVg-vx-aCu" secondAttribute="leading" constant="16" id="bAB-mD-FNO"/>
-                            <constraint firstAttribute="bottom" secondItem="g40-rs-cuo" secondAttribute="bottom" id="dMa-Dy-OZ9"/>
                             <constraint firstItem="YKM-lg-MKx" firstAttribute="top" secondItem="7TU-D5-YzG" secondAttribute="bottom" constant="23" id="j8N-Gz-MfC"/>
                             <constraint firstItem="YKM-lg-MKx" firstAttribute="leading" secondItem="g40-rs-cuo" secondAttribute="trailing" constant="8" id="oTR-aa-VJy"/>
                             <constraint firstItem="Rv2-PG-yNS" firstAttribute="top" secondItem="g40-rs-cuo" secondAttribute="bottom" constant="9" id="rw6-dz-sh4"/>
@@ -125,7 +124,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="1nP-xb-ulA" firstAttribute="top" secondItem="HWj-z7-6Ia" secondAttribute="top" constant="19" id="2gl-3L-egN"/>
                             <constraint firstItem="Ytl-wL-dJ1" firstAttribute="leading" secondItem="WwZ-iG-Pxs" secondAttribute="trailing" constant="9" id="GdJ-j7-omg"/>
@@ -161,10 +159,8 @@
             <connections>
                 <outlet property="businessView" destination="HWj-z7-6Ia" id="ZOW-pE-uH4"/>
                 <outlet property="businessViewDistanceAndTimeAgoLabel" destination="63K-zD-XaU" id="KhQ-zq-ASJ"/>
-                <outlet property="businessViewTopConstraint" destination="blR-lS-9I6" id="vpU-tR-CYc"/>
                 <outlet property="describLabelTopConstraint" destination="Ibj-vx-fHI" id="YQb-kd-eJy"/>
                 <outlet property="describeLabel" destination="7TU-D5-YzG" id="1Oy-bg-dDg"/>
-                <outlet property="detailViewTopConstraint" destination="PPr-OC-hPd" id="pbE-Pi-gm7"/>
                 <outlet property="distanceAndTimeAgoLabel" destination="Rv2-PG-yNS" id="zAw-hR-tbS"/>
                 <outlet property="genderImageView" destination="YKM-lg-MKx" id="HIl-XC-2zL"/>
                 <outlet property="headImageView" destination="4Hn-ah-fBf" id="U7n-qy-2fz"/>

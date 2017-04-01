@@ -169,10 +169,10 @@ static NSString * const photoCell = @"DetailPhotoCell";
                                           
                                           if (SCREEN_WIDTH / image.size.width * image.size.height <= 248) {
                                               cell.imageHeightConstraint.constant = 248;
-                                              cell.detailViewTopConstraint.constant = - (248 - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
+//                                              cell.detailViewTopConstraint.constant = - (248 - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
                                           } else {
                                               cell.imageHeightConstraint.constant = SCREEN_WIDTH / image.size.width * image.size.height;
-                                              cell.detailViewTopConstraint.constant = 0;
+//                                              cell.detailViewTopConstraint.constant = 0;
                                           }
                                           
                                           if (indexPath.row == 0 && _isFirstIn) {
@@ -189,10 +189,10 @@ static NSString * const photoCell = @"DetailPhotoCell";
                                           
                                           if (SCREEN_WIDTH / image.size.width * image.size.height <= 248) {
                                               cell.imageHeightConstraint.constant = 248;
-                                              cell.businessViewTopConstraint.constant = - (248 - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
+//                                              cell.businessViewTopConstraint.constant = - (248 - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
                                           } else {
                                               cell.imageHeightConstraint.constant = SCREEN_WIDTH / image.size.width * image.size.height;
-                                              cell.businessViewTopConstraint.constant = 0;
+//                                              cell.businessViewTopConstraint.constant = 0;
                                           }
                                           
                                           if (indexPath.row == 0 && _isFirstIn) {

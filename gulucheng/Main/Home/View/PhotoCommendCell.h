@@ -30,10 +30,10 @@
 // 描述文字 的 top constraint
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *describLabelTopConstraint;
 // 姓名 性别 描述文字 的 view 的 top 的 constraint
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *detailViewTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *detailViewBottomConstraint;
 
 // 商家 的 view 的 top 的 constraint
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *businessViewTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *businessViewBottomConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *normalView;
 @property (weak, nonatomic) IBOutlet UIView *businessView;

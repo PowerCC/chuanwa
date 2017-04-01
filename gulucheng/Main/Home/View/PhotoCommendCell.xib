@@ -26,7 +26,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cek-QO-Sif">
-                        <rect key="frame" x="0.0" y="440" width="346" height="52"/>
+                        <rect key="frame" x="0.0" y="436" width="346" height="93"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i8t-hk-cDS">
                                 <rect key="frame" x="16" y="16" width="314" height="0.0"/>
@@ -69,11 +69,11 @@
                             <constraint firstItem="OmV-Qk-Iqo" firstAttribute="top" secondItem="i8t-hk-cDS" secondAttribute="bottom" constant="23" id="d3H-5y-V5a"/>
                             <constraint firstItem="rzs-iL-G0q" firstAttribute="top" secondItem="i8t-hk-cDS" secondAttribute="bottom" constant="20" id="lHt-OH-8t2"/>
                             <constraint firstItem="OmV-Qk-Iqo" firstAttribute="leading" secondItem="rzs-iL-G0q" secondAttribute="trailing" constant="8" id="mln-Kh-ld7"/>
-                            <constraint firstAttribute="bottom" secondItem="rzs-iL-G0q" secondAttribute="bottom" id="qF0-oM-cJL"/>
+                            <constraint firstAttribute="bottom" secondItem="1hN-lX-Uyl" secondAttribute="bottom" constant="16" id="xQb-NH-KYN"/>
                         </constraints>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uaY-Gs-BpF">
-                        <rect key="frame" x="0.0" y="440" width="346" height="112.5"/>
+                        <rect key="frame" x="0.0" y="416.5" width="346" height="112.5"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ghG-nK-rFv" customClass="IBImageView">
                                 <rect key="frame" x="16" y="16" width="36" height="36"/>
@@ -125,7 +125,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.95026939659999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ygb-z3-Zhw" firstAttribute="top" secondItem="uaY-Gs-BpF" secondAttribute="top" constant="19" id="1Yz-n4-gA8"/>
                             <constraint firstItem="pRE-x1-ckI" firstAttribute="top" secondItem="zkz-zD-UUW" secondAttribute="bottom" constant="9" id="6jO-eO-7iq"/>
@@ -147,24 +147,24 @@
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="uaY-Gs-BpF" firstAttribute="top" secondItem="w4w-bh-ZY2" secondAttribute="bottom" id="Bwo-Di-xmQ"/>
                 <constraint firstAttribute="trailing" secondItem="w4w-bh-ZY2" secondAttribute="trailing" id="GAH-y2-WfL"/>
                 <constraint firstAttribute="trailing" secondItem="Cek-QO-Sif" secondAttribute="trailing" id="LfD-Nh-vVa"/>
                 <constraint firstItem="w4w-bh-ZY2" firstAttribute="leading" secondItem="T6a-Nn-JqT" secondAttribute="leading" id="UGy-8t-lf2"/>
+                <constraint firstAttribute="bottom" secondItem="uaY-Gs-BpF" secondAttribute="bottom" constant="50" id="bcR-oB-7o2"/>
                 <constraint firstItem="Cek-QO-Sif" firstAttribute="leading" secondItem="T6a-Nn-JqT" secondAttribute="leading" id="cuo-aZ-fou"/>
                 <constraint firstAttribute="trailing" secondItem="uaY-Gs-BpF" secondAttribute="trailing" id="gJl-Yc-8IM"/>
                 <constraint firstItem="w4w-bh-ZY2" firstAttribute="top" secondItem="T6a-Nn-JqT" secondAttribute="top" id="ijP-LI-8ju"/>
-                <constraint firstItem="Cek-QO-Sif" firstAttribute="top" secondItem="w4w-bh-ZY2" secondAttribute="bottom" id="kZx-PC-vbA"/>
                 <constraint firstItem="uaY-Gs-BpF" firstAttribute="leading" secondItem="T6a-Nn-JqT" secondAttribute="leading" id="lzT-lk-RHP"/>
+                <constraint firstAttribute="bottom" secondItem="Cek-QO-Sif" secondAttribute="bottom" constant="50" id="rDJ-SP-qnx"/>
             </constraints>
             <size key="customSize" width="346" height="579"/>
             <connections>
                 <outlet property="businessView" destination="uaY-Gs-BpF" id="nBT-LJ-ydZ"/>
+                <outlet property="businessViewBottomConstraint" destination="bcR-oB-7o2" id="vJe-Sk-4fd"/>
                 <outlet property="businessViewDistanceAndTimeAgoLabel" destination="pRE-x1-ckI" id="kVw-aa-P5g"/>
-                <outlet property="businessViewTopConstraint" destination="Bwo-Di-xmQ" id="CXZ-r2-Xs1"/>
                 <outlet property="describLabelTopConstraint" destination="5mY-da-uew" id="ZNp-Dc-hEV"/>
                 <outlet property="describeLabel" destination="i8t-hk-cDS" id="dTC-Zy-u57"/>
-                <outlet property="detailViewTopConstraint" destination="kZx-PC-vbA" id="vlK-oJ-ngj"/>
+                <outlet property="detailViewBottomConstraint" destination="rDJ-SP-qnx" id="S4a-Ie-U35"/>
                 <outlet property="distanceAndTimeAgoLabel" destination="1hN-lX-Uyl" id="1PN-LC-nRs"/>
                 <outlet property="genderImageView" destination="OmV-Qk-Iqo" id="78T-2z-bt9"/>
                 <outlet property="headImageView" destination="ghG-nK-rFv" id="M1Q-fj-TOE"/>

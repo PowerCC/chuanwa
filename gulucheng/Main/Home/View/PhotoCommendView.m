@@ -198,56 +198,64 @@ static NSString * const photoCell = @"PhotoCell";
                                           if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
                                               cell.imageHeightConstraint.constant = imageBaseHeight;
                                               // 设置normalView的位置
-                                              cell.detailViewTopConstraint.constant = - (imageBaseHeight - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
+//                                              cell.detailViewTopConstraint.constant = - (imageBaseHeight - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
                                           } else {
                                               if (image.size.width > 0) {
                                                   cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
                                               }
                                               
-                                              float buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
-                                              float leftBlackSpace = SCREEN_HEIGHT - NavigationBarHeight - buttomViewHeight - cell.imageHeightConstraint.constant;
+//                                              float buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
+//                                              float leftBlackSpace = SCREEN_HEIGHT - NavigationBarHeight - buttomViewHeight - cell.imageHeightConstraint.constant;
                                               
-                                              GCD_AFTER(0.0, ^{
+//                                              GCD_AFTER(0.0, ^{
+
+//                                                  cell.detailViewTopConstraint.constant = -(cell.normalView.frame.size.height + 50);
                                                   
-                                                  float normalViewHeight = cell.normalView.frame.size.height;
-                                                  
-                                                  if (normalViewHeight <= leftBlackSpace) {
-                                                      cell.detailViewTopConstraint.constant = 0;
-                                                  }
-                                                  else {
-                                                      // 移动的距离就是空白间隙与normalView高度之间的差
-                                                      cell.detailViewTopConstraint.constant = leftBlackSpace - normalViewHeight;
-                                                  }
-                                              });
+//                                                  float normalViewHeight = cell.normalView.frame.size.height;
+//                                                  
+//                                                  if (normalViewHeight <= leftBlackSpace) {
+//                                                      cell.detailViewTopConstraint.constant = 0;
+//                                                  }
+//                                                  else {
+//                                                      // 移动的距离就是空白间隙与normalView高度之间的差
+//                                                      cell.detailViewTopConstraint.constant = leftBlackSpace - normalViewHeight;
+//                                                  }
+//                                              });
                                           }
+                                          
+                                          cell.detailViewBottomConstraint.constant = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
                                       }
                                       else {
                                           // 如果图片高度小于最基本高度的情况
                                           if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
                                               cell.imageHeightConstraint.constant = imageBaseHeight;
                                               // 设置normalView的位置
-                                              cell.businessViewTopConstraint.constant = - (imageBaseHeight - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
+//                                              cell.businessViewTopConstraint.constant = - (imageBaseHeight - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
                                           } else {
                                               if (image.size.width > 0) {
                                                   cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
                                               }
                                               
-                                              float buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
-                                              float leftBlackSpace = SCREEN_HEIGHT - NavigationBarHeight - buttomViewHeight - cell.imageHeightConstraint.constant;
+//                                              float buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
+//                                              float leftBlackSpace = SCREEN_HEIGHT - NavigationBarHeight - buttomViewHeight - cell.imageHeightConstraint.constant;
                                               
-                                              GCD_AFTER(0.0, ^{
+//                                              GCD_AFTER(0.0, ^{
+                                              
+//                                                  cell.detailViewTopConstraint.constant = -(cell.normalView.frame.size.height + 50);
                                                   
-                                                  float businessViewHeight = cell.businessView.frame.size.height;
-                                                  
-                                                  if (businessViewHeight <= leftBlackSpace) {
-                                                      cell.businessViewTopConstraint.constant = 0;
-                                                  }
-                                                  else {
-                                                      // 移动的距离就是空白间隙与normalView高度之间的差
-                                                      cell.businessViewTopConstraint.constant = leftBlackSpace - businessViewHeight;
-                                                  }
-                                              });
+//                                                  float businessViewHeight = cell.businessView.frame.size.height;
+//                                                  
+//                                                  if (businessViewHeight <= leftBlackSpace) {
+//                                                      cell.businessViewTopConstraint.constant = 0;
+//                                                  }
+//                                                  else {
+//                                                      // 移动的距离就是空白间隙与normalView高度之间的差
+//                                                      cell.businessViewTopConstraint.constant = leftBlackSpace - businessViewHeight;
+//                                                  }
+//                                              });
                                           }
+                                          
+                                          cell.businessViewBottomConstraint.constant = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
                                       }
                                   }];
 }
