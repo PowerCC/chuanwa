@@ -26,7 +26,7 @@
 
 #import <POP/POP.h>
 
-static NSInteger const limit = 10;
+static NSInteger const limit = 12;
 
 #define DefaultLocationTimeout  6
 #define DefaultReGeocodeTimeout 3
@@ -562,13 +562,16 @@ static NSInteger const limit = 10;
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
     
     if (scrollView == _currentPublishCollectionView ||
-        scrollView == _historyPublishCollectionView ||
+        scrollView == _historyPublishCollectionView) {//||
 //        scrollView == _notificationCollectionView) {
-        scrollView == _favoriteCollectionView) {
+//        scrollView == _favoriteCollectionView) {
         
         if (scrollView.contentSize.height > scrollView.frame.size.height) {
             scrollView.mj_footer.hidden = NO;
         }
+    }
+    else if (scrollView == _favoriteCollectionView) {
+        scrollView.mj_footer.hidden = NO;
     }
 }
 

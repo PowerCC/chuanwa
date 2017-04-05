@@ -186,33 +186,37 @@ static NSString * const photoCell = @"PhotoCell";
     [cell.photoImageView addSubview:indicator];
     
     [indicator startAnimating];
-    
+    cell.normalView.hidden = YES;
+    cell.businessView.hidden = YES;
     [cell.photoImageView sd_setImageWithURL:[NSURL URLWithString:photoModel.picPath]
                            placeholderImage:nil
                                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                                       
+                                      cell.photoImageView.alpha = 0.0;
+                                      
                                       [indicator stopAnimating];
                                       
-                                      if (_photoCommendModel.bizUid.integerValue == 0) {
-                                          // 如果图片高度小于最基本高度的情况
-                                          if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
-                                              cell.imageHeightConstraint.constant = imageBaseHeight;
-                                              // 设置normalView的位置
+                                      if (!error) {
+                                          if (_photoCommendModel.bizUid.integerValue == 0) {
+                                              // 如果图片高度小于最基本高度的情况
+                                              if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
+//                                              cell.imageHeightConstraint.constant = imageBaseHeight;
+// 设置normalView的位置
 //                                              cell.detailViewTopConstraint.constant = - (imageBaseHeight - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
-                                          } else {
-                                              if (image.size.width > 0) {
-                                                  cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
-                                              }
-                                              
+                                              } else {
+//                                              if (image.size.width > 0) {
+//                                                  cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
+//                                              }
+
 //                                              float buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
 //                                              float leftBlackSpace = SCREEN_HEIGHT - NavigationBarHeight - buttomViewHeight - cell.imageHeightConstraint.constant;
-                                              
+
 //                                              GCD_AFTER(0.0, ^{
 
 //                                                  cell.detailViewTopConstraint.constant = -(cell.normalView.frame.size.height + 50);
-                                                  
+
 //                                                  float normalViewHeight = cell.normalView.frame.size.height;
-//                                                  
+//
 //                                                  if (normalViewHeight <= leftBlackSpace) {
 //                                                      cell.detailViewTopConstraint.constant = 0;
 //                                                  }
@@ -221,30 +225,50 @@ static NSString * const photoCell = @"PhotoCell";
 //                                                      cell.detailViewTopConstraint.constant = leftBlackSpace - normalViewHeight;
 //                                                  }
 //                                              });
-                                          }
-                                          
-                                          cell.detailViewBottomConstraint.constant = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
-                                      }
-                                      else {
-                                          // 如果图片高度小于最基本高度的情况
-                                          if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
-                                              cell.imageHeightConstraint.constant = imageBaseHeight;
-                                              // 设置normalView的位置
-//                                              cell.businessViewTopConstraint.constant = - (imageBaseHeight - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
-                                          } else {
-                                              if (image.size.width > 0) {
-                                                  cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
                                               }
                                               
+                                              cell.normalView.hidden = NO;
+                                              cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
+                                              CGFloat buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
+                                              CGFloat imageSizeHeight = cell.imageHeightConstraint.constant + cell.normalView.frame.size.height;
+                                              
+                                              CGFloat viewHeight = SCREEN_HEIGHT - buttomViewHeight - NavigationBarHeight;
+                                              if (imageSizeHeight >= viewHeight) {
+                                                  cell.detailViewTopConstraint.constant = viewHeight - imageSizeHeight;
+                                              }
+                                              else {
+                                                  cell.detailViewTopConstraint.constant = 0.0;
+                                                  cell.imageTopConstraint.constant = (viewHeight - imageSizeHeight) / 2;
+                                              }
+                                              
+                                              [UIView animateWithDuration:0.3 animations:^{
+                                                  cell.photoImageView.alpha = 1.0;
+                                              }];
+                                              
+//                                              GCD_AFTER(0.03, ^{
+//                                                  
+//                                              });
+                                          }
+                                          else {
+                                              // 如果图片高度小于最基本高度的情况
+                                              if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
+//                                              cell.imageHeightConstraint.constant = imageBaseHeight;
+// 设置normalView的位置
+//                                              cell.businessViewTopConstraint.constant = - (imageBaseHeight - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
+                                              } else {
+//                                              if (image.size.width > 0) {
+//                                                  cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
+//                                              }
+
 //                                              float buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
 //                                              float leftBlackSpace = SCREEN_HEIGHT - NavigationBarHeight - buttomViewHeight - cell.imageHeightConstraint.constant;
-                                              
+
 //                                              GCD_AFTER(0.0, ^{
-                                              
+
 //                                                  cell.detailViewTopConstraint.constant = -(cell.normalView.frame.size.height + 50);
-                                                  
+
 //                                                  float businessViewHeight = cell.businessView.frame.size.height;
-//                                                  
+//
 //                                                  if (businessViewHeight <= leftBlackSpace) {
 //                                                      cell.businessViewTopConstraint.constant = 0;
 //                                                  }
@@ -253,9 +277,32 @@ static NSString * const photoCell = @"PhotoCell";
 //                                                      cell.businessViewTopConstraint.constant = leftBlackSpace - businessViewHeight;
 //                                                  }
 //                                              });
+                                              }
+                                              
+                                              cell.businessView.hidden = NO;
+                                              cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
+                                              CGFloat buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
+                                              CGFloat imageSizeHeight = cell.imageHeightConstraint.constant + cell.businessView.frame.size.height;
+                                              
+                                              CGFloat viewHeight = SCREEN_HEIGHT - buttomViewHeight - NavigationBarHeight;
+                                              if (imageSizeHeight >= viewHeight) {
+                                                  cell.businessViewTopConstraint.constant = viewHeight - imageSizeHeight;
+                                              }
+                                              else {
+                                                  cell.businessViewTopConstraint.constant = 0.0;
+                                                  cell.imageTopConstraint.constant = (viewHeight - imageSizeHeight) / 2;
+                                              }
+                                              
+                                              [UIView animateWithDuration:0.3 animations:^{
+                                                  cell.photoImageView.alpha = 1.0;
+                                              }];
+//                                              GCD_AFTER(0.03, ^{
+//                                                  
+//                                              });
                                           }
-                                          
-                                          cell.businessViewBottomConstraint.constant = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
+                                      }
+                                      else {
+                                          cell.phoneImageView.alpha = 1.0;
                                       }
                                   }];
 }

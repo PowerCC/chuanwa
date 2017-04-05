@@ -25,15 +25,16 @@
 @property (weak, nonatomic) IBOutlet UIButton *nickNameButton;
 @property (weak, nonatomic) IBOutlet UIButton *phoneButton;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageTopConstraint;
 // 图片的高度 的 constraint
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageHeightConstraint;
 // 描述文字 的 top constraint
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *describLabelTopConstraint;
 // 姓名 性别 描述文字 的 view 的 top 的 constraint
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *detailViewBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *detailViewTopConstraint;
 
 // 商家 的 view 的 top 的 constraint
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *businessViewBottomConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *businessViewTopConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *normalView;
 @property (weak, nonatomic) IBOutlet UIView *businessView;

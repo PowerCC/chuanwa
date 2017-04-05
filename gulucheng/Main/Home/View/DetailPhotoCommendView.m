@@ -56,6 +56,15 @@ static NSString * const photoCell = @"DetailPhotoCell";
     _photoCommendModel = photoCommendModel;
     [_photoCollectionView reloadData];
     
+    WEAKSELF;
+    GCD_MAIN(^{
+        if (weakSelf.currentPhotoPage > 0) {
+            [weakSelf.photoCollectionView setContentOffset:CGPointMake(weakSelf.photoCollectionView.frame.size.width * weakSelf.currentPhotoPage, 0)];
+            if (weakSelf.currentPageBlock) {
+                weakSelf.currentPageBlock(weakSelf.currentPhotoPage);
+            }
+        }
+    });
 }
 
 #pragma mark - UICollectionViewDataSource

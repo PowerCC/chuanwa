@@ -13,5 +13,6 @@
 @property (nonatomic, copy) NSString *eventId;
 @property (nonatomic, copy) NSString *oneDayMaxRewards;
 @property (nonatomic, copy) NSString *rewardFail;
+@property (nonatomic, copy) NSString *publishReward;
 
 @end

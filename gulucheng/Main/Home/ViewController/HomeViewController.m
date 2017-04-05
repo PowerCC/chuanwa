@@ -628,7 +628,7 @@
                                  _singleLoadingView.alpha = 1.0;
                              }];
             [_singleLoadingView startAnimating];
-                
+            
             [UIView animateWithDuration:0.15
                              animations:^{
                                  self.navigationController.navigationBar.alpha = 0.0;
@@ -641,12 +641,9 @@
                          animations:^{
                              _actionLabel.alpha = 0.0;
                              _actionImageView.alpha = 0.0;
+//                             _singleLoadingView.alpha = 1.0;
                          }];
-        [UIView animateWithDuration:0.15
-                         animations:^{
-                             _singleLoadingView.alpha = 1.0;
-                         }];
-        [_singleLoadingView startAnimating];
+//        [_singleLoadingView startAnimating];
     }
 }
 
@@ -845,7 +842,7 @@
     NSMutableAttributedString *attStr1 = [[NSMutableAttributedString alloc] initWithString:@"每日前"];
     [attStr1 addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, attStr1.length)];
     
-    NSMutableAttributedString *attStr2 = [[NSMutableAttributedString alloc] initWithString:@"张可获得返现"];
+    NSMutableAttributedString *attStr2 = [[NSMutableAttributedString alloc] initWithString:@"张卡片可获得返现"];
     [attStr2 addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(0, attStr2.length)];
     
     NSMutableAttributedString *contentAttStr = [[NSMutableAttributedString alloc] initWithAttributedString:attStr1];
@@ -1004,6 +1001,13 @@
     if ([[segue destinationViewController] isKindOfClass:[CardDetailViewController class]]) {
         CardDetailViewController *cardDetailViewController = [segue destinationViewController];
         cardDetailViewController.recommendModel = self.currentRecommendModel;
+        
+        UIViewController *vc = segue.destinationViewController;
+        if (_commendButtomView.pageControl) {
+            if ([vc respondsToSelector:@selector(setCurrentPhotoPage:)]) {
+                [vc setValue:[NSNumber numberWithInteger:_commendButtomView.pageControl.currentPage] forKey:@"currentPhotoPage"];
+            }
+        }
     }
 }
 

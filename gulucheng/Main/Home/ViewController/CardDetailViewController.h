@@ -20,6 +20,8 @@
 
 @property (assign, nonatomic) BOOL isfromNewNotice;
 
+@property (strong, nonatomic) NSNumber *currentPhotoPage;
+
 @property (strong, nonatomic) ReplyInputView *replyInputView;
 @property (nonatomic, strong) RecommendModel *recommendModel;
 @property (nonatomic, strong) VoteCommendView *voteCommendView;

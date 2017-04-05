@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) UICollectionView *photoCollectionView;
 
+@property (nonatomic, assign) NSInteger currentPhotoPage;
+
 // 展示他人中心功能
 @property (copy, nonatomic) void (^showCenterBlock)();
 // 评论 传递 页面的位置

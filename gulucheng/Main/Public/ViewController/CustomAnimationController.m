@@ -89,7 +89,7 @@
         [UIView animateWithDuration:self.duration animations:^{
             detailView.transform = CGAffineTransformScale(detailView.transform, 0.7, 0.7);
         } completion:^(BOOL finished) {
-            [UIView animateWithDuration:0.6 animations:^{
+            [UIView animateWithDuration:1.6 animations:^{
                 CGRect rect = detailView.frame;
                 rect.origin.y = -SCREEN_HEIGHT;
                 detailView.frame = rect;

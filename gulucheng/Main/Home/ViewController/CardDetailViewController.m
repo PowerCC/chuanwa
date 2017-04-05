@@ -478,6 +478,8 @@ static NSInteger const limit = 10;
         
         _detailPhotoCommendView = [[DetailPhotoCommendView alloc] initWithFrame:_photoViewFrame];
         [_contentView addSubview:_detailPhotoCommendView];
+        
+        _detailPhotoCommendView.currentPhotoPage = _currentPhotoPage.integerValue;
         [_detailPhotoCommendView reloadCollectionViewWithPhotoCommendModel:_recommendModel];
         
         _detailPhotoCommendView.photoViewHeightBlock = ^(float height) {
@@ -485,7 +487,9 @@ static NSInteger const limit = 10;
         };
         
         _detailPhotoCommendView.currentPageBlock = ^(NSInteger currentPage) {
-            weakSelf.commendButtomView.pageControl.currentPage = currentPage;
+            GCD_AFTER(0.3, ^{
+                weakSelf.commendButtomView.pageControl.currentPage = currentPage;
+            });
         };
         
         _detailPhotoCommendView.showCenterBlock = ^{
@@ -1107,6 +1111,8 @@ static NSInteger const limit = 10;
                                      placeholderImage:[UIImage imageNamed:@"home-commentDefaultHead"]];
         commentCell.genderImageView.image = [UIImage imageNamed:favoriteUserModel.gender.integerValue == 1 ? @"home-boy" : @"home-girl"];
         commentCell.nickNameLabel.text = favoriteUserModel.nickName;
+        NSDate *confromDate = [NSDate dateWithTimeIntervalSince1970:favoriteUserModel.createTime.integerValue / 1000];
+        commentCell.timeLabel.text = [confromDate timeAgo];
         
         commentCell.headButtonTapBlock = ^{
             BOOL isMyselfCard = [favoriteUserModel.uid isEqualToString:GlobalData.userModel.userID];

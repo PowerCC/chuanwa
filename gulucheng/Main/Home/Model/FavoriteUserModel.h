@@ -14,5 +14,6 @@
 @property (nonatomic, copy) NSString *nickName;
 @property (nonatomic, copy) NSString *gender;
 @property (nonatomic, copy) NSString *avatar;
+@property (nonatomic, copy) NSString *createTime;
 
 @end

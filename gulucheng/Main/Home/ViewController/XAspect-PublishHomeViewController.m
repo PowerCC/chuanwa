@@ -31,15 +31,23 @@
 @classPatchField(HomeViewController)
 
 - (void)hintView:(PublishModel *)publishModel {
-    if (publishModel.oneDayMaxRewards != nil && publishModel.oneDayMaxRewards.integerValue > 0) {
-        if (publishModel.rewardFail != nil) {
-            if ([publishModel.rewardFail isEqualToString:@"1"]) {
-                [self showOtherHintView:publishModel.oneDayMaxRewards];
-            }
-            else {
-                [self showPublishHintView:publishModel.rewardFail];
-            }
-        }
+//    if (publishModel.oneDayMaxRewards != nil && publishModel.oneDayMaxRewards.integerValue > 0) {
+//        if (publishModel.rewardFail != nil) {
+//            if ([publishModel.rewardFail isEqualToString:@"1"]) {
+//                [self showOtherHintView:publishModel.oneDayMaxRewards];
+//            }
+//            else {
+//                [self showPublishHintView:publishModel.rewardFail];
+//            }
+//        }
+//    }
+    
+    if (publishModel.publishReward != nil && publishModel.publishReward.floatValue > 0) {
+        [self showPublishHintView:publishModel.publishReward];
+    }
+    
+    if (publishModel.rewardFail != nil && [publishModel.rewardFail isEqualToString:@"1"]) {
+        [self showOtherHintView:publishModel.oneDayMaxRewards];
     }
 }
 
