@@ -52,6 +52,9 @@
 #import "UIImage+ColorImage.h"
 #import "NSString+DateTime.h"
 
+/* 文字转换服务 */
+#import "TextConversionPictureService.h"
+
 /*! 环信SDK */
 #import <HyphenateLite/EMSDK.h>
 

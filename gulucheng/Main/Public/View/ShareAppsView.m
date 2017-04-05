@@ -51,6 +51,7 @@
 
 - (void)ssss {
     [self show];
+    [TextConversionPictureService createTextSharePicture];
 }
 
 - (void)show {
