@@ -22,8 +22,9 @@
     shareParagraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
     shareParagraphStyle.alignment = NSTextAlignmentLeft;
     
-    CGFloat shareTextFontSize = text.length > 120 ? 62.0 : 48.0;
-    CGSize shareTextSize = [text boundingRectWithSize:CGSizeMake(552.0, CGFLOAT_MAX)
+    CGFloat shareTextFontSize = text.length > 120 ? 48.0 : 62.0;
+    CGFloat shareTextWidth = shareTextFontSize == 48 ? 568.0 : 580.0;
+    CGSize shareTextSize = [text boundingRectWithSize:CGSizeMake(shareTextWidth, CGFLOAT_MAX)
                                           options:NSStringDrawingUsesLineFragmentOrigin
                                        attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:shareTextFontSize], NSForegroundColorAttributeName:kCOLOR(34, 34, 34, 1) }
                                           context:nil].size;
