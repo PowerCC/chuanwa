@@ -25,7 +25,15 @@
 - (void)setRewardListModel:(RewardListModel *)rewardListModel {
     _rewardListModel = rewardListModel;
     
-    [_spicImageView sd_setImageWithURL:[NSURL URLWithString:rewardListModel.spic] placeholderImage:[UIImage imageNamed:@"logo"]];
+    if ([rewardListModel.eventType isEqualToString:@"text"]) {
+        _spicImageView.image = [TextConversionPictureService createWalletBalanceCellPicture:rewardListModel.txtContent];
+    }
+    else if ([rewardListModel.eventType isEqualToString:@"vote"]) {
+        _spicImageView.image = [TextConversionPictureService createWalletBalanceCellPicture:@"投票卡"];
+    }
+    else {
+        [_spicImageView sd_setImageWithURL:[NSURL URLWithString:rewardListModel.spic] placeholderImage:[UIImage imageNamed:@"logo"]];
+    }
     
     _createTimeLable.text = [NSString timestampSwitchTime:rewardListModel.createTime.integerValue andFormatter:@"yyyy-MM-dd HH:mm:ss"];
     _publishRewardLable.text = [NSString stringWithFormat:@"发布奖金 %@", rewardListModel.publishReward];

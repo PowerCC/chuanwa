@@ -21,5 +21,6 @@
 @property (nonatomic, copy) NSString *noSpreadReasonDesc;
 @property (nonatomic, copy) NSString *eventType;
 @property (nonatomic, copy) NSString *spic;
+@property (nonatomic, copy) NSString *txtContent;
 
 @end

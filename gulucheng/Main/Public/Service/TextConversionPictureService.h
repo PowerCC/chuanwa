@@ -12,4 +12,6 @@
 
 + (UIImage *)createTextSharePicture:(NSString *)text;
 
++ (UIImage *)createWalletBalanceCellPicture:(NSString *)text;
+
 @end

@@ -130,7 +130,7 @@
 #pragma mark - fillWalletData
 - (void)fillWalletData {
     if (_myWalletModel) {
-        _balanceTotalLabel.text = (!_myWalletModel.balanceTotal || [_myWalletModel.balanceTotal isEqualToString:@"0"]) ? @"0.00" : [NSString stringWithFormat:@"%.2f", _myWalletModel.balanceTotal.floatValue];
+        _balanceTotalLabel.text = (!_myWalletModel.balanceTotal || [_myWalletModel.balanceTotal isEqualToString:@"0"]) ? @"0.00" : [NSString stringWithFormat:@"%.3f", _myWalletModel.balanceTotal.floatValue];
         _updateTimeLabel.text = !_myWalletModel.updateTime ? [self currentDate] : [NSString timestampSwitchTime:_myWalletModel.updateTime.integerValue andFormatter:@"更新时间：YYYYMMdd"];
         _statusLabel.text = [_myWalletModel.status isEqualToString:@"-1"] ? @"余额状态：冻结" : @"余额状态：正常";
     }
