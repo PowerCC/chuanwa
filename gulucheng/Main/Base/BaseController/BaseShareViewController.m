@@ -21,6 +21,10 @@
 
 @implementation BaseShareViewController
 
+- (void)dealloc {
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -50,7 +54,6 @@
 }
 
 - (void)shareChannelButtonActionWithTapIndex:(NSInteger)buttonIndex {
-    
     if ([_currentRecommendModel.eventType isEqualToString:PictureEvent]) {
         
         PhotoModel *photoModel = [_currentRecommendModel.eventPicVos objectAtIndex:_pageControlIndex];
@@ -140,6 +143,7 @@
     if (_currentRecommendModel) {
         if ([eventType isEqualToString:TextEvent]) {
             _shareText = _currentRecommendModel.textModel.content;
+            _shareImage = [TextConversionPictureService createTextSharePicture:_shareText];
         }
         if ([eventType isEqualToString:VoteEvent]) {
             _shareText = _currentRecommendModel.voteModel.title;
@@ -149,8 +153,8 @@
         }
     }
     
-    // 投票 文字 会进行h5网址的分享
-    if ([eventType isEqualToString:VoteEvent] || [eventType isEqualToString:TextEvent]) {
+    // 投票会进行h5网址的分享
+    if ([eventType isEqualToString:VoteEvent]) {
         
         if ([snsName isEqualToString:@"wxsession"]) {
             
@@ -177,6 +181,19 @@
             [UMSocialData defaultData].extConfig.qqData.shareText = _shareText;
             [UMSocialData defaultData].extConfig.qqData.url = shareUrl;
             [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeDefault;
+        }
+    }
+    
+    if ( [eventType isEqualToString:TextEvent]) {
+        if ([snsName isEqualToString:@"wxsession"] || [snsName isEqualToString:@"wxtimeline"]) {
+            [UMSocialData defaultData].extConfig.wechatSessionData.title = title;
+            [UMSocialData defaultData].extConfig.wechatTimelineData.title = title;
+            [UMSocialData defaultData].extConfig.wxMessageType = UMSocialWXMessageTypeImage;
+        }
+        
+        if ([snsName isEqualToString:@"qq"]) {
+            [UMSocialData defaultData].extConfig.qqData.title = title;
+            [UMSocialData defaultData].extConfig.qqData.qqMessageType = UMSocialQQMessageTypeImage;
         }
     }
     

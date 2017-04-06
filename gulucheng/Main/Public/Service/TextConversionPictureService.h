@@ -10,6 +10,6 @@
 
 @interface TextConversionPictureService : NSObject
 
-+ (void)createTextSharePicture;
++ (UIImage *)createTextSharePicture:(NSString *)text;
 
 @end
