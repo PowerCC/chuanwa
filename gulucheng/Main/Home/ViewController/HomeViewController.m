@@ -636,15 +636,15 @@
         }
     }
     
-    if (abs(scrollView.contentOffset.y > SCREEN_HEIGHT * 0.45)) {
-        [UIView animateWithDuration:0.15
-                         animations:^{
-                             _actionLabel.alpha = 0.0;
-                             _actionImageView.alpha = 0.0;
-//                             _singleLoadingView.alpha = 1.0;
-                         }];
-//        [_singleLoadingView startAnimating];
-    }
+//    if (abs(scrollView.contentOffset.y > SCREEN_HEIGHT * 0.45)) {
+//        [UIView animateWithDuration:0.15
+//                         animations:^{
+//                             _actionLabel.alpha = 0.0;
+//                             _actionImageView.alpha = 0.0;
+////                             _singleLoadingView.alpha = 1.0;
+//                         }];
+////        [_singleLoadingView startAnimating];
+//    }
 }
 
 - (void)popMenuView:(HyPopMenuView *)popMenuView didSelectItemAtIndex:(NSUInteger)index {
