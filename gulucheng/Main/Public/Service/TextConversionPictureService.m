@@ -122,35 +122,39 @@
     return resultImg;
 }
 
-+ (UIImage *)createWalletBalanceCellPicture:(NSString *)text {
++ (UIImage *)createWalletBalanceCellTextPicture:(NSString *)text {
     if (!text || text.length == 0) {
         return nil;
+    }
+    
+    if (text.length > 25) {
+        text = [text substringToIndex:24];
     }
     
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    CGFloat fontSize = text.length > 120 ? 24.0 : 31.0;
+    CGFloat fontSize = 24.0;
     CGFloat scale = [UIScreen mainScreen].scale;
     CGSize size = CGSizeMake(49.0 * scale, 53.0 * scale);
     
     CGSize textSize = [text boundingRectWithSize:CGSizeMake(size.width - 20.0, CGFLOAT_MAX)
                                               options:NSStringDrawingUsesLineFragmentOrigin
-                                           attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSForegroundColorAttributeName:kCOLOR(34, 34, 34, 1) }
+                                           attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSForegroundColorAttributeName:kCOLOR(68, 68, 68, 1) }
                                               context:nil].size;
     
     UIGraphicsBeginImageContext(size);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    CGContextSetRGBFillColor(context, 1, 1, 1, 1);
+    CGContextSetRGBFillColor(context, 245.0 / 255.0, 245.0 / 255.0, 245.0 / 255.0, 1);
     CGContextFillRect(context, CGRectMake(0.0, 0.0, size.width, size.height));
     
     // 绘制文字
     CGFloat y = textSize.height >= size.height ? 0 : (size.height - textSize.height) / 2;
     
     CGRect rect = CGRectMake((size.width - textSize.width) / 2, y, textSize.width, textSize.height);
-    [text drawInRect:rect withAttributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSForegroundColorAttributeName:kCOLOR(34, 34, 34, 1), NSParagraphStyleAttributeName:paragraphStyle }];
+    [text drawInRect:rect withAttributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSForegroundColorAttributeName:kCOLOR(68, 68, 68, 1), NSParagraphStyleAttributeName:paragraphStyle }];
     
     CGImageRef cgimg = CGBitmapContextCreateImage(context);
     UIImage *resultImg = [UIImage imageWithCGImage:cgimg];
@@ -167,4 +171,54 @@
     return resultImg;
 }
 
++ (UIImage *)createWalletBalanceCellVotePicture:(NSString *)text {
+    if (!text || text.length == 0) {
+        return nil;
+    }
+    
+    if (text.length > 18) {
+        text = [text substringToIndex:17];
+    }
+    
+    NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
+    paragraphStyle.alignment = NSTextAlignmentLeft;
+    
+    CGFloat fontSize = 24.0;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    CGSize size = CGSizeMake(49.0 * scale, 53.0 * scale);
+    
+    CGSize textSize = [text boundingRectWithSize:CGSizeMake(size.width - 20.0, CGFLOAT_MAX)
+                                         options:NSStringDrawingUsesLineFragmentOrigin
+                                      attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSForegroundColorAttributeName:kCOLOR(68, 68, 68, 1) }
+                                         context:nil].size;
+    
+    UIGraphicsBeginImageContext(size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGContextSetRGBFillColor(context, 245.0 / 255.0, 245.0 / 255.0, 245.0 / 255.0, 1);
+    CGContextFillRect(context, CGRectMake(0.0, 0.0, size.width, size.height));
+    
+    // vote图片
+    UIImage *voteImage = [UIImage imageNamed:@"wallet-balance-vote"];
+    [voteImage drawInRect:CGRectMake(24.0, 24.0, 28.0, 24.0)];
+    
+    // 绘制文字
+    CGRect rect = CGRectMake((size.width - textSize.width) / 2, 64.0, textSize.width, textSize.height);
+    [text drawInRect:rect withAttributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSForegroundColorAttributeName:kCOLOR(68, 68, 68, 1), NSParagraphStyleAttributeName:paragraphStyle }];
+    
+    CGImageRef cgimg = CGBitmapContextCreateImage(context);
+    UIImage *resultImg = [UIImage imageWithCGImage:cgimg];
+    
+    NSData *imageData = UIImageJPEGRepresentation(resultImg, 0.6);
+    if (imageData && imageData.length > 0) {
+        resultImg = [UIImage imageWithData:imageData];
+    }
+    
+    CGImageRelease(cgimg);
+    
+    UIGraphicsEndImageContext();
+    
+    return resultImg;
+}
 @end

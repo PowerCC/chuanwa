@@ -26,13 +26,13 @@
     _rewardListModel = rewardListModel;
     
     if ([rewardListModel.eventType isEqualToString:@"text"]) {
-        _spicImageView.image = [TextConversionPictureService createWalletBalanceCellPicture:rewardListModel.txtContent];
+        _spicImageView.image = [TextConversionPictureService createWalletBalanceCellTextPicture:rewardListModel.txtContent];
     }
     else if ([rewardListModel.eventType isEqualToString:@"vote"]) {
-        _spicImageView.image = [TextConversionPictureService createWalletBalanceCellPicture:@"投票卡"];
+        _spicImageView.image = [TextConversionPictureService createWalletBalanceCellVotePicture:rewardListModel.txtContent];
     }
     else {
-        [_spicImageView sd_setImageWithURL:[NSURL URLWithString:rewardListModel.spic] placeholderImage:[UIImage imageNamed:@"logo"]];
+        [_spicImageView sd_setImageWithURL:[NSURL URLWithString:rewardListModel.spic] placeholderImage:[UIImage imageNamed:@"wallet-balance-logo"]];
     }
     
     _createTimeLable.text = [NSString timestampSwitchTime:rewardListModel.createTime.integerValue andFormatter:@"yyyy-MM-dd HH:mm:ss"];

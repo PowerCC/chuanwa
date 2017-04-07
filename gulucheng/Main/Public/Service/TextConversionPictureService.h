@@ -12,6 +12,8 @@
 
 + (UIImage *)createTextSharePicture:(NSString *)text;
 
-+ (UIImage *)createWalletBalanceCellPicture:(NSString *)text;
++ (UIImage *)createWalletBalanceCellTextPicture:(NSString *)text;
+
++ (UIImage *)createWalletBalanceCellVotePicture:(NSString *)text;
 
 @end
