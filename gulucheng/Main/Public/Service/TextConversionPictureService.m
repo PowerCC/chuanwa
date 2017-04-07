@@ -127,19 +127,19 @@
         return nil;
     }
     
-    if (text.length > 25) {
-        text = [text substringToIndex:24];
+    if (text.length > 30) {
+        text = [text substringToIndex:29];
     }
     
     NSMutableParagraphStyle *paragraphStyle = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
     paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    CGFloat fontSize = 24.0;
     CGFloat scale = [UIScreen mainScreen].scale;
+    CGFloat fontSize = 6.0 * scale;
     CGSize size = CGSizeMake(49.0 * scale, 53.0 * scale);
     
-    CGSize textSize = [text boundingRectWithSize:CGSizeMake(size.width - 20.0, CGFLOAT_MAX)
+    CGSize textSize = [text boundingRectWithSize:CGSizeMake(size.width - 10.0 * scale, CGFLOAT_MAX)
                                               options:NSStringDrawingUsesLineFragmentOrigin
                                            attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSForegroundColorAttributeName:kCOLOR(68, 68, 68, 1) }
                                               context:nil].size;
@@ -184,11 +184,11 @@
     paragraphStyle.lineBreakMode = NSLineBreakByCharWrapping;
     paragraphStyle.alignment = NSTextAlignmentLeft;
     
-    CGFloat fontSize = 24.0;
     CGFloat scale = [UIScreen mainScreen].scale;
+    CGFloat fontSize = 6.0 * scale;
     CGSize size = CGSizeMake(49.0 * scale, 53.0 * scale);
     
-    CGSize textSize = [text boundingRectWithSize:CGSizeMake(size.width - 20.0, CGFLOAT_MAX)
+    CGSize textSize = [text boundingRectWithSize:CGSizeMake(size.width - 10.0 * scale, CGFLOAT_MAX)
                                          options:NSStringDrawingUsesLineFragmentOrigin
                                       attributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSForegroundColorAttributeName:kCOLOR(68, 68, 68, 1) }
                                          context:nil].size;
@@ -201,10 +201,10 @@
     
     // vote图片
     UIImage *voteImage = [UIImage imageNamed:@"wallet-balance-vote"];
-    [voteImage drawInRect:CGRectMake(24.0, 24.0, 28.0, 24.0)];
+    [voteImage drawInRect:CGRectMake(6.0 * scale, 6.0 * scale, 14.0 * scale, 12.0 * scale)];
     
     // 绘制文字
-    CGRect rect = CGRectMake((size.width - textSize.width) / 2, 64.0, textSize.width, textSize.height);
+    CGRect rect = CGRectMake((size.width - textSize.width) / 2, 6.0 * scale + 12.0 * scale + 4 * scale, textSize.width, textSize.height);
     [text drawInRect:rect withAttributes:@{ NSFontAttributeName:[UIFont systemFontOfSize:fontSize], NSForegroundColorAttributeName:kCOLOR(68, 68, 68, 1), NSParagraphStyleAttributeName:paragraphStyle }];
     
     CGImageRef cgimg = CGBitmapContextCreateImage(context);
