@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wff-iN-3zX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="wff-iN-3zX">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -95,14 +95,36 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X36-3G-Xrl">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gm6-Wk-UxL" id="TY9-Li-wwG"/>
+                                </connections>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkr-q4-G9y">
+                                <rect key="frame" x="290" y="35" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hCt-8B-fVW"/>
+                                    <constraint firstAttribute="width" constant="70" id="j4V-yD-BEf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <state key="normal" title="跳过广告"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="DzC-d9-81I" firstAttribute="leading" secondItem="RHd-M5-UnV" secondAttribute="leading" constant="34" id="20W-F2-CRr"/>
+                            <constraint firstItem="X36-3G-Xrl" firstAttribute="top" secondItem="RHd-M5-UnV" secondAttribute="top" id="9Py-df-kv8"/>
                             <constraint firstAttribute="trailing" secondItem="DzC-d9-81I" secondAttribute="trailing" constant="34" id="CRF-fy-8xX"/>
                             <constraint firstItem="DzC-d9-81I" firstAttribute="top" secondItem="NIm-3s-Mzd" secondAttribute="bottom" constant="32" id="EPV-mm-uGw"/>
+                            <constraint firstAttribute="trailing" secondItem="Pkr-q4-G9y" secondAttribute="trailing" constant="15" id="I1u-yf-ZaZ"/>
+                            <constraint firstItem="Pkr-q4-G9y" firstAttribute="top" secondItem="Pqt-oc-QyS" secondAttribute="bottom" constant="15" id="LeO-wO-Lnp"/>
+                            <constraint firstAttribute="trailing" secondItem="X36-3G-Xrl" secondAttribute="trailing" id="Nvf-A4-A3y"/>
+                            <constraint firstItem="X36-3G-Xrl" firstAttribute="leading" secondItem="RHd-M5-UnV" secondAttribute="leading" id="azf-TO-al4"/>
                             <constraint firstItem="aVq-X5-buC" firstAttribute="centerX" secondItem="RHd-M5-UnV" secondAttribute="centerX" id="bGC-sI-bxo"/>
                             <constraint firstItem="Nn9-ky-Plx" firstAttribute="top" secondItem="DzC-d9-81I" secondAttribute="bottom" constant="38" id="eW7-ib-ZIJ"/>
+                            <constraint firstItem="Nn9-ky-Plx" firstAttribute="top" secondItem="X36-3G-Xrl" secondAttribute="bottom" id="gOm-BR-iAP"/>
                             <constraint firstAttribute="trailing" secondItem="NIm-3s-Mzd" secondAttribute="trailing" constant="34" id="nL7-Zw-bKd"/>
                             <constraint firstItem="aVq-X5-buC" firstAttribute="top" secondItem="RHd-M5-UnV" secondAttribute="top" constant="130" id="qvP-1S-6Nl"/>
                             <constraint firstItem="NIm-3s-Mzd" firstAttribute="leading" secondItem="RHd-M5-UnV" secondAttribute="leading" constant="34" id="v0m-1z-6AF"/>
@@ -110,10 +132,13 @@
                     </view>
                     <navigationItem key="navigationItem" id="auB-vV-OgY"/>
                     <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="adWebView" destination="X36-3G-Xrl" id="m4e-xR-GMM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4h-AG-HlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="751" y="472"/>
+            <point key="canvasLocation" x="749.60000000000002" y="471.8140929535233"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Z6n-Rw-bQQ">
@@ -1534,8 +1559,8 @@
         <image name="public-verticalLine" width="1" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XD6-0k-kWn"/>
-        <segue reference="KjX-w8-Cew"/>
         <segue reference="AsI-Or-UNT"/>
+        <segue reference="i7x-Kp-OvS"/>
+        <segue reference="rbp-Jy-MDt"/>
     </inferredMetricsTieBreakers>
 </document>

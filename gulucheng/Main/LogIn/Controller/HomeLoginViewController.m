@@ -21,23 +21,36 @@
 
 #import "LaunchPanel.h"
 
-@interface HomeLoginViewController ()
+@interface HomeLoginViewController () <UINavigationControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIWebView *adWebView;
 
 @end
 
 @implementation HomeLoginViewController
+
+- (void)dealloc {
+    self.navigationController.delegate = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
     // 去掉导航分割线
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    self.navView.hidden = NO;
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+//    self.navigationController.delegate = self;
     // 去掉导航分割线
     UINavigationBar *navigationBar = self.navigationController.navigationBar;
     [navigationBar setShadowImage:[UIImage new]];
@@ -53,7 +66,23 @@
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstBeenUsed"];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+    else {
+        [self loadAd];
+    }
+}
+
+- (void)loadAd {
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.navView.hidden = YES;
+    [_adWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.91chuanwa.com/apphtml/index.html"]]];
     
+    WEAKSELF
+    GCD_AFTER(3, ^{
+        [weakSelf login];
+    });
+}
+
+- (void)login {
     YYDiskCache *yyDisk = [Tool yyDiskCache];
     if ([yyDisk containsObjectForKey:@"password"]) {
         
@@ -88,8 +117,6 @@
     } else if ([yyDisk containsObjectForKey:@"mobile"]) {
         [self performSegueWithIdentifier:@"loginSegue" sender:nil];
     }
-    
-    
 }
 
 - (void)showGuideView {
@@ -105,6 +132,10 @@
 }
 
 #pragma mark - Navigation
+
+- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
