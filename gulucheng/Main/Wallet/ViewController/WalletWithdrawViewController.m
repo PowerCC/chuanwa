@@ -7,11 +7,14 @@
 //
 
 #import "WalletWithdrawViewController.h"
+#import "RewardRuleApi.h"
 #import "TradeUserWithdrawApi.h"
+#import "RewardRuleModel.h"
 
 @interface WalletWithdrawViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *withdrawCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *withdrawAmountLabel;
 
 @property (weak, nonatomic) IBOutlet UITextField *alipayUserNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *alipayRealNameTextField;
@@ -31,6 +34,7 @@
     [super viewDidLoad];
     
     [self initUI];
+    [self requestForRewardRule];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -65,6 +69,22 @@
     [_alipayUserNameTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventAllEditingEvents];
     [_alipayRealNameTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventAllEditingEvents];
     [_amountTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventAllEditingEvents];
+}
+
+- (void)requestForRewardRule {
+    WEAKSELF
+    RewardRuleApi *rewardRuleApi = [[RewardRuleApi alloc] initWithApiKey:@"E417813A6750D9FF704FEF990C5EC499"];
+    [rewardRuleApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
+        if ([weakSelf isSuccessWithRequest:request.responseJSONObject]) {
+            RewardRuleModel *rewardRuleModel = [RewardRuleModel JCParse:request.responseJSONObject[@"data"]];
+            if (rewardRuleModel) {
+                weakSelf.withdrawAmountLabel.text = [NSString stringWithFormat:@"注：%@元以上可以提现", rewardRuleModel.minWithdraw];
+            }
+        }
+        
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [MBProgressHUD showError:@"无法获取规则，请重试" toView:self.view];
+    }];
 }
 
 - (void)requestForWithdraw {

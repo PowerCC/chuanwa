@@ -44,7 +44,6 @@
 #import "PhotoModel.h"
 #import "FavoriteUserModel.h"
 
-#import "NSDate+Extend.h"
 #import "IBNavigationBar.h"
 #import "SRActionSheet.h"
 #import "Tool.h"
@@ -1111,8 +1110,7 @@ static NSInteger const limit = 10;
                                      placeholderImage:[UIImage imageNamed:@"home-commentDefaultHead"]];
         commentCell.genderImageView.image = [UIImage imageNamed:favoriteUserModel.gender.integerValue == 1 ? @"home-boy" : @"home-girl"];
         commentCell.nickNameLabel.text = favoriteUserModel.nickName;
-        NSDate *confromDate = [NSDate dateWithTimeIntervalSince1970:favoriteUserModel.createTime.integerValue / 1000];
-        commentCell.timeLabel.text = [confromDate timeAgo];
+        commentCell.timeLabel.text = [NSDate timeAgo:favoriteUserModel.createTime.doubleValue];
         
         commentCell.headButtonTapBlock = ^{
             BOOL isMyselfCard = [favoriteUserModel.uid isEqualToString:GlobalData.userModel.userID];

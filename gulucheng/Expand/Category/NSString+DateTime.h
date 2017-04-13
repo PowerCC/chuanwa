@@ -10,8 +10,8 @@
 
 @interface NSString (DateTime)
 
-+ (NSString *)timestampSwitchTime:(NSInteger)timestamp andFormatter:(NSString *)format;
++ (NSString *)timestampSwitchTime:(double)timestamp andFormatter:(NSString *)format;
 
-+ (NSString *)timeAgo:(NSInteger)timestamp;
+//+ (NSString *)timeAgo:(double)timestamp;
 
 @end

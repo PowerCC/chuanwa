@@ -51,6 +51,7 @@
 #import "UIViewController+BackButtonHandler.h"
 #import "UIImage+ColorImage.h"
 #import "NSString+DateTime.h"
+#import "NSDate+Extend.h"
 
 /* 文字转换服务 */
 #import "TextConversionPictureService.h"

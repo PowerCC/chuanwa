@@ -7,7 +7,6 @@
 //
 
 #import "LoggerFormatter.h"
-#import "NSDate+Extend.h"
 
 @implementation LoggerFormatter
 

@@ -24,7 +24,7 @@
 - (void)setTradeLogsModel:(TradeLogsModel *)tradeLogsModel {
     _tradeLogsModel = tradeLogsModel;
     
-    _dateTimeLabel.text = [NSString timestampSwitchTime:tradeLogsModel.createTime.integerValue andFormatter:@"yyyy-MM-dd HH:mm:ss"];
+    _dateTimeLabel.text = [NSString timestampSwitchTime:tradeLogsModel.createTime.doubleValue andFormatter:@"yyyy-MM-dd HH:mm:ss"];
     
     _tradeStatusLabel.text = [NSString stringWithFormat:@"交易状态：%@", tradeLogsModel.tradeInfo];
     

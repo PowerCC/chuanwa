@@ -530,13 +530,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="今日还可提现3次" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrb-fz-tbR">
-                                <rect key="frame" x="16" y="78" width="94" height="15"/>
+                                <rect key="frame" x="16" y="59" width="94" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n06-3g-u2m">
-                                <rect key="frame" x="0.0" y="107" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="74" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hJ6-kR-gd9">
                                         <rect key="frame" x="16" y="15" width="82" height="20"/>
@@ -562,7 +562,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="73j-eZ-nHg">
-                                <rect key="frame" x="0.0" y="158" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="125" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="me6-ub-VhQ">
                                         <rect key="frame" x="16" y="15" width="82" height="19.5"/>
@@ -588,7 +588,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bz5-te-CZq">
-                                <rect key="frame" x="0.0" y="218" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="185" width="375" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金额（元）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e42-zd-pxQ">
                                         <rect key="frame" x="16" y="15" width="82" height="19.5"/>
@@ -613,14 +613,14 @@
                                     <constraint firstItem="2GD-rH-gUp" firstAttribute="leading" secondItem="e42-zd-pxQ" secondAttribute="trailing" constant="59" id="vQd-7r-VYW"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每日提现额度最低100元，最高500元" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nI-VV-VJt">
-                                <rect key="frame" x="16" y="280" width="203" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注：1元以上可以提现" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nI-VV-VJt">
+                                <rect key="frame" x="16" y="247" width="116" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ka1-Dc-Ob9">
-                                <rect key="frame" x="12" y="315" width="351" height="51"/>
+                                <rect key="frame" x="12" y="282" width="351" height="51"/>
                                 <color key="backgroundColor" red="1" green="0.50588235290000005" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="51" id="pc1-fK-drv"/>
@@ -636,8 +636,8 @@
                         </subviews>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="n06-3g-u2m" firstAttribute="top" secondItem="oT9-2Z-sB6" secondAttribute="bottom" constant="43" id="0dq-Tt-0av"/>
-                            <constraint firstItem="n06-3g-u2m" firstAttribute="top" secondItem="zrb-fz-tbR" secondAttribute="bottom" constant="14" id="3aX-6k-k8D"/>
+                            <constraint firstItem="n06-3g-u2m" firstAttribute="top" secondItem="oT9-2Z-sB6" secondAttribute="bottom" constant="10" id="0dq-Tt-0av"/>
+                            <constraint firstItem="n06-3g-u2m" firstAttribute="top" secondItem="zrb-fz-tbR" secondAttribute="bottom" id="3aX-6k-k8D"/>
                             <constraint firstAttribute="trailing" secondItem="Ka1-Dc-Ob9" secondAttribute="trailing" constant="12" id="7yE-U6-Ldw"/>
                             <constraint firstItem="Ka1-Dc-Ob9" firstAttribute="leading" secondItem="xUy-gC-wv4" secondAttribute="leading" constant="12" id="AYZ-XT-OIQ"/>
                             <constraint firstItem="zrb-fz-tbR" firstAttribute="leading" secondItem="xUy-gC-wv4" secondAttribute="leading" constant="16" id="GCL-Xu-kTE"/>
@@ -658,6 +658,7 @@
                         <outlet property="alipayRealNameTextField" destination="WQp-Of-Zet" id="3Pg-S6-fKZ"/>
                         <outlet property="alipayUserNameTextField" destination="p5H-vH-Jf0" id="xG8-8H-bIo"/>
                         <outlet property="amountTextField" destination="2GD-rH-gUp" id="3vY-RD-CEF"/>
+                        <outlet property="withdrawAmountLabel" destination="7nI-VV-VJt" id="GdJ-xp-pIx"/>
                         <outlet property="withdrawButton" destination="Ka1-Dc-Ob9" id="x3c-yS-MfT"/>
                         <outlet property="withdrawCountLabel" destination="zrb-fz-tbR" id="DW9-En-xuK"/>
                         <segue destination="ObM-q9-2GM" kind="show" identifier="walletWithdrawalSuccessSegue" id="Rrn-TU-jh1"/>

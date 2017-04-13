@@ -120,7 +120,7 @@ static NSInteger const limit = 12;
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     
-    _myCenterViewHeightConstraint.constant = SCREEN_HEIGHT - 64 + 291;
+    _myCenterViewHeightConstraint.constant = SCREEN_HEIGHT - 64 + 320;
     _viewWidthConstraint.constant = SCREEN_WIDTH * 4;
 }
 

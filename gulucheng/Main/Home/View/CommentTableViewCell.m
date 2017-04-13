@@ -8,7 +8,6 @@
 
 #import "CommentTableViewCell.h"
 #import "ReplyCommentContenCell.h"
-#import "NSDate+Extend.h"
 #import "UITableViewCell+WHC_AutoHeightForCell.h"
 
 static NSString *const ReplyCommentCell = @"replyCommentCell";
@@ -43,8 +42,7 @@ static NSString *const ReplyCommentCell = @"replyCommentCell";
         _nickNameLabel.text = commentModel.nickName;
         _commentLabel.text = commentModel.comment;
         _commentLabel.numberOfLines = 0;
-        NSDate *confromDate = [NSDate dateWithTimeIntervalSince1970:commentModel.createTime.integerValue / 1000];
-        _timeLabel.text = [confromDate timeAgo];
+        _timeLabel.text = [NSDate timeAgo:commentModel.createTime.doubleValue];
         
         _commentModel = commentModel;
         

@@ -10,7 +10,6 @@
 #import "ChartLineInfoView.h"
 #import "StatisticsApi.h"
 #import "StatisticsModel.h"
-#import "NSDate+Extend.h"
 
 @interface CardDataViewController ()
 

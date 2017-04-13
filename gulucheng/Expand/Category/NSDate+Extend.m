@@ -60,84 +60,6 @@ const NSInteger YEAR = 12 * MONTH;
     return [dateFormatter stringFromDate:self];
 }
 
-- (NSString *)timeAgo {
-    
-    /*
-     一小时之内的留言，显示X分钟前 ；
-     24小时内的留言显示X小时前；
-     48小时内的留言显示 昨天 mm：dd；
-     7天内显示X天前；
-     一年内显示的只显示月日时分不显示年，一年外的显示年月日时分
-     */
-    
-    NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:self];
-    
-    if (delta < 1 * MINUTE) {
-        return @"刚刚";
-    }
-    else if (delta < 1 * HOUR) {
-        int minutes = floor((double)delta / MINUTE);
-        return [NSString stringWithFormat:@"%d分钟前", minutes];
-    }
-    else if (delta < 24 * HOUR) {
-        int hours = floor((double)delta / HOUR);
-        return [NSString stringWithFormat:@"%d小时前", hours];
-    }
-    else if (delta < 48 * HOUR) {
-        return [NSString stringWithFormat:@"昨天 %@", [NSString timestampSwitchTime:delta andFormatter:@"HH:mm:ss"]];
-    }
-    else if (delta < 7 * DAY) {
-        int days = floor((double)delta / DAY);
-        return [NSString stringWithFormat:@"%d天前", days];
-    }
-    else if (delta < 1 * YEAR) {
-        return [NSString timestampSwitchTime:delta andFormatter:@"mm月dd日 HH:mm:ss"];
-    }
-    
-    return [NSString timestampSwitchTime:delta andFormatter:@"yyyy年mm月dd日 HH:mm:ss"];
-    
-    
-//    if (delta < 1 * MINUTE)
-//    {
-//        return @"刚刚";
-//    }
-//    else if (delta < 2 * MINUTE)
-//    {
-//        return @"1分钟前";
-//    }
-//    else if (delta < 45 * MINUTE)
-//    {
-//        int minutes = floor((double)delta/MINUTE);
-//        return [NSString stringWithFormat:@"%d分钟前", minutes];
-//    }
-//    else if (delta < 90 * MINUTE)
-//    {
-//        return @"1小时前";
-//    }
-//    else if (delta < 24 * HOUR)
-//    {
-//        int hours = floor((double)delta/HOUR);
-//        return [NSString stringWithFormat:@"%d小时前", hours];
-//    }
-//    else if (delta < 48 * HOUR)
-//    {
-//        return @"昨天";
-//    }
-//    else if (delta < 30 * DAY)
-//    {
-//        int days = floor((double)delta/DAY);
-//        return [NSString stringWithFormat:@"%d天前", days];
-//    }
-//    else if (delta < 12 * MONTH)
-//    {
-//        int months = floor((double)delta/MONTH);
-//        return months <= 1 ? @"1个月前" : [NSString stringWithFormat:@"%d个月前", months];
-//    }
-//    
-//    int years = floor((double)delta/MONTH/12.0);
-//    return years <= 1 ? @"1年前" : [NSString stringWithFormat:@"%d年前", years];
-}
-
 - (NSString *)timeLeft {
     long int delta = lround( [self timeIntervalSinceDate:[NSDate date]] );
     
@@ -186,6 +108,85 @@ const NSInteger YEAR = 12 * MONTH;
 
 + (long long)timeStamp {
     return (long long)[[NSDate date] timeIntervalSince1970];
+}
+
++ (NSString *)timeAgo:(double)timestamp {
+    
+    /*
+     一小时之内的留言，显示X分钟前 ；
+     24小时内的留言显示X小时前；
+     48小时内的留言显示 昨天 mm：dd；
+     7天内显示X天前；
+     一年内显示的只显示月日时分不显示年，一年外的显示年月日时分
+     */
+    
+    NSDate *confromTimesp = [NSDate dateWithTimeIntervalSince1970:timestamp / 1000];
+    NSTimeInterval delta = [[NSDate date] timeIntervalSinceDate:confromTimesp];
+    
+    if (delta < 1 * MINUTE) {
+        return @"刚刚";
+    }
+    else if (delta < 1 * HOUR) {
+        int minutes = floor((double)delta / MINUTE);
+        return [NSString stringWithFormat:@"%d分钟前", minutes];
+    }
+    else if (delta < 24 * HOUR) {
+        int hours = floor((double)delta / HOUR);
+        return [NSString stringWithFormat:@"%d小时前", hours];
+    }
+    else if (delta < 48 * HOUR) {
+        return [NSString stringWithFormat:@"昨天 %@", [NSString timestampSwitchTime:timestamp andFormatter:@"HH:mm:ss"]];
+    }
+    else if (delta < 7 * DAY) {
+        int days = floor((double)delta / DAY);
+        return [NSString stringWithFormat:@"%d天前", days];
+    }
+    else if (delta < 1 * YEAR) {
+        return [NSString timestampSwitchTime:timestamp andFormatter:@"MM月dd日 HH:mm:ss"];
+    }
+    
+    return [NSString timestampSwitchTime:timestamp andFormatter:@"yyyy年MM月dd日 HH:mm:ss"];
+    
+    
+    //    if (delta < 1 * MINUTE)
+    //    {
+    //        return @"刚刚";
+    //    }
+    //    else if (delta < 2 * MINUTE)
+    //    {
+    //        return @"1分钟前";
+    //    }
+    //    else if (delta < 45 * MINUTE)
+    //    {
+    //        int minutes = floor((double)delta/MINUTE);
+    //        return [NSString stringWithFormat:@"%d分钟前", minutes];
+    //    }
+    //    else if (delta < 90 * MINUTE)
+    //    {
+    //        return @"1小时前";
+    //    }
+    //    else if (delta < 24 * HOUR)
+    //    {
+    //        int hours = floor((double)delta/HOUR);
+    //        return [NSString stringWithFormat:@"%d小时前", hours];
+    //    }
+    //    else if (delta < 48 * HOUR)
+    //    {
+    //        return @"昨天";
+    //    }
+    //    else if (delta < 30 * DAY)
+    //    {
+    //        int days = floor((double)delta/DAY);
+    //        return [NSString stringWithFormat:@"%d天前", days];
+    //    }
+    //    else if (delta < 12 * MONTH)
+    //    {
+    //        int months = floor((double)delta/MONTH);
+    //        return months <= 1 ? @"1个月前" : [NSString stringWithFormat:@"%d个月前", months];
+    //    }
+    //    
+    //    int years = floor((double)delta/MONTH/12.0);
+    //    return years <= 1 ? @"1年前" : [NSString stringWithFormat:@"%d年前", years];
 }
 
 + (NSDate *)dateWithString:(NSString *)string format:(NSString*)format {

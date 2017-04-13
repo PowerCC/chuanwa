@@ -35,12 +35,12 @@
         [_spicImageView sd_setImageWithURL:[NSURL URLWithString:rewardListModel.spic] placeholderImage:[UIImage imageNamed:@"wallet-balance-logo"]];
     }
     
-    _createTimeLable.text = [NSString timestampSwitchTime:rewardListModel.createTime.integerValue andFormatter:@"yyyy-MM-dd HH:mm:ss"];
-    _publishRewardLable.text = [NSString stringWithFormat:@"发布奖金 %@", rewardListModel.publishReward];
+    _createTimeLable.text = [NSString timestampSwitchTime:rewardListModel.createTime.doubleValue andFormatter:@"yyyy-MM-dd HH:mm:ss"];
+    _publishRewardLable.text = [NSString stringWithFormat:@"发布奖金 %.3f", rewardListModel.publishReward.floatValue];
     
     if (rewardListModel.reward.floatValue > 0) {
         _noSpreadReasonDescLabel.hidden = YES;
-        _rewardLabel.text = [NSString stringWithFormat:@"传递奖金 %@", rewardListModel.reward];
+        _rewardLabel.text = [NSString stringWithFormat:@"传递奖金 %.3f", rewardListModel.reward.floatValue];
     }
     else {
         _rewardLabel.text = @"传递奖金 ";

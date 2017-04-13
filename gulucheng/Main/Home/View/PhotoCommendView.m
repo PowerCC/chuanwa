@@ -91,10 +91,10 @@ static NSString * const photoCell = @"PhotoCell";
     cell.nameLabel.text = _photoCommendModel.nickName;
     
     if (_photoCommendModel.distMeter != nil && _photoCommendModel.distMeter.floatValue <= 100) {
-        cell.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", _photoCommendModel.distMeter.floatValue, [NSString timeAgo:_photoCommendModel.createTime.integerValue]];
+        cell.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", _photoCommendModel.distMeter.floatValue, [NSDate timeAgo:_photoCommendModel.createTime.doubleValue]];
     }
     else {
-        cell.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", _photoCommendModel.distKm.floatValue, [NSString timeAgo:_photoCommendModel.createTime.integerValue]];
+        cell.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", _photoCommendModel.distKm.floatValue, [NSDate timeAgo:_photoCommendModel.createTime.doubleValue]];
     }
     
     cell.distanceAndTimeAgoLabel.text = [cell.distanceAndTimeAgoLabel.text stringByReplacingOccurrencesOfString:@".00" withString:@""];

@@ -7,11 +7,10 @@
 //
 
 #import "NSString+DateTime.h"
-#import "NSDate+Extend.h"
 
 @implementation NSString (DateTime)
 
-+ (NSString *)timestampSwitchTime:(NSInteger)timestamp andFormatter:(NSString *)format {
++ (NSString *)timestampSwitchTime:(double)timestamp andFormatter:(NSString *)format {
     
 
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -34,8 +33,7 @@
     return confromTimespStr;
 }
 
-+ (NSString *)timeAgo:(NSInteger)timestamp {
-    NSDate *confromDate = [NSDate dateWithTimeIntervalSince1970:timestamp / 1000];
-    return [confromDate timeAgo];
-}
+//+ (NSString *)timeAgo:(double)timestamp {
+//    return [NSDate timeAgo:timestamp];
+//}
 @end

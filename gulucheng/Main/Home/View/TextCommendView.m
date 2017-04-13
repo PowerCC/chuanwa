@@ -43,10 +43,10 @@
         weakSelf.nameLabel.text = textCommendModel.nickName;
         
         if (textCommendModel.distMeter != nil && textCommendModel.distMeter.floatValue <= 100) {
-            weakSelf.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", textCommendModel.distMeter.floatValue, [NSString timeAgo:textCommendModel.createTime.integerValue]];
+            weakSelf.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", textCommendModel.distMeter.floatValue, [NSDate timeAgo:textCommendModel.createTime.doubleValue]];
         }
         else {
-            weakSelf.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", textCommendModel.distKm.floatValue, [NSString timeAgo:textCommendModel.createTime.integerValue]];
+            weakSelf.distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", textCommendModel.distKm.floatValue, [NSDate timeAgo:textCommendModel.createTime.doubleValue]];
         }
         
         weakSelf.distanceAndTimeAgoLabel.text = [weakSelf.distanceAndTimeAgoLabel.text stringByReplacingOccurrencesOfString:@".00" withString:@""];

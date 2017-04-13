@@ -132,10 +132,10 @@ static NSString * const voteCell = @"voteCommendCell";
     _nickNameLabel.text = voteCommendModel.nickName;
     
     if (voteCommendModel.distMeter != nil && voteCommendModel.distMeter.floatValue <= 100) {
-        _distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", voteCommendModel.distMeter.floatValue, [NSString timeAgo:voteCommendModel.createTime.integerValue]];
+        _distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2f米 ∙ %@", voteCommendModel.distMeter.floatValue, [NSDate timeAgo:voteCommendModel.createTime.doubleValue]];
     }
     else {
-        _distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", voteCommendModel.distKm.floatValue, [NSString timeAgo:voteCommendModel.createTime.integerValue]];
+        _distanceAndTimeAgoLabel.text = [NSString stringWithFormat:@"%.2fkm ∙ %@", voteCommendModel.distKm.floatValue, [NSDate timeAgo:voteCommendModel.createTime.doubleValue]];
     }
     
     _distanceAndTimeAgoLabel.text = [_distanceAndTimeAgoLabel.text stringByReplacingOccurrencesOfString:@".00" withString:@""];

@@ -26,11 +26,10 @@ extern const NSInteger YEAR;
 @property (nonatomic, readonly) NSInteger	weekday;
 
 - (NSString *)stringWithDateFormat:(NSString *)format;
-- (NSString *)timeAgo;
 - (NSString *)timeLeft;
 
 + (long long)timeStamp;
-
++ (NSString *)timeAgo:(double)timestamp;
 + (NSDate *)dateWithString:(NSString *)string format:(NSString*)format;
 + (NSDate *)now;
 
