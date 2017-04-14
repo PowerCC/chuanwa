@@ -50,6 +50,8 @@
 
 #import "UIViewController+BackButtonHandler.h"
 #import "UIImage+ColorImage.h"
+#import "UIImage+EMMultiFormat.h"
+#import "UIImage+EMGIF.h"
 #import "NSString+DateTime.h"
 #import "NSDate+Extend.h"
 

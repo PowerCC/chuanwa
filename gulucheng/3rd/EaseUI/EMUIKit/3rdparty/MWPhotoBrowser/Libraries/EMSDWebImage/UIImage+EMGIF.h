@@ -10,9 +10,9 @@
 
 @interface UIImage (EMGIF)
 
-+ (UIImage *)sd_animatedGIFNamed:(NSString *)name;
++ (UIImage *)sd_animatedEMGIFNamed:(NSString *)name;
 
-+ (UIImage *)sd_animatedGIFWithData:(NSData *)data;
++ (UIImage *)sd_animatedEMGIFWithData:(NSData *)data;
 
 - (UIImage *)sd_animatedImageByScalingAndCroppingToSize:(CGSize)size;
 

@@ -188,123 +188,84 @@ static NSString * const photoCell = @"PhotoCell";
     [indicator startAnimating];
     cell.normalView.hidden = YES;
     cell.businessView.hidden = YES;
-    [cell.photoImageView sd_setImageWithURL:[NSURL URLWithString:photoModel.picPath]
-                           placeholderImage:nil
-                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                      
-                                      cell.photoImageView.alpha = 0.0;
-                                      
-                                      [indicator stopAnimating];
-                                      
-                                      if (!error) {
-                                          if (_photoCommendModel.bizUid.integerValue == 0) {
-                                              // 如果图片高度小于最基本高度的情况
-                                              if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
-//                                              cell.imageHeightConstraint.constant = imageBaseHeight;
-// 设置normalView的位置
-//                                              cell.detailViewTopConstraint.constant = - (imageBaseHeight - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
-                                              } else {
-//                                              if (image.size.width > 0) {
-//                                                  cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
-//                                              }
+    
+    WEAKSELF
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+//    NSString *dd = @"http://img.yxbao.com/news/image/201704/13/5854d890af.gif";
+    cell.photoImageView.alpha = 0.0;
+    [downloader downloadImageWithURL:[NSURL URLWithString:photoModel.picPath] options:SDWebImageDownloaderLowPriority progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        UIImage *pImage = [UIImage sd_emImageWithData:data];
+        cell.photoImageView.image = pImage;
+        
+        
+        [indicator stopAnimating];
+        
+        if (!error) {
+            if (_photoCommendModel.bizUid.integerValue == 0) {
+                // 如果图片高度小于最基本高度的情况
+                if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
+                    
+                } else {
+                    
+                }
+                
+                cell.normalView.hidden = NO;
+                cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
+                CGFloat buttomViewHeight = weakSelf.photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
+                CGFloat imageSizeHeight = cell.imageHeightConstraint.constant + cell.normalView.frame.size.height;
+                
+                CGFloat viewHeight = SCREEN_HEIGHT - buttomViewHeight - NavigationBarHeight;
+                if (imageSizeHeight >= viewHeight) {
+                    cell.detailViewTopConstraint.constant = viewHeight - imageSizeHeight;
+                }
+                else {
+                    cell.detailViewTopConstraint.constant = 0.0;
+                    cell.imageTopConstraint.constant = (viewHeight - imageSizeHeight) / 2;
+                }
 
-//                                              float buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
-//                                              float leftBlackSpace = SCREEN_HEIGHT - NavigationBarHeight - buttomViewHeight - cell.imageHeightConstraint.constant;
-
-//                                              GCD_AFTER(0.0, ^{
-
-//                                                  cell.detailViewTopConstraint.constant = -(cell.normalView.frame.size.height + 50);
-
-//                                                  float normalViewHeight = cell.normalView.frame.size.height;
-//
-//                                                  if (normalViewHeight <= leftBlackSpace) {
-//                                                      cell.detailViewTopConstraint.constant = 0;
-//                                                  }
-//                                                  else {
-//                                                      // 移动的距离就是空白间隙与normalView高度之间的差
-//                                                      cell.detailViewTopConstraint.constant = leftBlackSpace - normalViewHeight;
-//                                                  }
-//                                              });
-                                              }
-                                              
-                                              cell.normalView.hidden = NO;
-                                              cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
-                                              CGFloat buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
-                                              CGFloat imageSizeHeight = cell.imageHeightConstraint.constant + cell.normalView.frame.size.height;
-                                              
-                                              CGFloat viewHeight = SCREEN_HEIGHT - buttomViewHeight - NavigationBarHeight;
-                                              if (imageSizeHeight >= viewHeight) {
-                                                  cell.detailViewTopConstraint.constant = viewHeight - imageSizeHeight;
-                                              }
-                                              else {
-                                                  cell.detailViewTopConstraint.constant = 0.0;
-                                                  cell.imageTopConstraint.constant = (viewHeight - imageSizeHeight) / 2;
-                                              }
-                                              
-                                              [UIView animateWithDuration:0.3 animations:^{
-                                                  cell.photoImageView.alpha = 1.0;
-                                              }];
-                                              
-//                                              GCD_AFTER(0.03, ^{
-//                                                  
-//                                              });
-                                          }
-                                          else {
-                                              // 如果图片高度小于最基本高度的情况
-                                              if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
-//                                              cell.imageHeightConstraint.constant = imageBaseHeight;
-// 设置normalView的位置
-//                                              cell.businessViewTopConstraint.constant = - (imageBaseHeight - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
-                                              } else {
-//                                              if (image.size.width > 0) {
-//                                                  cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
-//                                              }
-
-//                                              float buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
-//                                              float leftBlackSpace = SCREEN_HEIGHT - NavigationBarHeight - buttomViewHeight - cell.imageHeightConstraint.constant;
-
-//                                              GCD_AFTER(0.0, ^{
-
-//                                                  cell.detailViewTopConstraint.constant = -(cell.normalView.frame.size.height + 50);
-
-//                                                  float businessViewHeight = cell.businessView.frame.size.height;
-//
-//                                                  if (businessViewHeight <= leftBlackSpace) {
-//                                                      cell.businessViewTopConstraint.constant = 0;
-//                                                  }
-//                                                  else {
-//                                                      // 移动的距离就是空白间隙与normalView高度之间的差
-//                                                      cell.businessViewTopConstraint.constant = leftBlackSpace - businessViewHeight;
-//                                                  }
-//                                              });
-                                              }
-                                              
-                                              cell.businessView.hidden = NO;
-                                              cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
-                                              CGFloat buttomViewHeight = _photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
-                                              CGFloat imageSizeHeight = cell.imageHeightConstraint.constant + cell.businessView.frame.size.height;
-                                              
-                                              CGFloat viewHeight = SCREEN_HEIGHT - buttomViewHeight - NavigationBarHeight;
-                                              if (imageSizeHeight >= viewHeight) {
-                                                  cell.businessViewTopConstraint.constant = viewHeight - imageSizeHeight;
-                                              }
-                                              else {
-                                                  cell.businessViewTopConstraint.constant = 0.0;
-                                                  cell.imageTopConstraint.constant = (viewHeight - imageSizeHeight) / 2;
-                                              }
-                                              
-                                              [UIView animateWithDuration:0.3 animations:^{
-                                                  cell.photoImageView.alpha = 1.0;
-                                              }];
-//                                              GCD_AFTER(0.03, ^{
-//                                                  
-//                                              });
-                                          }
-                                      }
-                                      else {
-                                          cell.phoneImageView.alpha = 1.0;
-                                      }
-                                  }];
+                [UIView animateWithDuration:0.3 animations:^{
+                    cell.photoImageView.alpha = 1.0;
+                }];
+            }
+            else {
+                // 如果图片高度小于最基本高度的情况
+                if (SCREEN_WIDTH/image.size.width * image.size.height <= imageBaseHeight) {
+                    
+                } else {
+                    
+                }
+                
+                cell.businessView.hidden = NO;
+                cell.imageHeightConstraint.constant = SCREEN_WIDTH/image.size.width * image.size.height;
+                CGFloat buttomViewHeight = weakSelf.photoCommendModel.eventPicVos.count > 1 ? commendButtomViewPageHeight : commendButtomViewHeight;
+                CGFloat imageSizeHeight = cell.imageHeightConstraint.constant + cell.businessView.frame.size.height;
+                
+                CGFloat viewHeight = SCREEN_HEIGHT - buttomViewHeight - NavigationBarHeight;
+                if (imageSizeHeight >= viewHeight) {
+                    cell.businessViewTopConstraint.constant = viewHeight - imageSizeHeight;
+                }
+                else {
+                    cell.businessViewTopConstraint.constant = 0.0;
+                    cell.imageTopConstraint.constant = (viewHeight - imageSizeHeight) / 2;
+                }
+                
+                [UIView animateWithDuration:0.3 animations:^{
+                    cell.photoImageView.alpha = 1.0;
+                }];
+            }
+        }
+        else {
+            cell.phoneImageView.alpha = 1.0;
+        }
+    }];
+    
+//    [cell.photoImageView sd_setImageWithURL:[NSURL URLWithString:photoModel.picPath]
+//                           placeholderImage:nil
+//                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+// 
+//                                  }];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

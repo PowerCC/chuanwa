@@ -17,11 +17,11 @@
 
 @implementation UIImage (EMMultiFormat)
 
-+ (UIImage *)sd_imageWithData:(NSData *)data {
++ (UIImage *)sd_emImageWithData:(NSData *)data {
     UIImage *image;
     NSString *imageContentType = [NSData sd_contentTypeForImageData:data];
     if ([imageContentType isEqualToString:@"image/gif"]) {
-        image = [UIImage sd_animatedGIFWithData:data];
+        image = [UIImage sd_animatedEMGIFWithData:data];
     }
 #ifdef SD_WEBP
     else if ([imageContentType isEqualToString:@"image/webp"])

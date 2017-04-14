@@ -344,7 +344,7 @@
             completionBlock(nil, nil, nil, YES);
         }
         else {
-            UIImage *image = [UIImage sd_imageWithData:self.imageData];
+            UIImage *image = [UIImage sd_emImageWithData:self.imageData];
             NSString *key = [[EMSDWebImageManager sharedManager] cacheKeyForURL:self.request.URL];
             image = [self scaledImageForKey:key image:image];
             

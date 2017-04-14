@@ -170,52 +170,61 @@ static NSString * const photoCell = @"DetailPhotoCell";
 
 - (void)collectionview:(UICollectionView *)collectionView cell:(PhotoCommendCell *)cell photoModel:(PhotoModel *)photoModel indexPath:(NSIndexPath *)indexPath {
     
-    [cell.photoImageView sd_setImageWithURL:[NSURL URLWithString:photoModel.picPath]
-                           placeholderImage:nil
-                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-                                      
-                                      if (_photoCommendModel.bizUid.integerValue == 0) {
-                                          
-                                          if (SCREEN_WIDTH / image.size.width * image.size.height <= 248) {
-                                              cell.imageHeightConstraint.constant = 248;
+    WEAKSELF
+    SDWebImageDownloader *downloader = [SDWebImageDownloader sharedDownloader];
+    [downloader downloadImageWithURL:[NSURL URLWithString:photoModel.picPath] options:SDWebImageDownloaderLowPriority progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        
+    } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        UIImage *pImage = [UIImage sd_emImageWithData:data];
+        cell.photoImageView.image = pImage;
+        
+        if (weakSelf.photoCommendModel.bizUid.integerValue == 0) {
+            
+            if (SCREEN_WIDTH / image.size.width * image.size.height <= 248) {
+                cell.imageHeightConstraint.constant = 248;
 //                                              cell.detailViewTopConstraint.constant = - (248 - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
-                                          } else {
-                                              cell.imageHeightConstraint.constant = SCREEN_WIDTH / image.size.width * image.size.height;
+            } else {
+                cell.imageHeightConstraint.constant = SCREEN_WIDTH / image.size.width * image.size.height;
 //                                              cell.detailViewTopConstraint.constant = 0;
-                                          }
-                                          
-                                          if (indexPath.row == 0 && _isFirstIn) {
-                                              WEAKSELF
-                                              GCD_AFTER(0.0, ^{
-                                                  if (weakSelf.photoViewHeightBlock) {
-                                                      // 非商家
-                                                      weakSelf.photoViewHeightBlock(cell.imageHeightConstraint.constant + cell.normalView.frame.size.height);
-                                                  }
-                                                  weakSelf.isFirstIn = NO;
-                                              });
-                                          }
-                                      } else {
-                                          
-                                          if (SCREEN_WIDTH / image.size.width * image.size.height <= 248) {
-                                              cell.imageHeightConstraint.constant = 248;
+            }
+            
+            if (indexPath.row == 0 && _isFirstIn) {
+                GCD_AFTER(0.0, ^{
+                    if (weakSelf.photoViewHeightBlock) {
+                        // 非商家
+                        weakSelf.photoViewHeightBlock(cell.imageHeightConstraint.constant + cell.normalView.frame.size.height);
+                    }
+                    weakSelf.isFirstIn = NO;
+                });
+            }
+        } else {
+            
+            if (SCREEN_WIDTH / image.size.width * image.size.height <= 248) {
+                cell.imageHeightConstraint.constant = 248;
 //                                              cell.businessViewTopConstraint.constant = - (248 - SCREEN_WIDTH/image.size.width * image.size.height) / 2;
-                                          } else {
-                                              cell.imageHeightConstraint.constant = SCREEN_WIDTH / image.size.width * image.size.height;
+            } else {
+                cell.imageHeightConstraint.constant = SCREEN_WIDTH / image.size.width * image.size.height;
 //                                              cell.businessViewTopConstraint.constant = 0;
-                                          }
-                                          
-                                          if (indexPath.row == 0 && _isFirstIn) {
-                                              WEAKSELF
-                                              GCD_AFTER(0.0, ^{
-                                                  if (weakSelf.photoViewHeightBlock) {
-                                                      // 商家
-                                                      weakSelf.photoViewHeightBlock(cell.imageHeightConstraint.constant + cell.businessView.frame.size.height);
-                                                  }
-                                                  weakSelf.isFirstIn = NO;
-                                              });
-                                          }
-                                      }
-                                  }];
+            }
+            
+            if (indexPath.row == 0 && _isFirstIn) {
+                GCD_AFTER(0.0, ^{
+                    if (weakSelf.photoViewHeightBlock) {
+                        // 商家
+                        weakSelf.photoViewHeightBlock(cell.imageHeightConstraint.constant + cell.businessView.frame.size.height);
+                    }
+                    weakSelf.isFirstIn = NO;
+                });
+            }
+        }
+    }];
+    
+//    [cell.photoImageView sd_setImageWithURL:[NSURL URLWithString:photoModel.picPath]
+//                           placeholderImage:nil
+//                                  completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//
+//                                  }];
+    
 }
 
 @end

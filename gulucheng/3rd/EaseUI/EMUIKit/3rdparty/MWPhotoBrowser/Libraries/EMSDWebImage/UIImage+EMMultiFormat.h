@@ -10,6 +10,6 @@
 
 @interface UIImage (EMMultiFormat)
 
-+ (UIImage *)sd_imageWithData:(NSData *)data;
++ (UIImage *)sd_emImageWithData:(NSData *)data;
 
 @end

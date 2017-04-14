@@ -15,7 +15,6 @@
 #import "EaseEmoji.h"
 #import "EaseEmotionEscape.h"
 #import "EaseCustomMessageCell.h"
-#import "UIImage+EMGIF.h"
 
 @interface ChatViewController () <SRActionSheetDelegate>
 
@@ -169,7 +168,7 @@
                 if (self.dataSource && [self.dataSource respondsToSelector:@selector(emotionURLFormessageViewController:messageModel:)]) {
                     EaseEmotion *emotion = [self.dataSource emotionURLFormessageViewController:self messageModel:model];
                     if (emotion) {
-                        model.image = [UIImage sd_animatedGIFNamed:emotion.emotionOriginal];
+                        model.image = [UIImage sd_animatedEMGIFNamed:emotion.emotionOriginal];
                         model.fileURLPath = emotion.emotionOriginalURL;
                     }
                 }

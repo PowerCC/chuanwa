@@ -11,7 +11,7 @@
 
 @implementation UIImage (EMGIF)
 
-+ (UIImage *)sd_animatedGIFWithData:(NSData *)data {
++ (UIImage *)sd_animatedEMGIFWithData:(NSData *)data {
     if (!data) {
         return nil;
     }
@@ -83,7 +83,7 @@
     return frameDuration;
 }
 
-+ (UIImage *)sd_animatedGIFNamed:(NSString *)name {
++ (UIImage *)sd_animatedEMGIFNamed:(NSString *)name {
     CGFloat scale = [UIScreen mainScreen].scale;
 
     if (scale > 1.0f) {
@@ -92,7 +92,7 @@
         NSData *data = [NSData dataWithContentsOfFile:retinaPath];
 
         if (data) {
-            return [UIImage sd_animatedGIFWithData:data];
+            return [UIImage sd_animatedEMGIFWithData:data];
         }
 
         NSString *path = [[NSBundle mainBundle] pathForResource:name ofType:@"gif"];
@@ -100,7 +100,7 @@
         data = [NSData dataWithContentsOfFile:path];
 
         if (data) {
-            return [UIImage sd_animatedGIFWithData:data];
+            return [UIImage sd_animatedEMGIFWithData:data];
         }
 
         return [UIImage imageNamed:name];
@@ -111,7 +111,7 @@
         NSData *data = [NSData dataWithContentsOfFile:path];
 
         if (data) {
-            return [UIImage sd_animatedGIFWithData:data];
+            return [UIImage sd_animatedEMGIFWithData:data];
         }
 
         return [UIImage imageNamed:name];
