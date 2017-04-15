@@ -103,13 +103,19 @@
                                 </connections>
                             </webView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pkr-q4-G9y">
-                                <rect key="frame" x="290" y="35" width="70" height="30"/>
+                                <rect key="frame" x="290" y="30" width="70" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.297329837328767" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="hCt-8B-fVW"/>
                                     <constraint firstAttribute="width" constant="70" id="j4V-yD-BEf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <state key="normal" title="跳过广告"/>
+                                <state key="normal" title="跳过广告">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipAdAction:" destination="gm6-Wk-UxL" eventType="touchUpInside" id="396-cJ-xgW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -119,7 +125,7 @@
                             <constraint firstAttribute="trailing" secondItem="DzC-d9-81I" secondAttribute="trailing" constant="34" id="CRF-fy-8xX"/>
                             <constraint firstItem="DzC-d9-81I" firstAttribute="top" secondItem="NIm-3s-Mzd" secondAttribute="bottom" constant="32" id="EPV-mm-uGw"/>
                             <constraint firstAttribute="trailing" secondItem="Pkr-q4-G9y" secondAttribute="trailing" constant="15" id="I1u-yf-ZaZ"/>
-                            <constraint firstItem="Pkr-q4-G9y" firstAttribute="top" secondItem="Pqt-oc-QyS" secondAttribute="bottom" constant="15" id="LeO-wO-Lnp"/>
+                            <constraint firstItem="Pkr-q4-G9y" firstAttribute="top" secondItem="Pqt-oc-QyS" secondAttribute="bottom" constant="10" id="LeO-wO-Lnp"/>
                             <constraint firstAttribute="trailing" secondItem="X36-3G-Xrl" secondAttribute="trailing" id="Nvf-A4-A3y"/>
                             <constraint firstItem="X36-3G-Xrl" firstAttribute="leading" secondItem="RHd-M5-UnV" secondAttribute="leading" id="azf-TO-al4"/>
                             <constraint firstItem="aVq-X5-buC" firstAttribute="centerX" secondItem="RHd-M5-UnV" secondAttribute="centerX" id="bGC-sI-bxo"/>
@@ -134,6 +140,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="adWebView" destination="X36-3G-Xrl" id="m4e-xR-GMM"/>
+                        <outlet property="skipButton" destination="Pkr-q4-G9y" id="mr7-XE-UCe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d4h-AG-HlU" userLabel="First Responder" sceneMemberID="firstResponder"/>

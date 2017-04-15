@@ -196,6 +196,14 @@ static NSString * const photoCell = @"PhotoCell";
     [downloader downloadImageWithURL:[NSURL URLWithString:photoModel.picPath] options:SDWebImageDownloaderLowPriority progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
         
     } completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, BOOL finished) {
+        
+        if (error) {
+            [indicator stopAnimating];
+            [indicator removeFromSuperview];
+            [weakSelf collectionview:collectionView cell:cell photoModel:photoModel indexPath:indexPath];
+            return;
+        }
+        
         UIImage *pImage = [UIImage sd_emImageWithData:data];
         cell.photoImageView.image = pImage;
         

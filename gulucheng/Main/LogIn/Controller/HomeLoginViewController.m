@@ -24,6 +24,9 @@
 @interface HomeLoginViewController () <UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *adWebView;
+@property (weak, nonatomic) IBOutlet UIButton *skipButton;
+
+@property (strong, nonatomic) NSTimer *adTimer;
 
 @end
 
@@ -58,17 +61,31 @@
     // 设置导航栏返回按钮颜色
     navigationBar.tintColor = Them_orangeColor;
     
+    [_skipButton circularWithSize:CGSizeMake(3, 3)];
+    
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstBeenUsed"]) {
         NSLog(@"第一次使用app客户端！");
+        
+        [_adWebView removeFromSuperview];
+        [_skipButton removeFromSuperview];
+        
         // 首次使用app进入引导页面
         [self showGuideView];
         
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstBeenUsed"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        [self login];
     }
     else {
         [self loadAd];
     }
+}
+
+- (void)toLogin {
+    [_adTimer invalidate];
+    self.adTimer = nil;
+    [self login];
 }
 
 - (void)loadAd {
@@ -76,10 +93,7 @@
     self.navView.hidden = YES;
     [_adWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.91chuanwa.com/apphtml/index.html"]]];
     
-    WEAKSELF
-    GCD_AFTER(3, ^{
-        [weakSelf login];
-    });
+    self.adTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(toLogin) userInfo:nil repeats:NO];
 }
 
 - (void)login {
@@ -129,6 +143,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)skipAdAction:(id)sender {
+    [self toLogin];
 }
 
 #pragma mark - Navigation
