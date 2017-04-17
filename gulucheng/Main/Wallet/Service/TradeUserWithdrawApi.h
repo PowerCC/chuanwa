@@ -6,9 +6,9 @@
 //  Copyright © 2017年 许坤志. All rights reserved.
 //
 
-#import <YTKNetwork/YTKNetwork.h>
+#import "BaseRequest.h"
 
-@interface TradeUserWithdrawApi : YTKRequest
+@interface TradeUserWithdrawApi : BaseRequest
 
 - (instancetype)initWithWithdrawAccount:(NSString *)withdrawAccount
                        withdrawRealName:(NSString *)withdrawRealName

@@ -6,16 +6,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "gulucheng/Main/Base/BaseController/BaseViewController.m"
-            timestampString = "513941286.623028"
+            filePath = "gulucheng/Main/Home/ViewController/CardDetailViewController.m"
+            timestampString = "514118821.998499"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "-isSuccessWithRequest:"
+            startingLineNumber = "909"
+            endingLineNumber = "909"
+            landmarkName = "-changeSelectedButtonColorWithIndex:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

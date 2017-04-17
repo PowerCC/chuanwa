@@ -148,17 +148,15 @@
                 PublishModel *publishModel = [PublishModel JCParse:request.responseJSONObject[@"data"]];
                 if (publishModel) {
 //                    [MBProgressHUD showSuccess:@"发布成功" toView:weakSelf.view];
-                    GCD_AFTER(1.0, ^{
-                        [weakSelf publishButtonActionWithEid:publishModel
-                                                         eid:publishModel.eventId
-                                                   eventType:@"vote"
-                                                   shareText:weakSelf.voteQuestionTextField.text
-                                                  shareImage:nil];
+                    [weakSelf publishButtonActionWithEid:publishModel
+                                                     eid:publishModel.eventId
+                                               eventType:@"vote"
+                                               shareText:weakSelf.voteQuestionTextField.text
+                                              shareImage:nil];
                         
-                        UIViewController *vc = ((BaseNavigationController *)weakSelf.presentingViewController).topViewController;
-                        weakSelf.navigationController.transitioningDelegate = vc;
-                        [weakSelf dismissViewControllerAnimated:YES completion:nil];
-                    });
+//                        UIViewController *vc = ((BaseNavigationController *)weakSelf.presentingViewController).topViewController;
+//                        weakSelf.navigationController.transitioningDelegate = vc;
+//                        [weakSelf dismissViewControllerAnimated:YES completion:nil];
                 }
             }
         } failure:^(YTKBaseRequest *request) {

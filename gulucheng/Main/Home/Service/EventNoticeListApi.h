@@ -6,9 +6,9 @@
 //  Copyright © 2017年 许坤志. All rights reserved.
 //
 
-#import "YTKRequest.h"
+#import "BaseRequest.h"
 
-@interface EventNoticeListApi : YTKRequest
+@interface EventNoticeListApi : BaseRequest
 
 - (instancetype)initWithOtherUserID:(NSString *)userID
                               limit:(NSInteger)limit

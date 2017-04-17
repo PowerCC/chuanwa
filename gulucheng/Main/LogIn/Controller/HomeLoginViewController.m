@@ -128,9 +128,14 @@
             [weakSelf performSegueWithIdentifier:@"loginSegue" sender:nil];
             [launchPanel launchAnimationDone];
         }];
-    } else if ([yyDisk containsObjectForKey:@"mobile"]) {
+    }
+    else {
         [self performSegueWithIdentifier:@"loginSegue" sender:nil];
     }
+    
+//    if ([yyDisk containsObjectForKey:@"mobile"]) {
+//        [self performSegueWithIdentifier:@"loginSegue" sender:nil];
+//    }
 }
 
 - (void)showGuideView {

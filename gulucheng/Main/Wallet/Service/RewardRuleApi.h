@@ -6,9 +6,9 @@
 //  Copyright © 2017年 许坤志. All rights reserved.
 //
 
-#import <YTKNetwork/YTKNetwork.h>
+#import "BaseRequest.h"
 
-@interface RewardRuleApi : YTKRequest
+@interface RewardRuleApi : BaseRequest
 
 - (instancetype)initWithApiKey:(NSString *)apiKey;
 

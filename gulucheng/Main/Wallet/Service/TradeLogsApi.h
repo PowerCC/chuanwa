@@ -6,9 +6,9 @@
 //  Copyright © 2017年 许坤志. All rights reserved.
 //
 
-#import <YTKNetwork/YTKNetwork.h>
+#import "BaseRequest.h"
 
-@interface TradeLogsApi : YTKRequest
+@interface TradeLogsApi : BaseRequest
 
 - (instancetype)initWithLimit:(NSInteger)limit
                        offset:(NSInteger)offset;

@@ -7,6 +7,7 @@
 //
 
 #import "BasePublishViewController.h"
+#import "HomeViewController.h"
 
 @interface BasePublishViewController ()
 
@@ -16,15 +17,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *sinaShareButton;
 @property (weak, nonatomic) IBOutlet UIButton *qqShareButton;
 
+@property (strong, nonatomic) HomeViewController *homeViewController;
+
 @end
 
 @implementation BasePublishViewController
 
-//- (void)dealloc {
-//    [self cleanUpAction];
-//    
-//    self.completionBlock = nil;
-//}
+- (void)dealloc {
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -37,6 +38,14 @@
 //                                                                       context:nil].size.width;
 //    
 //    self.locationImageViewRightConstraint.constant =  (locationLabelWidth < SCREEN_WIDTH - 106) ? (locationLabelWidth + 17) : (SCREEN_WIDTH - 106 + 17);
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    
 }
 
 - (IBAction)chatShareButtonAction:(id)sender {
@@ -67,10 +76,36 @@
 }
 
 - (void)publishButtonActionWithEid:(PublishModel *)publishModel eid:(NSString *)eid eventType:(NSString *)eventType shareText:(NSString *)shareText shareImage:(UIImage *)shareImage {
-    
-    if (_publishBlock) {
-        _publishBlock (publishModel, eid, eventType, shareText, shareImage, _chatShareButton.selected, _sinaShareButton.selected, _qqShareButton.selected);
-    }
+
+    WEAKSELF
+    self.navigationController.navigationBar.hidden = YES;
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Home" bundle:nil];
+    UINavigationController *nav = [storyboard instantiateInitialViewController];
+    nav.view.frame = weakSelf.view.bounds;
+    self.homeViewController = (HomeViewController *)nav.topViewController;
+    _homeViewController.eventId = eid;
+    [_homeViewController eventRequest:eid success:^{
+        if (weakSelf.publishBlock) {
+            [weakSelf.view addSubview:nav.view];
+            weakSelf.publishBlock (publishModel, eid, eventType, shareText, shareImage, weakSelf.chatShareButton.selected, weakSelf.sinaShareButton.selected, weakSelf.qqShareButton.selected);
+            
+            GCD_AFTER(1.2, ^{
+                UIViewController *vc = ((BaseNavigationController *)weakSelf.presentingViewController).topViewController;
+                weakSelf.navigationController.transitioningDelegate = vc;
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            });
+        }
+    } failure:^{
+        if (weakSelf.publishBlock) {
+            weakSelf.publishBlock (publishModel, eid, eventType, shareText, shareImage, weakSelf.chatShareButton.selected, weakSelf.sinaShareButton.selected, weakSelf.qqShareButton.selected);
+            
+            GCD_AFTER(1.2, ^{
+                UIViewController *vc = ((BaseNavigationController *)weakSelf.presentingViewController).topViewController;
+                weakSelf.navigationController.transitioningDelegate = vc;
+                [weakSelf dismissViewControllerAnimated:YES completion:nil];
+            });
+        }
+    }];
 }
 
 - (IBAction)viewDismissButtonAction:(id)sender {

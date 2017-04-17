@@ -266,17 +266,11 @@
             PublishModel *publishModel = [PublishModel JCParse:request.responseJSONObject[@"data"]];
             if (publishModel) {
 //                [MBProgressHUD showSuccess:@"发布成功" toView:weakSelf.view];
-                GCD_AFTER(1.0, ^{
-                    [weakSelf publishButtonActionWithEid:publishModel
-                                                     eid:publishModel.eventId
-                                               eventType:@"pic"
-                                               shareText:nil
-                                              shareImage:[UIImage imageWithData:[Tool compressImage:weakSelf.photoArray.firstObject toTargetWidth:1024 maxFileSize:100]]];
-                    
-                    UIViewController *vc = ((BaseNavigationController *)weakSelf.presentingViewController).topViewController;
-                    weakSelf.navigationController.transitioningDelegate = vc;
-                    [weakSelf dismissViewControllerAnimated:YES completion:nil];
-                });
+                [weakSelf publishButtonActionWithEid:publishModel
+                                                 eid:publishModel.eventId
+                                           eventType:@"pic"
+                                           shareText:nil
+                                          shareImage:[UIImage imageWithData:[Tool compressImage:weakSelf.photoArray.firstObject toTargetWidth:1024 maxFileSize:100]]];
             }
         }
     } failure:^(YTKBaseRequest *request) {

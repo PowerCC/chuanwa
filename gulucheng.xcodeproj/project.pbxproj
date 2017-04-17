@@ -65,6 +65,7 @@
 		8224D33F1E2FCF0600DF9636 /* UIView+WHC_Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 8224D33A1E2FCF0600DF9636 /* UIView+WHC_Frame.m */; };
 		8224D3401E2FCF0600DF9636 /* WHC_StackView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8224D33C1E2FCF0600DF9636 /* WHC_StackView.m */; };
 		822EC1591E8E465300D92498 /* CustomAnimationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822EC1581E8E465300D92498 /* CustomAnimationController.m */; };
+		822EF0AA1EA4965E0029E3C7 /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 822EF0A91EA4965E0029E3C7 /* BaseRequest.m */; };
 		822FAF5E1E488B2F00FA6337 /* IMTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 822FAF5D1E488B2F00FA6337 /* IMTestViewController.m */; };
 		823295841E23CF5400C92044 /* PopAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 823295831E23CF5400C92044 /* PopAnimationTransition.m */; };
 		823295861E23DCD500C92044 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 823295851E23DCD500C92044 /* Podfile */; };
@@ -541,6 +542,8 @@
 		8224D33C1E2FCF0600DF9636 /* WHC_StackView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WHC_StackView.m; sourceTree = "<group>"; };
 		822EC1571E8E465300D92498 /* CustomAnimationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomAnimationController.h; sourceTree = "<group>"; };
 		822EC1581E8E465300D92498 /* CustomAnimationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomAnimationController.m; sourceTree = "<group>"; };
+		822EF0A81EA4965E0029E3C7 /* BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
+		822EF0A91EA4965E0029E3C7 /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
 		822FAF5C1E488B2F00FA6337 /* IMTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMTestViewController.h; sourceTree = "<group>"; };
 		822FAF5D1E488B2F00FA6337 /* IMTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMTestViewController.m; sourceTree = "<group>"; };
 		823295821E23CF5400C92044 /* PopAnimationTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopAnimationTransition.h; sourceTree = "<group>"; };
@@ -2674,6 +2677,8 @@
 			children = (
 				D4FEFD571D421D86003CABE8 /* BaseController */,
 				D42E58261D4515F8005CD973 /* BaseModel */,
+				822EF0A81EA4965E0029E3C7 /* BaseRequest.h */,
+				822EF0A91EA4965E0029E3C7 /* BaseRequest.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -3472,6 +3477,7 @@
 				82E62CEB1E8BED370011B28B /* SingleLoadingView.m in Sources */,
 				825C445B1E7BD8F2004919D4 /* MyWalletApi.m in Sources */,
 				3161677C1DC9B2D900760C3A /* DeleteCommentApi.m in Sources */,
+				822EF0AA1EA4965E0029E3C7 /* BaseRequest.m in Sources */,
 				D46BAFB71D4E0DEC009647E6 /* FaceBackViewController.m in Sources */,
 				82F218321E444BDB0089F43D /* MWCaptionView.m in Sources */,
 				D42DC7211D6B366300481932 /* NotificationViewController.m in Sources */,

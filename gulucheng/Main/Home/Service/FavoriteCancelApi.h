@@ -6,9 +6,9 @@
 //  Copyright © 2016年 许坤志. All rights reserved.
 //
 
-#import "YTKRequest.h"
+#import "BaseRequest.h"
 
-@interface FavoriteCancelApi : YTKRequest
+@interface FavoriteCancelApi : BaseRequest
 
 - (instancetype)initWithEid:(NSString *)eid;
 

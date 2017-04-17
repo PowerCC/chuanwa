@@ -6,9 +6,9 @@
 //  Copyright © 2016年 许坤志. All rights reserved.
 //
 
-#import "YTKRequest.h"
+#import "BaseRequest.h"
 
-@interface ForgetPwdApi : YTKRequest
+@interface ForgetPwdApi : BaseRequest
 
 - (id)initWithMobile:(NSString *)mobile
             password:(NSString *)password

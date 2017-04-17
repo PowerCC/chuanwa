@@ -6,9 +6,9 @@
 //  Copyright © 2017年 许坤志. All rights reserved.
 //
 
-#import "YTKRequest.h"
+#import "BaseRequest.h"
 
-@interface ReplyCommentApi : YTKRequest
+@interface ReplyCommentApi : BaseRequest
 
 - (instancetype)initWithEid:(NSString *)eid
                     comment:(NSString *)comment

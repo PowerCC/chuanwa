@@ -33,7 +33,9 @@
 
 @property (nonatomic, assign) double latitude;
 @property (nonatomic, assign) double longitude;
+
 @property (nonatomic, copy) NSString *eventCity;
+@property (nonatomic, copy) NSString *eventId;
 
 @property (nonatomic, strong) UIImagePickerController *imagePickerVC;
 
@@ -51,6 +53,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *otherHintLabel;
 
 - (IBAction)showMenuButtonAction:(id)sender;
+
+- (void)eventRequest:(NSString *)eid
+             success:(void(^)())success
+             failure:(void(^)())failure;
 
 - (void)textPublishAction;
 - (void)votePublishAction;

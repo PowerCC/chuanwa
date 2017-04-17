@@ -118,6 +118,7 @@ static NSInteger const limit = 10;
 @property (assign, nonatomic) BOOL enableCardNotification;
 @property (assign, nonatomic) BOOL disabledEditCardNotification;
 @property (assign, nonatomic) BOOL isCommentReply;
+@property (assign, nonatomic) BOOL fromCollectAction;
 
 @property (assign, nonatomic) CGFloat commentCellHeight;
 
@@ -439,6 +440,15 @@ static NSInteger const limit = 10;
 //                [weakSelf loadViewsWithStartY:height commendModel:weakSelf.recommendModel];
 //            }
             [weakSelf loadViewsWithStartY:height commendModel:weakSelf.recommendModel];
+            
+            if (weakSelf.totalCommentCount.integerValue == 0 && weakSelf.recommendModel.spreadTimes.integerValue > 0) {
+                [weakSelf changeSelectedButtonColorWithIndex:1];
+                [weakSelf.tableScrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:YES];
+            }
+            else {
+                [weakSelf changeSelectedButtonColorWithIndex:0];
+                [weakSelf.tableScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+            }
         };
         
         [self.textCommendView loadTextCommendModel:_recommendModel];
@@ -470,6 +480,15 @@ static NSInteger const limit = 10;
             weakSelf.otherCenterID = weakSelf.recommendModel.uid;
             [weakSelf performSegueWithIdentifier:@"otherCenterSegue" sender:nil];
         };
+        
+        if (weakSelf.totalCommentCount.integerValue == 0 && weakSelf.recommendModel.spreadTimes.integerValue > 0) {
+            [weakSelf changeSelectedButtonColorWithIndex:1];
+            [weakSelf.tableScrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:YES];
+        }
+        else {
+            [weakSelf changeSelectedButtonColorWithIndex:0];
+            [weakSelf.tableScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+        }
     }
     
     // 图片
@@ -483,6 +502,15 @@ static NSInteger const limit = 10;
         
         _detailPhotoCommendView.photoViewHeightBlock = ^(float height) {
             [weakSelf loadViewsWithStartY:height commendModel:weakSelf.recommendModel];
+            
+            if (weakSelf.totalCommentCount.integerValue == 0 && weakSelf.recommendModel.spreadTimes.integerValue > 0) {
+                [weakSelf changeSelectedButtonColorWithIndex:1];
+                [weakSelf.tableScrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:YES];
+            }
+            else {
+                [weakSelf changeSelectedButtonColorWithIndex:0];
+                [weakSelf.tableScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+            }
         };
         
         _detailPhotoCommendView.currentPageBlock = ^(NSInteger currentPage) {
@@ -532,21 +560,20 @@ static NSInteger const limit = 10;
             
 //            [weakSelf.collectButton setTitle:[NSString stringWithFormat:@"收藏 %@", weakSelf.favoriteCount] forState:UIControlStateNormal];
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-
-                // 评论没内容，传递有内容 跳转到传递页面
-                if (weakSelf.totalCommentCount.integerValue == 0 && weakSelf.recommendModel.spreadTimes.integerValue > 0) {
-                    [weakSelf changeSelectedButtonColorWithIndex:1];
-                    [weakSelf.tableScrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:NO];
-                }
-                else {
-                    [weakSelf changeSelectedButtonColorWithIndex:0];
-                    [weakSelf.tableScrollView setContentOffset:CGPointMake(0, 0) animated:NO];
-                }
-            });
+//            GCD_AFTER(0.5, ^{
+//                // 评论没内容，传递有内容 跳转到传递页面
+//                if (weakSelf.totalCommentCount.integerValue == 0 && weakSelf.recommendModel.spreadTimes.integerValue > 0) {
+//                    [weakSelf changeSelectedButtonColorWithIndex:1];
+//                    [weakSelf.tableScrollView setContentOffset:CGPointMake(SCREEN_WIDTH, 0) animated:YES];
+//                }
+//                else {
+//                    [weakSelf changeSelectedButtonColorWithIndex:0];
+//                    [weakSelf.tableScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+//                }
+//            });
         }
     } failure:^(__kindof YTKBaseRequest *request) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        GCD_AFTER(0.5, ^{
             [weakSelf changeSelectedButtonColorWithIndex:0];
             [weakSelf.tableScrollView setContentOffset:CGPointMake(0, 0) animated:NO];
         });
@@ -677,15 +704,24 @@ static NSInteger const limit = 10;
             NSArray *favoriteArray = [FavoriteUserModel JCParse:request.responseJSONObject[@"data"][@"favoriteList"]];
             
             NSString *favoriteCount = request.responseJSONObject[@"data"][@"favoriteCount"];
-            [weakSelf.collectButton setTitle:[NSString stringWithFormat:@"收藏 %@", favoriteCount] forState:UIControlStateNormal];
             
+            [weakSelf changeSelectedButtonColorWithIndex:0];
+            [weakSelf.tableScrollView setContentOffset:CGPointMake(0, 0) animated:NO];
+            [weakSelf.collectButton setTitle:[NSString stringWithFormat:@"收藏 %@", favoriteCount] forState:UIControlStateNormal];
+//            [weakSelf.tableScrollView layoutSubviews];
 //            weakSelf.collectButton.titleLabel.text = [NSString stringWithFormat:@"收藏 %@", favoriteCount];
+//            [weakSelf.collectButton setNeedsLayout];
 //            [weakSelf.collectButton layoutIfNeeded];
 
             
             [weakSelf.collectArray addObjectsFromArray:favoriteArray];
 
-            if (weakSelf.collectArray.count) {
+            if (weakSelf.collectArray.count > 0) {
+                UIView *view = [weakSelf.collectTableView viewWithTag:2016];
+                if (view) {
+                    [view removeFromSuperview];
+                }
+                
                 [weakSelf.collectTableView reloadData];
             } else {
                 [weakSelf.collectTableView reloadData];
@@ -696,6 +732,13 @@ static NSInteger const limit = 10;
             
             if (favoriteCount.integerValue == weakSelf.collectArray.count) {
                 [weakSelf.collectTableView.mj_footer endRefreshingWithNoMoreData];
+            }
+            
+            if (_fromCollectAction) {
+                GCD_AFTER(0.5, ^{
+                    [weakSelf changeSelectedButtonColorWithIndex:2];
+                    [weakSelf.tableScrollView setContentOffset:CGPointMake(SCREEN_WIDTH * 2, 0) animated:YES];
+                });
             }
             
 //            [weakSelf requestEvent];
@@ -897,6 +940,8 @@ static NSInteger const limit = 10;
                 [MBProgressHUD hideHUDForView:weakSelf.view];
                 [MBProgressHUD show:@"已取消收藏" customIcon:@"home-cancelCollect" view:weakSelf.view];
                 [weakSelf.collectArray removeAllObjects];
+                
+                weakSelf.fromCollectAction = YES;
                 [weakSelf requestFavoriteUsersWithOffset:0];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:N_MY_CENTER_FAVORITE_REFRESH object:weakSelf.recommendModel.eid];
@@ -915,6 +960,8 @@ static NSInteger const limit = 10;
                 [MBProgressHUD hideHUDForView:weakSelf.view];
                 [MBProgressHUD show:@"收藏成功" customIcon:@"home-collectOk" view:weakSelf.view];
                 [weakSelf.collectArray removeAllObjects];
+                
+                weakSelf.fromCollectAction = YES;
                 [weakSelf requestFavoriteUsersWithOffset:0];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:N_MY_CENTER_FAVORITE_REFRESH object:weakSelf.recommendModel.eid];             

@@ -6,9 +6,9 @@
 //  Copyright © 2016年 许坤志. All rights reserved.
 //
 
-#import "YTKRequest.h"
+#import "BaseRequest.h"
 
-@interface PublishVoteApi : YTKRequest
+@interface PublishVoteApi : BaseRequest
 
 - (instancetype)initWithTitle:(NSString *)title
                       option1:(NSString *)option1

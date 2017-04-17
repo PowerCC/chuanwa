@@ -6,9 +6,9 @@
 //  Copyright © 2016年 许坤志. All rights reserved.
 //
 
-#import "YTKRequest.h"
+#import "BaseRequest.h"
 
-@interface VerifyCodeApi : YTKRequest
+@interface VerifyCodeApi : BaseRequest
 
 - (instancetype)initWithMobile:(NSString *)mobile;
 

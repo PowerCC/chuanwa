@@ -18,6 +18,7 @@
 
 #import "CheckNewNoticeApi.h"
 
+#import "EventApi.h"
 #import "RecommendApi.h"
 #import "RecommendOperateApi.h"
 #import "ListByImNamesApi.h"
@@ -76,8 +77,10 @@
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.navView.alpha = 0.0;
     
-    [self checkNewNotice];
-    [self checkUnreadMessages];
+    if (_eventId == nil || _eventId.length == 0) {
+        [self checkNewNotice];
+        [self checkUnreadMessages];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -104,6 +107,10 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(haveNotifications:) name:N_HOME_HAVE_NOTIFICATIONS object:nil];
 //    
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(noNotifications:) name:N_HOME_NO_NOTIFICATIONS object:nil];
+    
+    if (_eventId && _eventId.length > 0) {
+        return;
+    }
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didBecomeActive:) name:N_DID_BECOME_ACTIVE object:nil];
     
@@ -711,6 +718,35 @@
         }
     }
 }
+
+#pragma mark - eventRequest 单个事件详情请求
+- (void)eventRequest:(NSString *)eid
+             success:(void(^)())success
+             failure:(void(^)())failure {
+    WEAKSELF
+    
+    EventApi *eventApi = [[EventApi alloc] initWithEid:eid];
+    [eventApi startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest *request) {
+        if ([weakSelf isSuccessWithRequest:request.responseJSONObject]) {
+            
+            RecommendModel *recommendModel = [RecommendModel JCParse:request.responseJSONObject[@"data"]];
+            weakSelf.currentRecommendModel = recommendModel;
+            [weakSelf addFirstScrollView];
+            [weakSelf addPublishViewWithContentView:weakSelf.firstScrollView recommendModel:recommendModel];
+            weakSelf.publishImageContentView.hidden = YES;
+            NSLog(@"%@", recommendModel);
+            
+            if (success) {
+                success();
+            }
+        }
+    } failure:^(__kindof YTKBaseRequest *request) {
+        if (failure) {
+            failure();
+        }
+    }];
+}
+
 
 // 重新请求下一波数据
 - (void)recommendDataSourceRequest {

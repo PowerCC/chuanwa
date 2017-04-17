@@ -6,9 +6,9 @@
 //  Copyright © 2016年 许坤志. All rights reserved.
 //
 
-#import "YTKRequest.h"
+#import "BaseRequest.h"
 
-@interface RecommendOperateApi : YTKRequest
+@interface RecommendOperateApi : BaseRequest
 
 - (instancetype)initWithFromEid:(NSString *)fromEid
                             eid:(NSString *)eid

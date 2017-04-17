@@ -6,8 +6,8 @@
 //  Copyright © 2017年 许坤志. All rights reserved.
 //
 
-#import <YTKNetwork/YTKNetwork.h>
+#import "BaseRequest.h"
 
-@interface MyWalletApi : YTKRequest
+@interface MyWalletApi : BaseRequest
 
 @end
