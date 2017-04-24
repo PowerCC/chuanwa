@@ -181,6 +181,8 @@ static NSString * const photoCell = @"DetailPhotoCell";
             return;
         }
         
+        [[SDImageCache sharedImageCache] storeImageDataToDisk:data forKey:photoModel.picPath];
+        
         UIImage *pImage = [UIImage sd_emImageWithData:data];
         cell.photoImageView.image = pImage;
         

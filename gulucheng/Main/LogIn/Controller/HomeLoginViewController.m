@@ -101,8 +101,8 @@
     if ([yyDisk containsObjectForKey:@"password"]) {
         
         // 显示启动动画
-        LaunchPanel *launchPanel = [[LaunchPanel alloc] init];
-        [launchPanel show];
+//        LaunchPanel *launchPanel = [[LaunchPanel alloc] init];
+//        [launchPanel show];
         
         LogInApi *loginApi = [[LogInApi alloc] initWithMobile:[Tool noneSpaseString:(NSString *)[yyDisk objectForKey:@"mobile"]]
                                                      password:(NSString *)[yyDisk objectForKey:@"password"]];
@@ -114,7 +114,7 @@
                 
             }
             
-            [launchPanel launchAnimationDone];
+//            [launchPanel launchAnimationDone];
             
             if ([request.responseJSONObject[@"code"] intValue] == 200) {
                 // 登录成功执行操作
@@ -126,7 +126,7 @@
             }
         } failure:^(__kindof YTKBaseRequest *request) {
             [weakSelf performSegueWithIdentifier:@"loginSegue" sender:nil];
-            [launchPanel launchAnimationDone];
+//            [launchPanel launchAnimationDone];
         }];
     }
     else {
