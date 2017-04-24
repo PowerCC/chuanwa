@@ -7,14 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3144308C1D9258F10049BC8B /* libSocialSinaSSO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 314430701D9258F10049BC8B /* libSocialSinaSSO.a */; };
-		3144308D1D9258F10049BC8B /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 314430711D9258F10049BC8B /* libWeiboSDK.a */; };
 		3144308E1D9258F10049BC8B /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3144307C1D9258F10049BC8B /* WeiboSDK.bundle */; };
-		3144308F1D9258F10049BC8B /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 314430801D9258F10049BC8B /* libSocialQQ.a */; };
-		314430901D9258F10049BC8B /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314430811D9258F10049BC8B /* TencentOpenAPI.framework */; };
 		314430911D9258F10049BC8B /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 314430821D9258F10049BC8B /* TencentOpenApi_IOS_Bundle.bundle */; };
-		314430921D9258F10049BC8B /* libSocialWechat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 314430851D9258F10049BC8B /* libSocialWechat.a */; };
-		314430931D9258F10049BC8B /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 314430861D9258F10049BC8B /* libWeChatSDK.a */; };
 		314430941D9258F10049BC8B /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 314430871D9258F10049BC8B /* README.txt */; };
 		31460C3D1D927A68004BB2EB /* AppsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 31460C3C1D927A68004BB2EB /* AppsView.m */; };
 		31460C3F1D927A7C004BB2EB /* AppsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 31460C3E1D927A7C004BB2EB /* AppsView.xib */; };
@@ -1224,13 +1218,7 @@
 				D41B88321D9431AF009C1E47 /* CoreGraphics.framework in Frameworks */,
 				D41B88301D9431A0009C1E47 /* SystemConfiguration.framework in Frameworks */,
 				D41B882C1D943182009C1E47 /* Security.framework in Frameworks */,
-				314430931D9258F10049BC8B /* libWeChatSDK.a in Frameworks */,
-				314430901D9258F10049BC8B /* TencentOpenAPI.framework in Frameworks */,
-				3144308F1D9258F10049BC8B /* libSocialQQ.a in Frameworks */,
 				B5FF263C891B863EFF4CF80B /* libPods-gulucheng.a in Frameworks */,
-				3144308D1D9258F10049BC8B /* libWeiboSDK.a in Frameworks */,
-				314430921D9258F10049BC8B /* libSocialWechat.a in Frameworks */,
-				3144308C1D9258F10049BC8B /* libSocialSinaSSO.a in Frameworks */,
 				31FC02871DC0B61400004589 /* jpush-ios-2.2.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3734,7 +3722,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/Expand/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = gulucheng/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3771,7 +3759,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/Expand/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = gulucheng/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

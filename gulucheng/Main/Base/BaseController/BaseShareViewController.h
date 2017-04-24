@@ -10,10 +10,12 @@
 #import "TextCommendView.h"
 #import "RecommendModel.h"
 #import "PhotoModel.h"
-#import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
+#import "UMSocialSinaHandler.h"
+#import "UMSocialQQHandler.h"
 #import "Tool.h"
 
-@interface BaseShareViewController : BaseViewController <UMSocialUIDelegate>
+@interface BaseShareViewController : BaseViewController <UMSocialPlatformProvider>
 
 @property (strong, nonatomic) RecommendModel *currentRecommendModel;
 

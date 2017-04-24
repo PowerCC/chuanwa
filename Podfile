@@ -23,7 +23,10 @@ target 'gulucheng' do
     pod 'AMapLocation'  #定位SDK
     pod 'pop', '~> 1.0'
     pod 'Masonry'
-    pod 'UMengSocialCOM', '~> 5.2.1'  #友盟社会化分享
+    #pod 'UMengSocialCOM' #友盟社会化分享
+    pod 'UMengUShare/Social/ReducedWeChat'
+    pod 'UMengUShare/Social/ReducedSina'
+    pod 'UMengUShare/Social/ReducedQQ' # 集成QQ(精简版0.5M)
     pod 'ESPictureBrowser'
     pod 'VBFPopFlatButton'
     #pod 'DFTimelineView'

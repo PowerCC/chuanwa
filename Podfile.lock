@@ -35,7 +35,15 @@ PODS:
   - SDWebImage (4.0.0):
     - SDWebImage/Core (= 4.0.0)
   - SDWebImage/Core (4.0.0)
-  - UMengSocialCOM (5.2.1)
+  - UMengUShare/Core (6.4.3):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.3)
+  - UMengUShare/Social/ReducedQQ (6.4.3):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedSina (6.4.3):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.3):
+    - UMengUShare/Core
   - VBFPopFlatButton (0.0.7):
     - pop
   - XAspect (1.0.5):
@@ -65,7 +73,9 @@ DEPENDENCIES:
   - MJRefresh
   - pop (~> 1.0)
   - SDWebImage
-  - UMengSocialCOM (~> 5.2.1)
+  - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/ReducedWeChat
   - VBFPopFlatButton
   - XAspect
   - YTKNetwork
@@ -84,7 +94,7 @@ SPEC CHECKSUMS:
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
   SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
-  UMengSocialCOM: 074c135ce349aa4c8848d3fb8458757bcb6ffb67
+  UMengUShare: d39cb682598df87ebdd3c055d03d00eb0102d42c
   VBFPopFlatButton: 39e48ab56277f3d056734a9b5ec5d0cc60d69778
   XAspect: db50bf487f92dbb8557a7a5365556966c8493af8
   YTKNetwork: d8493ab5dae11f06c44e354a3c8f77698ab5f4b7
@@ -92,6 +102,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 4ec7f9cce29f1406a9d1bd6a7c706a593457a4d2
+PODFILE CHECKSUM: 994ebc1423afd462a2a5cf658e6180d4caa82bea
 
 COCOAPODS: 1.2.0
