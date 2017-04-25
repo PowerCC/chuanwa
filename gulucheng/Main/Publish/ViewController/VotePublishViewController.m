@@ -124,6 +124,8 @@
 
 - (IBAction)votePublishButtonAction:(id)sender {
     
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    
     [self checkVoteContentArray];
     
     if (_voteContentArray.count > 0 && _voteQuestionTextField.text.length > 0) {

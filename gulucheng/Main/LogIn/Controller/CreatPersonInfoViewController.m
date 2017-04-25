@@ -119,13 +119,15 @@
         if ([weakSelf isSuccessWithRequest:request.responseJSONObject]) {
             // 注册成功，继续执行操作,进入默认首页
             GlobalData.userModel = [UserModel JCParse:request.responseJSONObject[@"data"]];
-
-            YYDiskCache *yyDisk = [Tool yyDiskCache];
-            [yyDisk setObject:GlobalData.userModel forKey:@"userModel"];
-            [yyDisk setObject:weakSelf.mobile forKey:@"mobile"];
-            [yyDisk setObject:weakSelf.password forKey:@"password"];
             
-            [AppDelegateInstance showMainViewController];
+            if (GlobalData.userModel) {
+                YYDiskCache *yyDisk = [Tool yyDiskCache];
+                [yyDisk setObject:GlobalData.userModel forKey:@"userModel"];
+                [yyDisk setObject:weakSelf.mobile forKey:@"mobile"];
+                [yyDisk setObject:weakSelf.password forKey:@"password"];
+                
+                [AppDelegateInstance showMainViewController];
+            }
         }
         [MBProgressHUD hideHUDForView:weakSelf.view];
     } failure:^(__kindof YTKBaseRequest *request) {

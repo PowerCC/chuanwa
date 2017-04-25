@@ -3000,7 +3000,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D4F4EFC31D3E7A3D00072F8B /* Build configuration list for PBXProject "gulucheng" */;
+			buildConfigurationList = D4F4EFC31D3E7A3D00072F8B /* Build configuration list for PBXProject "GuluCheng" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -3722,7 +3722,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/Expand/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = gulucheng/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3759,7 +3759,7 @@
 				);
 				GCC_PREFIX_HEADER = "$(PRODUCT_NAME)/Expand/Macros/PrefixHeader.pch";
 				INFOPLIST_FILE = gulucheng/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3830,7 +3830,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D4F4EFC31D3E7A3D00072F8B /* Build configuration list for PBXProject "gulucheng" */ = {
+		D4F4EFC31D3E7A3D00072F8B /* Build configuration list for PBXProject "GuluCheng" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4F4EFF31D3E7A3D00072F8B /* Debug */,

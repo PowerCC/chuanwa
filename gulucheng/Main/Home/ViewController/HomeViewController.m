@@ -193,6 +193,8 @@
     _firstScrollView.delegate = self;
     
     [self.view addSubview:_firstScrollView];
+    [self.view bringSubviewToFront:_actionLabel];
+    [self.view bringSubviewToFront:_actionImageView];
     [self.view bringSubviewToFront:_publishImageContentView];
     
     [self showGuideView];
@@ -210,6 +212,8 @@
     [self.view addSubview:_secondScrollView];
     
     [self.view sendSubviewToBack:_secondScrollView];
+    [self.view bringSubviewToFront:_actionLabel];
+    [self.view bringSubviewToFront:_actionImageView];
     [self.view bringSubviewToFront:_publishImageContentView];
 }
 
@@ -532,8 +536,8 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
     // 显示放弃还是传播操作
-    [self.view bringSubviewToFront:_actionImageView];
-    [self.view bringSubviewToFront:_actionLabel];
+//    [self.view bringSubviewToFront:_actionImageView];
+//    [self.view bringSubviewToFront:_actionLabel];
     
 //    [self.view bringSubviewToFront:_actionRoundLabel];
     // 显示传播操作
@@ -617,7 +621,6 @@
             if (!_isEndDraging) {
                 _actionLabel.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
                 _actionImageView.alpha = (SCREEN_HEIGHT - scrollView.contentOffset.y - 30) / (170 - 30);
-
                 [_flatRoundedButton animateToType:buttonCloseType];
             }
         } else if (!_isEndDraging && scrollView.contentOffset.y - SCREEN_HEIGHT < -SCREEN_HEIGHT * 0.5) {

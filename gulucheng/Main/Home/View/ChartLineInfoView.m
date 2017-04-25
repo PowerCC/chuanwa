@@ -144,10 +144,13 @@
         btn.tag = 100 + i;
         [self.btnArr addObject:btn];
         
-        CGRect rect = CGRectMake((Xmargin) * i, (1 - [arr[i] floatValue]) * height, 5, 5);
-        NSValue *point = [NSValue valueWithCGPoint:CGPointMake(rect.origin.x + 0.5, rect.origin.y)];
-        
-        [self.pointArr addObject:point];
+        CGFloat x = (Xmargin) * i;
+        if (x <=  self.bgView.bounds.size.width) {
+            CGRect rect = CGRectMake(x, (1 - [arr[i] floatValue]) * height, 5, 5);
+            NSValue *point = [NSValue valueWithCGPoint:CGPointMake(rect.origin.x + 0.5, rect.origin.y)];
+            
+            [self.pointArr addObject:point];
+        }
     }
 }
 
@@ -174,7 +177,7 @@
             CGPoint point = [[self.pointArr objectAtIndex:i] CGPointValue];
             [beizer addLineToPoint:point];
             [bezier1 addLineToPoint:point];
-            
+
             if (i == self.pointArr.count - 1) {
                 [beizer moveToPoint:point];//添加连线
                 lastPoint = point;

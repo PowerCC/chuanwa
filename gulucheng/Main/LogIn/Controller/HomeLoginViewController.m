@@ -63,22 +63,48 @@
     
     [_skipButton circularWithSize:CGSizeMake(3, 3)];
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstBeenUsed"]) {
+    NSDate *nowDate = [NSDate date];
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    [userDefault setObject:nowDate forKey:@"nowDate"];
+    [userDefault synchronize];
+    
+    NSDate *agoDate = [userDefault objectForKey:@"nowDate"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    
+    NSString *ageDateString = [dateFormatter stringFromDate:agoDate];
+    NSString *nowDateString = [dateFormatter stringFromDate:nowDate];
+    
+    if (![userDefault boolForKey:@"isFirstBeenUsed"]) {
         NSLog(@"第一次使用app客户端！");
         
         [_adWebView removeFromSuperview];
         [_skipButton removeFromSuperview];
         
+        self.adWebView = nil;
+        self.skipButton = nil;
+        
         // 首次使用app进入引导页面
         [self showGuideView];
         
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstBeenUsed"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
+        [userDefault setBool:YES forKey:@"isFirstBeenUsed"];
+        [userDefault synchronize];
+    }
+    else if ([ageDateString isEqualToString:nowDateString] && ![userDefault boolForKey:@"adLoaded"]) {
+        [self loadAd];
         
-        [self login];
+        [userDefault setBool:YES forKey:@"adLoaded"];
+        [userDefault synchronize];
     }
     else {
-        [self loadAd];
+        [_adWebView removeFromSuperview];
+        [_skipButton removeFromSuperview];
+        
+        self.adWebView = nil;
+        self.skipButton = nil;
+        
+        [self login];
     }
 }
 
@@ -93,7 +119,7 @@
     self.navView.hidden = YES;
     [_adWebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.91chuanwa.com/apphtml/index.html"]]];
     
-    self.adTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(toLogin) userInfo:nil repeats:NO];
+    self.adTimer = [NSTimer scheduledTimerWithTimeInterval:6 target:self selector:@selector(toLogin) userInfo:nil repeats:NO];
 }
 
 - (void)login {
@@ -101,8 +127,11 @@
     if ([yyDisk containsObjectForKey:@"password"]) {
         
         // 显示启动动画
-//        LaunchPanel *launchPanel = [[LaunchPanel alloc] init];
-//        [launchPanel show];
+        LaunchPanel *launchPanel = nil;
+        if (!_adWebView) {
+            launchPanel = [[LaunchPanel alloc] init];
+            [launchPanel show];
+        }
         
         LogInApi *loginApi = [[LogInApi alloc] initWithMobile:[Tool noneSpaseString:(NSString *)[yyDisk objectForKey:@"mobile"]]
                                                      password:(NSString *)[yyDisk objectForKey:@"password"]];
@@ -114,7 +143,9 @@
                 
             }
             
-//            [launchPanel launchAnimationDone];
+            if (launchPanel) {
+                [launchPanel launchAnimationDone];
+            }
             
             if ([request.responseJSONObject[@"code"] intValue] == 200) {
                 // 登录成功执行操作
@@ -126,7 +157,9 @@
             }
         } failure:^(__kindof YTKBaseRequest *request) {
             [weakSelf performSegueWithIdentifier:@"loginSegue" sender:nil];
-//            [launchPanel launchAnimationDone];
+            if (launchPanel) {
+                [launchPanel launchAnimationDone];
+            }
         }];
     }
     else {
