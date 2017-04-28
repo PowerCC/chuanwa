@@ -77,11 +77,7 @@ AspectPatch(-, void, showMenuButtonAction:(id)sender) {
     if ([CLLocationManager locationServicesEnabled] &&
         ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedAlways ||
          [CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse)) {
-            
-            if (!self.eventCity || self.eventCity.length == 0) {
-                self.eventCity = @"神秘地址";
-            }
-            
+
             //定位功能可用，开始定位
             self.menu.backgroundType = HyPopMenuViewBackgroundTypeLightBlur;
             [self.menu openMenu];

@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,12 +16,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="home-replyShadow" translatesAutoresizingMaskIntoConstraints="NO" id="RWV-xK-1xQ">
-                    <frame key="frameInset" width="375" height="2"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w2V-LC-ZQs" customClass="IBImageView">
-                    <frame key="frameInset" minX="16" minY="9" width="36" height="36"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w2V-LC-ZQs" customClass="IBImageView">
+                    <rect key="frame" x="16" y="9" width="36" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="36" id="QUF-G4-q6w"/>
+                        <constraint firstAttribute="width" constant="36" id="e4r-lr-15R"/>
+                    </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                             <real key="value" value="18"/>
@@ -26,8 +32,8 @@
                     </userDefinedRuntimeAttributes>
                 </imageView>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FtQ-Zd-kyO">
+                    <rect key="frame" x="325" y="0.0" width="50" height="56"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="52" id="7lW-CZ-YQC"/>
                         <constraint firstAttribute="height" constant="56" id="q48-Fg-vks"/>
                     </constraints>
                     <state key="normal" image="home-comment"/>
@@ -36,7 +42,7 @@
                     </connections>
                 </button>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TII-tM-NtK">
-                    <frame key="frameInset" minX="64" minY="12" width="261" height="30"/>
+                    <rect key="frame" x="64" y="12" width="261" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="textColor" red="0.2666666667" green="0.2666666667" blue="0.2666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -46,9 +52,11 @@
                         <outlet property="delegate" destination="iN0-l3-epB" id="h20-W4-yv5"/>
                     </connections>
                 </textView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="在这里说点什么吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD4-5R-OdV">
-                    <frame key="frameInset" minX="72" minY="12" width="253" height="30"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="在这里说点什么吧" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD4-5R-OdV">
+                    <rect key="frame" x="72" y="12" width="253" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="Tb2-vE-8PL"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -56,8 +64,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="FtQ-Zd-kyO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="1" id="Lal-IX-Ds9"/>
+                <constraint firstItem="w2V-LC-ZQs" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="1gQ-yw-0Gd"/>
+                <constraint firstItem="w2V-LC-ZQs" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="BtG-Yd-Sw6"/>
+                <constraint firstItem="FtQ-Zd-kyO" firstAttribute="leading" secondItem="gD4-5R-OdV" secondAttribute="trailing" id="HNe-lJ-INd"/>
+                <constraint firstItem="FtQ-Zd-kyO" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Lal-IX-Ds9"/>
                 <constraint firstAttribute="trailing" secondItem="FtQ-Zd-kyO" secondAttribute="trailing" id="VZP-wo-PQY"/>
+                <constraint firstAttribute="trailing" secondItem="gD4-5R-OdV" secondAttribute="trailing" constant="50" id="pDj-NZ-IkU"/>
+                <constraint firstItem="gD4-5R-OdV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="que-Lc-ih4"/>
+                <constraint firstItem="gD4-5R-OdV" firstAttribute="leading" secondItem="w2V-LC-ZQs" secondAttribute="trailing" constant="20" id="wzB-zw-4Yc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

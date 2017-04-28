@@ -92,7 +92,7 @@ static NSInteger const limit = 10;
 
 - (void)viewDidLoad {
     
-    self.navigationController.navigationBar.translucent = YES;
+//    self.navigationController.navigationBar.translucent = YES;
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -180,7 +180,7 @@ static NSInteger const limit = 10;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-//    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.translucent = YES;
     self.navView.backgroundColor = [UIColor clearColor];
 }
 

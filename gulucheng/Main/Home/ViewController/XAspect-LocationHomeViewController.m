@@ -47,8 +47,9 @@ AspectPatch(-, void, viewDidLoad) {
     WEAKSELF
     self.completionBlock = ^(CLLocation *location, AMapLocationReGeocode *regeocode, NSError *error) {
         
+        weakSelf.eventCity = @"神秘地址";
+        
         if (error) {
-            
             if (error.code == AMapLocationErrorLocateFailed) {
                 return;
             }
@@ -65,7 +66,9 @@ AspectPatch(-, void, viewDidLoad) {
                 if (!regeocode.city || [regeocode.city length] == 0 || [regeocode.province isEqualToString:regeocode.city]) {
                     city = [NSString stringWithFormat:@"%@-%@", regeocode.province, regeocode.district]; // 直辖市时获取此字段
                 }
-                weakSelf.eventCity = city;
+                
+                weakSelf.eventCity = city && city.length && ![city isEqualToString:@"null-null"] ? city : @"神秘地址";;
+
             }
             else {
                 NSLog(@"lat:%f;lon:%f \n accuracy:%.2fm", location.coordinate.latitude, location.coordinate.longitude, location.horizontalAccuracy);
